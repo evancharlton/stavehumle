@@ -1,9 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { useRecoilValue } from 'recoil';
-import {
-  outerLetters as outerLettersState,
-  centerLetter as centerLetterState,
-} from '../state';
+import { useLetters } from '../LettersProvider';
 
 const Hive = () => {
   const [guess, setGuess] = useState('');
@@ -17,13 +13,12 @@ const Hive = () => {
     [setGuess]
   );
 
-  const centerLetter = useRecoilValue(centerLetterState);
-  const outerLetters = useRecoilValue(outerLettersState);
+  const { centerLetter, outerLetters } = useLetters();
 
   const letterButtons = useMemo(() => {
     return [centerLetter, ...outerLetters].filter(Boolean).map((letter) => {
       return (
-        <button data-letter={letter} onClick={onClick}>
+        <button data-letter={letter} onClick={onClick} key={letter}>
           {letter}
         </button>
       );
