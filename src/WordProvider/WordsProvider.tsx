@@ -42,15 +42,7 @@ const GameCreator = ({ children }: Props) => {
     return <div>Loading ...</div>;
   }
 
-  return (
-    <Context.Provider value={{ words }}>
-      <h1>
-        {centerLetter} / {all}
-      </h1>
-      <h1>{words.length} words</h1>
-      {children}
-    </Context.Provider>
-  );
+  return <Context.Provider value={{ words }}>{children}</Context.Provider>;
 };
 
 export default GameCreator;
