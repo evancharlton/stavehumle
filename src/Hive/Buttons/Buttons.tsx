@@ -4,7 +4,7 @@ import shuffle from '../../shuffle';
 import { useGame } from '../hooks';
 import classes from './Buttons.module.css';
 
-const Buttons = ({ className }: Pick<HTMLDivElement, 'className'>) => {
+const Buttons = () => {
   const { onGuess } = useGame();
 
   const { all, centerLetter, outerLetters } = useLetters();
@@ -91,7 +91,7 @@ const Buttons = ({ className }: Pick<HTMLDivElement, 'className'>) => {
   );
 
   return (
-    <div className={className}>
+    <div>
       <div className={classes.guess}>{guess}</div>
       <div className={classes.letterButtons}>
         <div className={classes.topRow}>

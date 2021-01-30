@@ -5,6 +5,7 @@ import Score from './Score';
 import Found from './Found';
 import Buttons from './Buttons';
 import Progress from './Progress';
+import classes from './Hive.module.css';
 
 type ContextType = {
   found: string[];
@@ -50,11 +51,13 @@ const Hive = () => {
 
   return (
     <Context.Provider value={{ found, onGuess: makeGuess }}>
-      <div>
+      <div className={classes.container}>
         <Buttons />
-        <Progress />
-        <Score />
-        <Found />
+        <div className={classes.column}>
+          <Progress />
+          <Score />
+          <Found />
+        </div>
       </div>
     </Context.Provider>
   );
