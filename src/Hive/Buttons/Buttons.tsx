@@ -1,12 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLetters } from '../../LettersProvider';
 import shuffle from '../../shuffle';
+import { useGame } from '../hooks';
 
-type Props = {
-  onGuess: (guess: string) => void;
-};
+const Buttons = () => {
+  const { onGuess } = useGame();
 
-const Buttons = ({ onGuess }: Props) => {
   const { all, centerLetter, outerLetters } = useLetters();
   const [guess, setGuess] = useState('');
   const [shuffleKey, setShuffleKey] = useState(Date.now());

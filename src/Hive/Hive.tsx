@@ -1,10 +1,20 @@
-import { useCallback, useState } from 'react';
+import { createContext, useCallback, useState } from 'react';
 import { useLetters } from '../LettersProvider';
 import { useWords } from '../WordProvider';
 import Score from './Score';
 import Found from './Found';
 import Buttons from './Buttons';
 import Progress from './Progress';
+
+type ContextType = {
+  found: string[];
+  onGuess: (guess: string) => void;
+};
+
+export const Context = createContext<ContextType>({
+  found: [],
+  onGuess: () => undefined,
+});
 
 const Hive = () => {
   const { all, centerLetter } = useLetters();
@@ -36,12 +46,14 @@ const Hive = () => {
   }, []);
 
   return (
-    <div>
-      <Buttons onGuess={makeGuess} />
-      <Progress found={found} />
-      <Score words={found} />
-      <Found words={found} />
-    </div>
+    <Context.Provider value={{ found, onGuess: makeGuess }}>
+      <div>
+        <Buttons />
+        <Progress />
+        <Score />
+        <Found />
+      </div>
+    </Context.Provider>
   );
 };
 

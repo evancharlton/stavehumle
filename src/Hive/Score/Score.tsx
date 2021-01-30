@@ -1,13 +1,17 @@
-import { useMemo } from 'react';
-import { useScore } from '../hooks';
+import { useWords } from '../../WordProvider';
+import { useGame, useScore } from '../hooks';
 
-type Props = {
-  words: string[];
-};
+const Score = () => {
+  const { found } = useGame();
+  const { words } = useWords();
 
-const Score = ({ words }: Props) => {
-  const { score } = useScore(words);
-  return <h1>{score}</h1>;
+  const { score } = useScore(found);
+  const { score: total } = useScore(words);
+  return (
+    <h1>
+      {score} / {total}
+    </h1>
+  );
 };
 
 export default Score;

@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
+import { Context } from './Hive';
 
 export const useScore = (words: string[]) => {
   const score = useMemo(() => {
@@ -19,4 +20,8 @@ export const useScore = (words: string[]) => {
   }, [words]);
 
   return { score };
+};
+
+export const useGame = () => {
+  return useContext(Context);
 };

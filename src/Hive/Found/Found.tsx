@@ -1,10 +1,8 @@
 import { useMemo } from 'react';
+import { useGame } from '../hooks';
 
-type Props = {
-  words: string[];
-};
-
-const Found = ({ words }: Props) => {
+const Found = () => {
+  const { found: words } = useGame();
   const cleaned = useMemo(() => {
     return Object.keys(
       words.reduce((acc, word) => ({ ...acc, [word]: true }), {})
