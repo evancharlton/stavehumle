@@ -1,5 +1,6 @@
 {
   "name": "staver-humle",
+  "homepage": "https://evancharlton.github.io/staver-humle",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
