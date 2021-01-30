@@ -1,13 +1,23 @@
+.container {
+  text-align: center;
+}
+
 .guess {
   font-size: 16pt;
   font-weight: 700;
   text-transform: uppercase;
+  height: 30px;
+  text-align: center;
+  letter-spacing: 4px;
 }
 
 .letterButton {
   text-transform: uppercase;
   font-size: 16pt;
   padding: 8px;
+  width: 50px;
+  height: 50px;
+  margin: 4px;
 }
 
 .centerLetter {
@@ -18,6 +28,11 @@
   text-align: center;
 }
 
+.controls {
+  margin-top: 16px;
+}
+
 .controls button {
   font-size: 16pt;
+  margin: 16px;
 }

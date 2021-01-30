@@ -52,7 +52,9 @@ const Hive = () => {
   return (
     <Context.Provider value={{ found, onGuess: makeGuess }}>
       <div className={classes.container}>
-        <Buttons />
+        <div className={classes.buttonsContainer}>
+          <Buttons />
+        </div>
         <div className={classes.column}>
           <Progress />
           <Score />

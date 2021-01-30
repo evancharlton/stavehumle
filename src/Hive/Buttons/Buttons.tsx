@@ -49,6 +49,7 @@ const Buttons = () => {
 
       if (key === ' ') {
         onShuffle();
+        e.preventDefault();
         return;
       }
 
@@ -92,7 +93,7 @@ const Buttons = () => {
   );
 
   return (
-    <div>
+    <div className={classes.container}>
       <div className={classes.guess}>{guess}</div>
       <div className={classes.letterButtons}>
         <div className={classes.topRow}>

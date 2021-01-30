@@ -1,0 +1,14 @@
+.wordList {
+  overflow-x: auto;
+  overflow-y: hidden;
+  column-count: auto;
+
+  list-style: none;
+  padding-inline-start: 4px;
+  padding-inline-end: 4px;
+  column-count: 3;
+}
+
+.wordList li {
+  margin-left: 0;
+}
