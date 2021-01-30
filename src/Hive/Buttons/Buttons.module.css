@@ -1,0 +1,19 @@
+.guess {
+  font-size: 16pt;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.letterButton {
+  text-transform: uppercase;
+  font-size: 16pt;
+  padding: 8px;
+}
+
+.centerLetter {
+  font-weight: 700;
+}
+
+.letterButtons {
+  text-align: center;
+}

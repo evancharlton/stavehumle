@@ -1,22 +1,19 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLetters } from '../../LettersProvider';
 import shuffle from '../../shuffle';
 import { useGame } from '../hooks';
+import classes from './Buttons.module.css';
 
-const Buttons = () => {
+const Buttons = ({ className }: Pick<HTMLDivElement, 'className'>) => {
   const { onGuess } = useGame();
 
   const { all, centerLetter, outerLetters } = useLetters();
   const [guess, setGuess] = useState('');
-  const [shuffledOuterLetters, setShuffledOuterLetters] = useState(
-    outerLetters
+  const [shuffledOuterLetters, setShuffledOuterLetters] = useState(() =>
+    shuffle(outerLetters)
   );
   const guessRef = useRef('');
   guessRef.current = guess;
-
-  const sortedLetters = useMemo(() => {
-    return [centerLetter, ...shuffledOuterLetters];
-  }, [centerLetter, shuffledOuterLetters]);
 
   const makeGuess = useCallback(() => {
     onGuess(guessRef.current);
@@ -74,18 +71,43 @@ const Buttons = () => {
     };
   }, [onKeyPress]);
 
-  const letterButtons = sortedLetters.map((letter) => {
+  type LetterButtonProps = { letter: string } & JSX.IntrinsicElements['button'];
+
+  const LetterButton = ({ letter, className, ...rest }: LetterButtonProps) => {
     return (
-      <button onClick={onLetterClick} data-letter={letter} key={letter}>
-        {letter.toLocaleUpperCase()}
+      <button
+        data-letter={letter}
+        onClick={onLetterClick}
+        className={[classes.letterButton, className].filter(Boolean).join(' ')}
+        {...rest}
+      >
+        {letter}
       </button>
     );
-  });
+  };
+
+  const CenterLetterButton = (props: LetterButtonProps) => (
+    <LetterButton {...props} className={classes.centerLetter} />
+  );
 
   return (
-    <div>
-      <div>{guess.toLocaleUpperCase()}</div>
-      {letterButtons}
+    <div className={className}>
+      <div className={classes.guess}>{guess}</div>
+      <div className={classes.letterButtons}>
+        <div className={classes.topRow}>
+          <LetterButton letter={shuffledOuterLetters[0]} />
+          <LetterButton letter={shuffledOuterLetters[1]} />
+        </div>
+        <div className={classes.middleRow}>
+          <LetterButton letter={shuffledOuterLetters[2]} />
+          <CenterLetterButton letter={centerLetter} />
+          <LetterButton letter={shuffledOuterLetters[3]} />
+        </div>
+        <div className={classes.bottomRow}>
+          <LetterButton letter={shuffledOuterLetters[4]} />
+          <LetterButton letter={shuffledOuterLetters[5]} />
+        </div>
+      </div>
       <div>
         <button onClick={onBackspace}>Backspace</button>
         <button onClick={onShuffle}>Shuffle</button>
