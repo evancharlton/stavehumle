@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { jsonFetch } from '../api';
+import { gzipJsonFetch } from '../api';
 import { useLetters } from '../LettersProvider';
 
 type Props = {
@@ -22,8 +22,8 @@ const GameCreator = ({ children }: Props) => {
 
   useEffect(() => {
     const key = all.substring(0, 3);
-    const url = `${process.env.PUBLIC_URL}/words/${key}.json`;
-    jsonFetch(url)
+    const url = `${process.env.PUBLIC_URL}/words/${key}.json.gz`;
+    gzipJsonFetch(url)
       .then((obj) => obj[all])
       .then((loadedWords) =>
         loadedWords.filter((word: string) => word.includes(centerLetter))

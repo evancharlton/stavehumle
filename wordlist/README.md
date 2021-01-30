@@ -10,3 +10,8 @@ If it doesn't work, look at the errors & the source and figure it out.
 I'll revisit this with clearer instructions in the future.
 
 [download-url]: https://www.nb.no/sprakbanken/ressurskatalog/oai-nb-no-sbr-5/
+
+## Notes
+
+As of right now, the app expects these to be gzip-encoded.
+However, I haven't updated the generation script to do this automatically yet, so you'll have to do it yourself.

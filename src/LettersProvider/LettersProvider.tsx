@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { jsonFetch } from '../api';
+import { gzipJsonFetch } from '../api';
 import { useGameId } from '../hooks';
 
 type Props = {
@@ -24,10 +24,13 @@ const LettersProvider = ({ children }: Props) => {
   const [error, setError] = useState<Error | undefined>();
 
   useEffect(() => {
-    jsonFetch(`${process.env.PUBLIC_URL}/words/options.json`)
+    gzipJsonFetch(`${process.env.PUBLIC_URL}/words/options.json.gz`)
       .then((options) => options[gameHash % options.length])
       .then(setOption)
-      .catch(setError);
+      .catch((e) => {
+        console.error(e);
+        setError(e);
+      });
   }, [gameHash]);
 
   if (error) {
