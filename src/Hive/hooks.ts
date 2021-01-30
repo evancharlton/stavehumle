@@ -16,7 +16,7 @@ export const useScore = (words: string[]) => {
         const letters = new Set(word.split(''));
         return (letters.size === 7 ? 7 : 0) + word.length;
       })
-      .reduce((total, score) => total + score, 0);
+      .reduce((total, wordScore) => total + wordScore, 0);
   }, [words]);
 
   return { score };

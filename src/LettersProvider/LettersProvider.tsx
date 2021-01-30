@@ -41,7 +41,7 @@ const LettersProvider = ({ children }: Props) => {
   const letters = option.split('');
   const centerLetter = letters[gameHash % letters.length];
   const outerLetters = letters.filter(
-    (letter) => letter != centerLetter
+    (letter) => letter !== centerLetter
   ) as ContextType['outerLetters'];
 
   return (

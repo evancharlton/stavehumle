@@ -1,2 +1,2 @@
 export { default } from './WordsProvider';
-export { useWords } from './hooks';
+export { useWords } from './useWords';

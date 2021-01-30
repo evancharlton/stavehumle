@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
 import { jsonFetch } from '../api';
-import { useGameId } from '../hooks';
 import { useLetters } from '../LettersProvider';
 
 type Props = {
@@ -16,7 +15,6 @@ export const Context = createContext<ContextType>({
 });
 
 const GameCreator = ({ children }: Props) => {
-  const { gameHash } = useGameId();
   const { all, centerLetter } = useLetters();
 
   const [words, setWords] = useState<string[]>([]);
@@ -27,8 +25,8 @@ const GameCreator = ({ children }: Props) => {
     const url = `${process.env.PUBLIC_URL}/words/${key}.json`;
     jsonFetch(url)
       .then((obj) => obj[all])
-      .then((words) =>
-        words.filter((word: string) => word.includes(centerLetter))
+      .then((loadedWords) =>
+        loadedWords.filter((word: string) => word.includes(centerLetter))
       )
       .then(setWords)
       .catch(setError);

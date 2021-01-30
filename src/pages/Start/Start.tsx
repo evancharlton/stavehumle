@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Start = () => {

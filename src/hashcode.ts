@@ -1,4 +1,4 @@
-export default (input: string) => {
+const hashCode = (input: string) => {
   let hash = 0;
   for (let i = 0; i < input.length; i += 1) {
     const char = input.charCodeAt(i);
@@ -6,3 +6,5 @@ export default (input: string) => {
   }
   return hash;
 };
+
+export default hashCode;

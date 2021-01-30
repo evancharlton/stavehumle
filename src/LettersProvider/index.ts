@@ -1,2 +1,2 @@
 export { default } from './LettersProvider';
-export { useLetters } from './hooks';
+export { useLetters } from './useLetters';

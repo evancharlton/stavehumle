@@ -22,28 +22,31 @@ const Hive = () => {
 
   const [found, setFound] = useState<string[]>([]);
 
-  const makeGuess = useCallback((input: string) => {
-    const word = input
-      .toLocaleLowerCase()
-      .split('')
-      .filter((letter) => all.includes(letter))
-      .join('');
-    if (word.length < 4) {
-      return;
-    }
+  const makeGuess = useCallback(
+    (input: string) => {
+      const word = input
+        .toLocaleLowerCase()
+        .split('')
+        .filter((letter) => all.includes(letter))
+        .join('');
+      if (word.length < 4) {
+        return;
+      }
 
-    if (!word.includes(centerLetter)) {
-      return;
-    }
+      if (!word.includes(centerLetter)) {
+        return;
+      }
 
-    if (found.includes(word)) {
-      return;
-    }
+      if (found.includes(word)) {
+        return;
+      }
 
-    if (words.includes(word)) {
-      setFound((list) => [...list, word].sort());
-    }
-  }, []);
+      if (words.includes(word)) {
+        setFound((list) => [...list, word].sort());
+      }
+    },
+    [all, centerLetter, found, words]
+  );
 
   return (
     <Context.Provider value={{ found, onGuess: makeGuess }}>

@@ -64,7 +64,7 @@ const Buttons = () => {
 
       setGuess((g) => `${g}${key}`);
     },
-    [onGuess, guessRef]
+    [all, makeGuess, onShuffle]
   );
 
   useEffect(() => {
