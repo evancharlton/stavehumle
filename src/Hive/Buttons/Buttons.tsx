@@ -8,14 +8,15 @@ const Buttons = () => {
 
   const { all, centerLetter, outerLetters } = useLetters();
   const [guess, setGuess] = useState('');
-  const [shuffleKey, setShuffleKey] = useState(Date.now());
+  const [shuffledOuterLetters, setShuffledOuterLetters] = useState(
+    outerLetters
+  );
   const guessRef = useRef('');
   guessRef.current = guess;
 
   const sortedLetters = useMemo(() => {
-    const shuffled = shuffle(outerLetters);
-    return [centerLetter, ...shuffled];
-  }, [centerLetter, outerLetters, shuffleKey]);
+    return [centerLetter, ...shuffledOuterLetters];
+  }, [centerLetter, shuffledOuterLetters]);
 
   const makeGuess = useCallback(() => {
     onGuess(guessRef.current);
@@ -32,8 +33,8 @@ const Buttons = () => {
   );
 
   const onShuffle = useCallback(() => {
-    setShuffleKey(Date.now());
-  }, [setShuffleKey]);
+    setShuffledOuterLetters(shuffle(outerLetters) as typeof outerLetters);
+  }, [setShuffledOuterLetters, outerLetters]);
 
   const onBackspace = useCallback(() => {
     setGuess((g) => g.substr(0, g.length - 1));
