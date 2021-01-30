@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { MdBackspace, MdShuffle, MdKeyboardReturn } from 'react-icons/md';
 import { useLetters } from '../../LettersProvider';
 import shuffle from '../../shuffle';
 import { useGame } from '../hooks';
@@ -108,10 +109,16 @@ const Buttons = () => {
           <LetterButton letter={shuffledOuterLetters[5]} />
         </div>
       </div>
-      <div>
-        <button onClick={onBackspace}>Backspace</button>
-        <button onClick={onShuffle}>Shuffle</button>
-        <button onClick={makeGuess}>Enter</button>
+      <div className={classes.controls}>
+        <button onClick={onBackspace}>
+          <MdBackspace />
+        </button>
+        <button onClick={onShuffle}>
+          <MdShuffle />
+        </button>
+        <button onClick={makeGuess}>
+          <MdKeyboardReturn />
+        </button>
       </div>
     </div>
   );
