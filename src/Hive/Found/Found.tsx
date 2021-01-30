@@ -1,11 +1,18 @@
+import { useMemo } from 'react';
+
 type Props = {
   words: string[];
 };
 
 const Found = ({ words }: Props) => {
+  const cleaned = useMemo(() => {
+    return Object.keys(
+      words.reduce((acc, word) => ({ ...acc, [word]: true }), {})
+    );
+  }, [words]);
   return (
     <div>
-      {words.map((word) => (
+      {cleaned.map((word) => (
         <div key={word}>
           <a
             href={`https://naob.no/s%C3%B8k/${encodeURIComponent(word)}`}
