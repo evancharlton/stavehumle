@@ -14,6 +14,7 @@ const Hive = () => {
 
   const makeGuess = useCallback((input: string) => {
     const word = input
+      .toLocaleLowerCase()
       .split('')
       .filter((letter) => all.includes(letter))
       .join('');
