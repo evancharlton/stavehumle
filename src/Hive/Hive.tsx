@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useLetters } from '../LettersProvider';
 import { useWords } from '../WordProvider';
 import Score from './Score';
 import Found from './Found';
 import Buttons from './Buttons';
+import Progress from './Progress';
 
 const Hive = () => {
   const { all, centerLetter } = useLetters();
@@ -36,6 +37,7 @@ const Hive = () => {
   return (
     <div>
       <Buttons onGuess={makeGuess} />
+      <Progress found={found} />
       <Score words={found} />
       <Found words={found} />
     </div>
