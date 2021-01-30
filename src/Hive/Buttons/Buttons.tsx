@@ -10,11 +10,16 @@ const Buttons = () => {
 
   const { all, centerLetter, outerLetters } = useLetters();
   const [guess, setGuess] = useState('');
-  const [shuffledOuterLetters, setShuffledOuterLetters] = useState(() =>
-    shuffle(outerLetters)
+  const [shuffledOuterLetters, setShuffledOuterLetters] = useState<string[]>(
+    []
   );
   const guessRef = useRef('');
   guessRef.current = guess;
+
+  useEffect(() => {
+    guessRef.current = '';
+    setShuffledOuterLetters(shuffle(outerLetters));
+  }, [outerLetters, setShuffledOuterLetters, guessRef]);
 
   const makeGuess = useCallback(() => {
     onGuess(guessRef.current);
