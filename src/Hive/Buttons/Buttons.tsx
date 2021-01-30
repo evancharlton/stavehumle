@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { MdBackspace, MdShuffle, MdKeyboardReturn } from 'react-icons/md';
+import { MdBackspace, MdRefresh, MdKeyboardReturn } from 'react-icons/md';
 import { useLetters } from '../../LettersProvider';
 import shuffle from '../../shuffle';
 import { useGame } from '../hooks';
@@ -114,7 +114,7 @@ const Buttons = () => {
           <MdBackspace />
         </button>
         <button onClick={onShuffle}>
-          <MdShuffle />
+          <MdRefresh />
         </button>
         <button onClick={makeGuess}>
           <MdKeyboardReturn />
