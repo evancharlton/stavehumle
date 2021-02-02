@@ -1,4 +1,8 @@
+.container {
+  padding: 0 16px;
+}
+
 .container progress {
   display: block;
-  width: 100%;
+  width: 95%;
 }

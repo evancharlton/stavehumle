@@ -6,9 +6,24 @@
   list-style: none;
   padding-inline-start: 4px;
   padding-inline-end: 4px;
-  column-count: 3;
+  column-count: 2;
+
+  border-top: 2px solid #999;
+  padding-top: 8px;
 }
 
 .wordList li {
-  margin-left: 0;
+  font-size: 12pt;
+  margin: 8px;
+}
+
+.wordList li a {
+  color: #333;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.wordList li a:hover,
+.wordList li a:focus {
+  text-decoration: underline;
 }

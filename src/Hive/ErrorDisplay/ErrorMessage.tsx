@@ -4,7 +4,7 @@ const ErrorMessage = ({ code }: { code: BadGuess | undefined }) => {
   let msg = '';
   switch (code) {
     case 'already-found':
-      msg = 'ordet ble allerede funnet';
+      msg = 'ordet har blitt allerede funnet';
       break;
     case 'invalid-letters':
       msg = 'bruker ugyldige bokstaver';
