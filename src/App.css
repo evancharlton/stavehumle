@@ -1,3 +1,6 @@
 :root {
   --center-letter-color: #ffd240;
+  --center-letter-color-hover: #deb635;
+  --button-diameter: 60px;
+  --control-button-height: 30px;
 }

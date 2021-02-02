@@ -12,20 +12,34 @@
 }
 
 .letterButton {
-  border: 1px solid #000;
+  border: 2px solid #333a;
   background: transparent;
   text-transform: uppercase;
   font-size: 16pt;
   padding: 8px;
-  width: 50px;
-  height: 50px;
+  width: var(--button-diameter);
+  height: var(--button-diameter);
   margin: 4px;
   border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.letterButton:hover,
+.letterButton:focus,
+.letterButton:active {
+  background-color: #eee;
 }
 
 .centerLetter {
   font-weight: 700;
   background-color: var(--center-letter-color);
+}
+
+.centerLetter:hover,
+.centerLetter:focus,
+.centerLetter:active {
+  background-color: var(--center-letter-color-hover);
 }
 
 .letterButtons {
@@ -49,6 +63,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: var(--button-diameter);
+  height: var(--control-button-height);
 }
 
 .controls button:hover,
