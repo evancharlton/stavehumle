@@ -7,6 +7,7 @@ import Buttons from './Buttons';
 import Progress from './Progress';
 import Header from './Header';
 import classes from './Hive.module.css';
+import { useFoundWords } from './useFoundWords';
 
 type ContextType = {
   found: string[];
@@ -22,7 +23,7 @@ const Hive = () => {
   const { all, centerLetter } = useLetters();
   const { words } = useWords();
 
-  const [found, setFound] = useState<string[]>([]);
+  const { found, addFoundWord } = useFoundWords();
 
   const makeGuess = useCallback(
     (input: string) => {
@@ -44,7 +45,7 @@ const Hive = () => {
       }
 
       if (words.includes(word)) {
-        setFound((list) => [...list, word].sort());
+        addFoundWord(word);
       }
     },
     [all, centerLetter, found, words]
