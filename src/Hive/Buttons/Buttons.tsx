@@ -62,7 +62,7 @@ const Buttons = () => {
         makeGuess();
       }
 
-      if (!all.includes(key)) {
+      if (!all.includes(key.toLocaleLowerCase())) {
         return;
       }
 

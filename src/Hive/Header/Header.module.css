@@ -1,0 +1,21 @@
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: currentColor;
+}
+
+.header h1 a,
+.header h1 a:visited {
+  color: currentColor;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header h1 a:hover,
+.header h1 a:focus {
+  text-decoration: underline;
+}
