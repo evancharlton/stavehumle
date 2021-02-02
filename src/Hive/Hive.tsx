@@ -75,7 +75,7 @@ const Hive = () => {
 
       addFoundWord(word);
     },
-    [all, centerLetter, found, words]
+    [all, centerLetter, found, words, addFoundWord]
   );
 
   return (
