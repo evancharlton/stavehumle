@@ -1,0 +1,15 @@
+.container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container span {
+  background-color: #000a;
+  color: white;
+  font-weight: bold;
+  font-size: 12pt;
+  padding: 8px;
+  border-radius: 4px;
+}
