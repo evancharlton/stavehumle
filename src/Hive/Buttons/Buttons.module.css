@@ -12,16 +12,20 @@
 }
 
 .letterButton {
+  border: 1px solid #000;
+  background: transparent;
   text-transform: uppercase;
   font-size: 16pt;
   padding: 8px;
   width: 50px;
   height: 50px;
   margin: 4px;
+  border-radius: 50%;
 }
 
 .centerLetter {
   font-weight: 700;
+  background-color: var(--center-letter-color);
 }
 
 .letterButtons {
@@ -30,9 +34,25 @@
 
 .controls {
   margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .controls button {
+  color: #000a;
+  border: 1px solid #000a;
   font-size: 16pt;
   margin: 16px;
+  border-radius: 10px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls button:hover,
+.controls button:focus {
+  color: #000;
+  border-color: #000;
 }
