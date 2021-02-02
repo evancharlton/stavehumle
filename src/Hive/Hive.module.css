@@ -28,3 +28,14 @@
   border: 1px solid #999;
   color: #333;
 }
+
+@media (max-width: 800px) {
+  .gameContainer {
+    flex-direction: column;
+  }
+
+  .column {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
