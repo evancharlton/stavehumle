@@ -1,7 +1,6 @@
 import { createContext, useCallback, useState } from 'react';
 import { useLetters } from '../LettersProvider';
 import { useWords } from '../WordProvider';
-import Score from './Score';
 import Found from './Found';
 import Buttons from './Buttons';
 import Progress from './Progress';
@@ -90,7 +89,6 @@ const Hive = () => {
           </div>
           <div className={classes.column}>
             <Progress />
-            <Score />
             <Found />
           </div>
         </div>
