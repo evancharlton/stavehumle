@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { gzipJsonFetch } from '../api';
 import { useGameId } from '../hooks';
+import Loading from '../Loading';
 
 type Props = {
   children: React.ReactNode;
@@ -38,7 +39,7 @@ const LettersProvider = ({ children }: Props) => {
   }
 
   if (!option) {
-    return <div>Loading ...</div>;
+    return <Loading />;
   }
 
   const letters = option.split('');

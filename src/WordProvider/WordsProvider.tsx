@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { gzipJsonFetch } from '../api';
 import { useLetters } from '../LettersProvider';
+import Loading from '../Loading';
 
 type Props = {
   children: React.ReactNode;
@@ -37,7 +38,7 @@ const GameCreator = ({ children }: Props) => {
   }
 
   if (words.length === 0) {
-    return <div>Loading ...</div>;
+    return <Loading />;
   }
 
   return <Context.Provider value={{ words }}>{children}</Context.Provider>;

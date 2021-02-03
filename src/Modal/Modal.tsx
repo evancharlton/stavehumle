@@ -1,6 +1,7 @@
 import classes from './Modal.module.css';
 import { MdClose as Close } from 'react-icons/md';
 import { useEffect, useRef } from 'react';
+import useNoBodyScroll from '../useNoBodyScroll';
 
 type Props = {
   title: string;
@@ -16,11 +17,9 @@ const Modal = ({ children, title, onClose }: Props) => {
       return;
     }
     closeRef.current.focus();
-    document.body.classList.add('no-scroll');
-    return () => {
-      document.body.classList.remove('no-scroll');
-    };
   }, [closeRef]);
+
+  useNoBodyScroll();
 
   return (
     <div className={classes.modalBackground}>
