@@ -1,0 +1,19 @@
+.button {
+  font-size: 30px;
+  position: absolute;
+  right: 10px;
+  border: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: #999;
+
+  transition: all 0.2s;
+}
+
+.button:hover,
+.button:focus {
+  color: #000;
+}

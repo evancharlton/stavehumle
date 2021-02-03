@@ -1,11 +1,19 @@
 .header {
   text-align: center;
+  position: relative;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .header h1 {
   text-transform: uppercase;
   font-weight: 700;
   color: currentColor;
+  margin: 0;
 }
 
 .header h1 a,
