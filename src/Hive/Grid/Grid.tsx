@@ -16,7 +16,7 @@ const Grid = () => {
   );
 
   const columns = [
-    <th>&nbsp;</th>, //
+    <th key="blank">&nbsp;</th>, //
   ];
   const totals = [];
   for (let i = shortest; i <= longest; i += 1) {
@@ -25,7 +25,7 @@ const Grid = () => {
     const count = words.filter((word) => word.length === i).length;
     totals.push(<td key={`total @ ${i}`}>{count || EMPTY}</td>);
   }
-  columns.push(<th>Σ</th>);
+  columns.push(<th key="column-sum">Σ</th>);
 
   const body = [];
   for (let i = 0; i < all.length; i += 1) {
@@ -48,11 +48,11 @@ const Grid = () => {
       </td>
     );
 
-    body.push(<tr>{cells}</tr>);
+    body.push(<tr key={`row-${letter}`}>{cells}</tr>);
   }
 
   body.push(
-    <tr className={classes.border}>
+    <tr key="row-totals" className={classes.border}>
       <td>Σ</td>
       {totals}
       <td>{words.length}</td>
