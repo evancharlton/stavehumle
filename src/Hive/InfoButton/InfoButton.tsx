@@ -4,7 +4,7 @@ import classes from './InfoButton.module.css';
 import Modal from '../../Modal';
 
 const InfoButton = () => {
-  const [showing, setShowing] = useState(true);
+  const [showing, setShowing] = useState(false);
 
   const modal = useMemo(() => {
     if (!showing) {
