@@ -1,12 +1,10 @@
 import { useLetters } from '../../LettersProvider';
 import { useWords } from '../../WordProvider';
-import { useGame } from '../hooks';
 import classes from './Grid.module.css';
 
 const EMPTY = <span className={classes.filler}>&ndash;</span>;
 
 const Grid = () => {
-  const { found } = useGame();
   const { words } = useWords();
   const { all } = useLetters();
 
