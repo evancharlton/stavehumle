@@ -6,6 +6,7 @@ import Buttons from './Buttons';
 import Progress from './Progress';
 import Header from './Header';
 import ErrorDisplay from './ErrorDisplay';
+import Grid from './Grid';
 import classes from './Hive.module.css';
 import { useFoundWords } from './useFoundWords';
 
@@ -90,6 +91,7 @@ const Hive = () => {
           <div className={classes.column}>
             <Progress />
             <Found />
+            <Grid />
           </div>
         </div>
       </div>

@@ -1,0 +1,15 @@
+.grid td {
+  text-align: center;
+}
+
+.grid .border {
+  font-weight: 700;
+}
+
+.grid .letter {
+  text-transform: uppercase;
+}
+
+.filler {
+  color: #999;
+}
