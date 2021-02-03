@@ -1,8 +1,10 @@
 import { BadGuess } from '../Hive';
 
-const ErrorMessage = ({ code }: { code: BadGuess | undefined }) => {
+type Props = Pick<BadGuess, 'reason'>;
+
+const ErrorMessage = ({ reason }: Props) => {
   let msg = '';
-  switch (code) {
+  switch (reason) {
     case 'already-found':
       msg = 'ordet har blitt allerede funnet';
       break;

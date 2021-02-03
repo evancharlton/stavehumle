@@ -6,10 +6,15 @@ import classes from './ErrorDisplay.module.css';
 
 const ErrorDisplay = () => {
   const { badGuess } = useGame();
-  const [displayedError, setDisplayedError] = useState<BadGuess>();
+  const [displayedError, setDisplayedError] = useState<BadGuess['reason']>();
 
   useEffect(() => {
-    setDisplayedError(badGuess);
+    if (!badGuess) {
+      setDisplayedError(undefined);
+      return;
+    }
+
+    setDisplayedError(badGuess.reason);
     const timerId = setTimeout(() => {
       setDisplayedError(undefined);
     }, 2500);
@@ -21,7 +26,7 @@ const ErrorDisplay = () => {
 
   return (
     <div className={classes.container}>
-      <ErrorMessage code={displayedError} />
+      {displayedError && <ErrorMessage reason={displayedError} />}
     </div>
   );
 };

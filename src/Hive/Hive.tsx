@@ -10,12 +10,15 @@ import Grid from './Grid';
 import classes from './Hive.module.css';
 import { useFoundWords } from './useFoundWords';
 
-export type BadGuess =
-  | 'too-short'
-  | 'missing-center'
-  | 'already-found'
-  | 'unknown-word'
-  | 'invalid-letters';
+export type BadGuess = {
+  reason:
+    | 'too-short'
+    | 'missing-center'
+    | 'already-found'
+    | 'unknown-word'
+    | 'invalid-letters';
+  etag: string | number;
+};
 
 type ContextType = {
   found: string[];
@@ -36,6 +39,18 @@ const Hive = () => {
 
   const { found, addFoundWord } = useFoundWords();
 
+  const recordBadGuess = useCallback(
+    (reason: BadGuess['reason'] | undefined) => {
+      if (!reason) {
+        setBadGuess(undefined);
+        return;
+      }
+
+      setBadGuess({ reason, etag: Date.now() });
+    },
+    [setBadGuess]
+  );
+
   const makeGuess = useCallback(
     (input: string) => {
       if (!input) {
@@ -50,33 +65,34 @@ const Hive = () => {
         .join('');
 
       if (word.length !== input.length) {
-        setBadGuess('invalid-letters');
+        recordBadGuess('invalid-letters');
         return;
       }
 
       if (word.length < 4) {
-        setBadGuess('too-short');
+        recordBadGuess('too-short');
         return;
       }
 
       if (!word.includes(centerLetter)) {
-        setBadGuess('missing-center');
+        recordBadGuess('missing-center');
         return;
       }
 
       if (found.includes(word)) {
-        setBadGuess('already-found');
+        recordBadGuess('already-found');
         return;
       }
 
       if (!words.includes(word)) {
-        setBadGuess('unknown-word');
+        recordBadGuess('unknown-word');
         return;
       }
 
       addFoundWord(word);
+      recordBadGuess(undefined);
     },
-    [all, centerLetter, found, words, addFoundWord]
+    [all, centerLetter, found, words, addFoundWord, recordBadGuess]
   );
 
   return (
