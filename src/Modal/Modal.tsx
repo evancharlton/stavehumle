@@ -1,7 +1,7 @@
 import classes from './Modal.module.css';
 import { MdClose as Close } from 'react-icons/md';
 import { useEffect, useRef } from 'react';
-import useNoBodyScroll from '../useNoBodyScroll';
+import { useNoBodyScroll } from '../useNoBodyScroll';
 
 type Props = {
   title: string;

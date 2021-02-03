@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export default () => {
+export const useNoBodyScroll = () => {
   useEffect(() => {
     document.body.classList.add('no-scroll');
     return () => {
