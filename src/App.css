@@ -4,3 +4,7 @@
   --button-diameter: 60px;
   --control-button-height: 30px;
 }
+
+.no-scroll {
+  overflow: hidden;
+}

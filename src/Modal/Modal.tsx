@@ -16,6 +16,10 @@ const Modal = ({ children, title, onClose }: Props) => {
       return;
     }
     closeRef.current.focus();
+    document.body.classList.add('no-scroll');
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
   }, [closeRef]);
 
   return (
