@@ -1,6 +1,6 @@
 import { BadGuess } from '../Hive';
 
-type Props = Pick<BadGuess, 'reason'>;
+type Props = { reason: BadGuess };
 
 const ErrorMessage = ({ reason }: Props) => {
   let msg = '';

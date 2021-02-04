@@ -1,4 +1,5 @@
 import { useContext, useMemo } from 'react';
+import isPangram from '../isPangram';
 import { Context } from './Hive';
 
 export const useScore = (words: string[]) => {
@@ -13,8 +14,8 @@ export const useScore = (words: string[]) => {
           return word.length;
         }
 
-        const letters = new Set(word.split(''));
-        return (letters.size === 7 ? 7 : 0) + word.length;
+        const bonus = isPangram(word) ? 7 : 0;
+        return word.length + bonus;
       })
       .reduce((total, wordScore) => total + wordScore, 0);
   }, [words]);

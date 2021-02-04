@@ -1,55 +1,38 @@
-import { createContext, useCallback, useState } from 'react';
+import { createContext, useCallback } from 'react';
 import { useLetters } from '../LettersProvider';
 import { useWords } from '../WordProvider';
 import Found from './Found';
 import Buttons from './Buttons';
 import Progress from './Progress';
 import Header from './Header';
-import ErrorDisplay from './ErrorDisplay';
+import Messages from './Messages';
 import Grid from './Grid';
 import classes from './Hive.module.css';
 import { useFoundWords } from './useFoundWords';
+import isPangram from '../isPangram';
 
-export type BadGuess = {
-  reason:
-    | 'too-short'
-    | 'missing-center'
-    | 'already-found'
-    | 'unknown-word'
-    | 'invalid-letters';
-  etag: string | number;
-};
+export type BadGuess =
+  | 'too-short'
+  | 'missing-center'
+  | 'already-found'
+  | 'unknown-word'
+  | 'invalid-letters';
 
 type ContextType = {
   found: string[];
   onGuess: (guess: string) => void;
-  badGuess: BadGuess | undefined;
 };
 
 export const Context = createContext<ContextType>({
   found: [],
   onGuess: () => undefined,
-  badGuess: undefined,
 });
 
 const Hive = () => {
-  const [badGuess, setBadGuess] = useState<BadGuess>();
   const { all, centerLetter } = useLetters();
   const { words } = useWords();
 
   const { found, addFoundWord } = useFoundWords();
-
-  const recordBadGuess = useCallback(
-    (reason: BadGuess['reason'] | undefined) => {
-      if (!reason) {
-        setBadGuess(undefined);
-        return;
-      }
-
-      setBadGuess({ reason, etag: Date.now() });
-    },
-    [setBadGuess]
-  );
 
   const makeGuess = useCallback(
     (input: string) => {
@@ -65,43 +48,51 @@ const Hive = () => {
         .join('');
 
       if (word.length !== input.length) {
-        recordBadGuess('invalid-letters');
+        dispatchEvent(
+          new CustomEvent('bad-guess', { detail: 'invalid-letters' })
+        );
         return;
       }
 
       if (word.length < 4) {
-        recordBadGuess('too-short');
+        dispatchEvent(new CustomEvent('bad-guess', { detail: 'too-short' }));
         return;
       }
 
       if (!word.includes(centerLetter)) {
-        recordBadGuess('missing-center');
+        dispatchEvent(
+          new CustomEvent('bad-guess', { detail: 'missing-center' })
+        );
         return;
       }
 
       if (found.includes(word)) {
-        recordBadGuess('already-found');
+        dispatchEvent(
+          new CustomEvent('bad-guess', { detail: 'already-found' })
+        );
         return;
       }
 
       if (!words.includes(word)) {
-        recordBadGuess('unknown-word');
+        dispatchEvent(new CustomEvent('bad-guess', { detail: 'unknown-word' }));
         return;
       }
 
       addFoundWord(word);
-      recordBadGuess(undefined);
+      if (isPangram(word)) {
+        dispatchEvent(new CustomEvent('pangram'));
+      }
     },
-    [all, centerLetter, found, words, addFoundWord, recordBadGuess]
+    [all, centerLetter, found, words, addFoundWord]
   );
 
   return (
-    <Context.Provider value={{ found, onGuess: makeGuess, badGuess }}>
+    <Context.Provider value={{ found, onGuess: makeGuess }}>
       <div className={classes.container}>
         <Header />
         <div className={classes.gameContainer}>
           <div className={classes.buttonsContainer}>
-            <ErrorDisplay />
+            <Messages />
             <Buttons />
           </div>
           <div className={classes.column}>
