@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/staver-humle/static/css/main.9dc59454.chunk.css",
-    "main.js": "/staver-humle/static/js/main.f708989d.chunk.js",
-    "main.js.map": "/staver-humle/static/js/main.f708989d.chunk.js.map",
+    "main.js": "/staver-humle/static/js/main.bad95032.chunk.js",
+    "main.js.map": "/staver-humle/static/js/main.bad95032.chunk.js.map",
     "runtime-main.js": "/staver-humle/static/js/runtime-main.084041a3.js",
     "runtime-main.js.map": "/staver-humle/static/js/runtime-main.084041a3.js.map",
     "static/js/2.c5bb2a7c.chunk.js": "/staver-humle/static/js/2.c5bb2a7c.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.084041a3.js",
     "static/js/2.c5bb2a7c.chunk.js",
     "static/css/main.9dc59454.chunk.css",
-    "static/js/main.f708989d.chunk.js"
+    "static/js/main.bad95032.chunk.js"
   ]
 }
