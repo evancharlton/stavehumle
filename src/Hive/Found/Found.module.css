@@ -1,31 +1,31 @@
 .wordList {
   flex: 1;
-  overflow-y: auto;
-  column-count: auto;
-
-  list-style: none;
-  padding-inline-start: 4px;
-  padding-inline-end: 4px;
-  column-count: 2;
 
   border-top: 2px solid #999;
   padding-top: 8px;
   border-bottom: 2px solid #999;
   padding-bottom: 8px;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+
+  overflow-y: auto;
 }
 
-.wordList li {
+.word {
   font-size: 12pt;
-  margin: 8px;
-}
-
-.wordList li a {
+  margin: 4px;
   color: #333;
   font-weight: 700;
   text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 4px 8px;
 }
 
-.wordList li a:hover,
-.wordList li a:focus {
-  text-decoration: underline;
+.word:hover,
+.word:focus {
+  border: 1px solid #ccc;
 }

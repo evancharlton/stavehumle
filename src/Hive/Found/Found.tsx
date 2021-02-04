@@ -11,19 +11,19 @@ const Found = () => {
     return foo;
   }, [words]);
   return (
-    <ul className={classes.wordList}>
+    <div className={classes.wordList}>
       {cleaned.map((word) => (
-        <li key={word}>
-          <a
-            href={`https://naob.no/s%C3%B8k/${encodeURIComponent(word)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {word}
-          </a>
-        </li>
+        <a
+          className={classes.word}
+          key={word}
+          href={`https://naob.no/s%C3%B8k/${encodeURIComponent(word)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {word}
+        </a>
       ))}
-    </ul>
+    </div>
   );
 };
 
