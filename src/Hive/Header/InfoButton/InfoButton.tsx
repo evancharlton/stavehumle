@@ -19,22 +19,20 @@ const InfoButton = () => {
           seks rundt.
         </p>
         <h3>Reglene</h3>
-        <p>
-          Hvert ord:
-          <ul>
-            <li>
-              <strong>må bruke</strong> den midterste bokstaven
-            </li>
-            <li>
-              være minst <strong>fire bokstaver</strong> lange
-            </li>
-            <li>
-              bruker <strong>bare</strong> de syv bokstavene
-              <br />
-              (men bokstaver kan gjentas)
-            </li>
-          </ul>
-        </p>
+        <p>Hvert ord:</p>
+        <ul>
+          <li>
+            <strong>må bruke</strong> den midterste bokstaven
+          </li>
+          <li>
+            være minst <strong>fire bokstaver</strong> lange
+          </li>
+          <li>
+            bruker <strong>bare</strong> de syv bokstavene
+            <br />
+            (men bokstaver kan gjentas)
+          </li>
+        </ul>
         <p>
           Hver puslespill har <strong>minst ett</strong> ord som bruker{' '}
           <strong>alle bokstavene</strong>.

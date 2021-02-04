@@ -48,6 +48,7 @@
 
 .contents {
   padding: 0 16px;
+  text-align: justify;
 }
 
 .contents p {
