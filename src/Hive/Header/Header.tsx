@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className={classes.header}>
       <h1>
-        <Link to="/">Staver Humle 🐝</Link>
+        <Link to="/">Staver humle 🐝</Link>
       </h1>
       <CalendarButton />
       <InfoButton />
