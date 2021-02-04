@@ -1,6 +1,5 @@
 import classes from './Modal.module.css';
 import { MdClose as Close } from 'react-icons/md';
-import { useEffect, useRef } from 'react';
 import { useNoBodyScroll } from '../useNoBodyScroll';
 
 type Props = {
@@ -10,15 +9,6 @@ type Props = {
 };
 
 const Modal = ({ children, title, onClose }: Props) => {
-  const closeRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (!closeRef.current) {
-      return;
-    }
-    closeRef.current.focus();
-  }, [closeRef]);
-
   useNoBodyScroll();
 
   return (
@@ -26,7 +16,7 @@ const Modal = ({ children, title, onClose }: Props) => {
       <div className={classes.modal}>
         <div className={classes.header}>
           <h2>{title}</h2>
-          <button onClick={onClose} ref={closeRef}>
+          <button onClick={onClose}>
             <Close />
           </button>
         </div>

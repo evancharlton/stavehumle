@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.header button {
+  height: 50px;
+  width: 30px;
+
+  border: 0;
+  background-color: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  flex: 1;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.monthGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  grid-template-rows: repeat(6, 40px);
+}
+
+.dateButton {
+  border: 1px solid #ccc;
+  background-color: transparent;
+}
+
+button.todayButton {
+  background-color: var(--center-letter-color);
+}
+
+.currentButton {
+  border: 2px solid var(--center-letter-color-hover);
+  background-color: #eeec;
+}

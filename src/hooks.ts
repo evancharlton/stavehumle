@@ -1,12 +1,6 @@
 import { useParams } from 'react-router-dom';
 import hashcode from './hashcode';
-
-const twoDigits = (v: number) => {
-  if (v < 10) {
-    return `0${v}`;
-  }
-  return v;
-};
+import twoDigits from './twoDigits';
 
 const TODAY = (() => {
   const now = new Date();
@@ -15,8 +9,27 @@ const TODAY = (() => {
     .join('-');
 })();
 
+const isProbablyDate = (ymd: unknown[] | null) => {
+  if (!ymd) {
+    return false;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, ...rest] = ymd;
+  if (rest.length !== 3) {
+    return false;
+  }
+
+  const [year, month, day] = rest.map(Number);
+  // Yeah, it's a best-effort thing.
+  return year && month >= 1 && month <= 12 && day >= 1 && day <= 31;
+};
+
 export const useGameId = () => {
   const { gameId: gameIdParam } = useParams<{ gameId?: string }>();
   const gameId = gameIdParam ?? TODAY;
-  return { gameId, gameHash: hashcode(gameId) };
+
+  const match = gameId.match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/);
+
+  return { gameId, gameHash: hashcode(gameId), isDate: isProbablyDate(match) };
 };
