@@ -1,6 +1,5 @@
 import './App.css';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import Start from './pages/Start';
 import Play from './pages/Play';
 
 const App = () => {
@@ -8,7 +7,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route path="/" exact>
-          <Start />
+          <Play />
         </Route>
 
         <Route path="/:gameId">
