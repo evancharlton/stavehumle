@@ -3,12 +3,15 @@
 }
 
 .guess {
-  font-size: 16pt;
+  font-size: 40px;
   font-weight: 700;
   text-transform: uppercase;
-  height: 30px;
   text-align: center;
   letter-spacing: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
 }
 
 .letterButton {

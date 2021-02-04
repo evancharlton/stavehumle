@@ -107,7 +107,7 @@ const Buttons = () => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.guess}>{guess}</div>
+      <div className={classes.guess}>{guess || <>&nbsp;</>}</div>
       <div className={classes.letterButtons}>
         <div className={classes.topRow}>
           <LetterButton letter={shuffledOuterLetters[0]} />
