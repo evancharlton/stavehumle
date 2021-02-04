@@ -25,6 +25,10 @@ const Buttons = () => {
     setShuffledOuterLetters(shuffle(outerLetters));
   }, [outerLetters, setShuffledOuterLetters, guessRef]);
 
+  useEffect(() => {
+    setGuess('');
+  }, [outerLetters, centerLetter]);
+
   const makeGuess = useCallback(() => {
     onGuess(guessRef.current);
     setGuess('');
