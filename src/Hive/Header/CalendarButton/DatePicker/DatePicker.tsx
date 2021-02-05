@@ -6,8 +6,8 @@ import {
   BsChevronLeft as BackMonth,
   BsChevronRight as ForwardMonth,
 } from 'react-icons/bs';
-import { useGameId } from '../../../../hooks';
-import twoDigits from '../../../../twoDigits';
+import { useGameId } from 'hooks';
+import twoDigits from 'twoDigits';
 
 type Props = {
   onChange: (gameId: string) => void;

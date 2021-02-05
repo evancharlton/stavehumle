@@ -1,9 +1,9 @@
-import { useWords } from '../../WordProvider';
+import { useWords } from 'WordProvider';
 import { useGame, useScore } from '../hooks';
 import classes from './Progress.module.css';
 import { MdHelpOutline as Help } from 'react-icons/md';
 import { useMemo, useState } from 'react';
-import Modal from '../../Modal';
+import Modal from 'Modal';
 
 const Progress = () => {
   const { found } = useGame();

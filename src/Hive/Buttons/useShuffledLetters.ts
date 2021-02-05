@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useLetters } from '../../LettersProvider';
-import shuffle from '../../shuffle';
+import { useLetters } from 'LettersProvider';
+import shuffle from 'shuffle';
 
 const useShuffledLetters = () => {
   const { outerLetters } = useLetters();

@@ -1,7 +1,7 @@
 import classes from './WordsInfo.module.css';
 import { useMemo, useState } from 'react';
 import { MdHelpOutline as HelpIcon } from 'react-icons/md';
-import Modal from '../../../Modal';
+import Modal from 'Modal';
 
 const WordsInfo = () => {
   const [showing, setShowing] = useState(false);

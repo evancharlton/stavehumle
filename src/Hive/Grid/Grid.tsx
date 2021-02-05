@@ -1,5 +1,5 @@
-import { useLetters } from '../../LettersProvider';
-import { useWords } from '../../WordProvider';
+import { useLetters } from 'LettersProvider';
+import { useWords } from 'WordProvider';
 import classes from './Grid.module.css';
 
 const EMPTY = <span className={classes.filler}>&ndash;</span>;

@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { MdInfoOutline as InfoIcon } from 'react-icons/md';
 import headerClasses from '../HeaderButton.module.css';
 import classes from './InfoButton.module.css';
-import Modal from '../../../Modal';
+import Modal from 'Modal';
 
 const InfoButton = () => {
   const [showing, setShowing] = useState(false);

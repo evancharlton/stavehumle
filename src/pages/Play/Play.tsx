@@ -1,6 +1,6 @@
-import WordsProvider from '../../WordProvider';
-import LettersProvider from '../../LettersProvider';
-import Hive from '../../Hive';
+import WordsProvider from 'WordProvider';
+import LettersProvider from 'LettersProvider';
+import Hive from 'Hive';
 
 const Play = () => {
   return (
