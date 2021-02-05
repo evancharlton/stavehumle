@@ -1,71 +1,80 @@
-import { useLetters } from 'LettersProvider';
+import { useGame } from 'Hive/hooks';
+import { useMemo, useState } from 'react';
 import { useWords } from 'WordProvider';
 import classes from './Grid.module.css';
+import WordGrid from './WordGrid';
+import GridInfo from './GridInfo';
 
-const EMPTY = <span className={classes.filler}>&ndash;</span>;
+const cls = (...classNames: (string | boolean)[]): string => {
+  return classNames.filter(Boolean).join(' ');
+};
 
 const Grid = () => {
-  const { words } = useWords();
-  const { all } = useLetters();
+  const { found: foundWords } = useGame();
+  const { words: allWords } = useWords();
+  const [mode, setMode] = useState<'all' | 'remaining' | 'found'>('remaining');
 
-  const [shortest, longest] = words.reduce(
+  const gridWords = useMemo(() => {
+    if (mode === 'all') {
+      return allWords;
+    }
+
+    if (mode === 'found') {
+      return foundWords;
+    }
+
+    const foundLookup: Record<string, true> = foundWords.reduce(
+      (acc, word) => ({ ...acc, [word]: true }),
+      {}
+    );
+
+    return allWords.filter((word) => !foundLookup[word]);
+  }, [mode, allWords, foundWords]);
+
+  const range: [number, number] = allWords.reduce(
     ([min, max], word) => {
       return [Math.min(min, word.length), Math.max(max, word.length)];
     },
     [1000, 3]
   );
 
-  const columns = [
-    <th key="blank">&nbsp;</th>, //
-  ];
-  const totals = [];
-  for (let i = shortest; i <= longest; i += 1) {
-    columns.push(<th key={i}>{i}</th>);
-
-    const count = words.filter((word) => word.length === i).length;
-    totals.push(<td key={`total @ ${i}`}>{count || EMPTY}</td>);
-  }
-  columns.push(<th key="column-sum">Σ</th>);
-
-  const body = [];
-  for (let i = 0; i < all.length; i += 1) {
-    const letter = all[i];
-    const matchingWords = words.filter((word) => word[0] === letter);
-
-    const cells = [
-      <td key={letter} className={[classes.border, classes.letter].join(' ')}>
-        {letter}
-      </td>,
-    ];
-    for (let i = shortest; i <= longest; i += 1) {
-      const matchingLength = matchingWords.filter((word) => word.length === i)
-        .length;
-      cells.push(<td key={`${letter} @ ${i}`}>{matchingLength || EMPTY}</td>);
-    }
-    cells.push(
-      <td key={`${letter} @ total`} className={classes.border}>
-        {matchingWords.length || EMPTY}
-      </td>
-    );
-
-    body.push(<tr key={`row-${letter}`}>{cells}</tr>);
-  }
-
-  body.push(
-    <tr key="row-totals" className={classes.border}>
-      <td>Σ</td>
-      {totals}
-      <td>{words.length}</td>
-    </tr>
-  );
-
   return (
-    <table className={classes.grid}>
-      <thead>
-        <tr className={classes.border}>{columns}</tr>
-      </thead>
-      <tbody>{body}</tbody>
-    </table>
+    <div className={classes.container}>
+      <div className={classes.header}>
+        <button
+          onClick={() => setMode('found')}
+          className={cls(
+            classes.mode,
+            classes.found,
+            mode === 'found' && classes.active
+          )}
+        >
+          Funnet
+        </button>
+        <button
+          onClick={() => setMode('remaining')}
+          className={cls(
+            classes.mode,
+            classes.remaining,
+            mode === 'remaining' && classes.active
+          )}
+        >
+          Gjenstår
+        </button>
+        <button
+          onClick={() => setMode('all')}
+          className={cls(
+            classes.mode,
+            classes.all,
+            mode === 'all' && classes.active
+          )}
+        >
+          Alt
+        </button>
+        <GridInfo />
+      </div>
+      <WordGrid range={range} words={gridWords} />
+    </div>
   );
 };
 
