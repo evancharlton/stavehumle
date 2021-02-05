@@ -12,7 +12,7 @@ const ErrorMessage = ({ reason }: Props) => {
       msg = 'bruker ugyldige bokstaver';
       break;
     case 'missing-center':
-      msg = 'mangler obligatorisk brev';
+      msg = 'mangler obligatorisk bokstaven';
       break;
     case 'too-short':
       msg = 'for kort';
