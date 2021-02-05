@@ -71,7 +71,7 @@ const DatePicker = ({ onChange }: Props) => {
       );
     }
 
-    const daysInMonth = new Date(year, month, 0).getDate();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
     for (let i = 1; i <= daysInMonth; i += 1) {
       const isToday =
         year === today.getFullYear() &&
