@@ -33,7 +33,7 @@ const CalendarButton = () => {
         <DatePicker onChange={onNewDatePicked} gameId={gameId} />
       </Modal>
     );
-  }, [showing, setShowing, onNewDatePicked]);
+  }, [showing, setShowing, onNewDatePicked, gameId]);
 
   return (
     <>
