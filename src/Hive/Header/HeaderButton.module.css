@@ -10,6 +10,8 @@
   color: #999;
 
   transition: all 0.2s;
+
+  cursor: pointer;
 }
 
 .button:hover,
