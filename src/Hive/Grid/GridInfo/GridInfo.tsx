@@ -11,13 +11,13 @@ const Info = () => {
       return null;
     }
     return (
-      <Modal title="Nett" onClose={() => setShowing(false)}>
+      <Modal title="Oversikt" onClose={() => setShowing(false)}>
         <p>
-          Nettet er et verktøy for å hjelp du finne alle ordene i puslespillet.
-          Radene er ord som starter med hver bokstave, og kolonnene er hvor
-          mange ord av hver lange.
+          Oversikten er et verktøy for å hjelp du finne alle ordene i
+          puslespillet. Radene er ord som starter med hver bokstav, og kolonnene
+          er hvor mange ord av hver lengde.
         </p>
-        <p>Nettet viser ord totalt, også. Lykke til finner alt!</p>
+        <p>Oversikten viser ord totalt, også. Lykke til med å finne alt!</p>
       </Modal>
     );
   }, [showing, setShowing]);
