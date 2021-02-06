@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import hashcode from './hashcode';
+import hashCode from './hashCode';
 import twoDigits from './twoDigits';
 
 const TODAY = (() => {
@@ -28,8 +28,15 @@ const isProbablyDate = (ymd: unknown[] | null) => {
 export const useGameId = () => {
   const { gameId: gameIdParam } = useParams<{ gameId?: string }>();
   const gameId = gameIdParam ?? TODAY;
+  const gameHash = hashCode(
+    // Note: we reverse the game ID here because otherwise, sequential dates
+    // will only have hashCodes that differ by one value. Instead, we want to
+    // put the least-significant bit in the beginning to lead to more entropy.
+    // Of course, it's not real entropy but that's not really what we want here.
+    gameId.split('').reverse().join('')
+  );
 
   const match = gameId.match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/);
 
-  return { gameId, gameHash: hashcode(gameId), isDate: isProbablyDate(match) };
+  return { gameId, gameHash, isDate: isProbablyDate(match) };
 };

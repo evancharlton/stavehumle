@@ -1,5 +1,5 @@
+import { useLetters } from 'LettersProvider';
 import { useCallback, useEffect, useState } from 'react';
-import { useGameId } from '../hooks';
 
 const getSavedWords = (key: string) => {
   try {
@@ -17,8 +17,13 @@ const getSavedWords = (key: string) => {
 };
 
 export const useFoundWords = () => {
-  const { gameId } = useGameId();
-  const key = `saved/${gameId}`;
+  const { centerLetter, outerLetters } = useLetters();
+
+  const key = [
+    'nb-no', // Just preparing for a multi-lingual setup
+    'saved',
+    [centerLetter, ...outerLetters].join(''),
+  ].join('/');
 
   const [found, setStateFound] = useState<string[]>([]);
 
