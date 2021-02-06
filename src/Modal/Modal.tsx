@@ -1,6 +1,7 @@
 import classes from './Modal.module.css';
 import { MdClose as Close } from 'react-icons/md';
 import { useNoBodyScroll } from '../useNoBodyScroll';
+import { useCallback, useEffect } from 'react';
 
 type Props = {
   title: string;
@@ -10,6 +11,22 @@ type Props = {
 
 const Modal = ({ children, title, onClose }: Props) => {
   useNoBodyScroll();
+
+  const onKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose]
+  );
+
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [onKeyDown]);
 
   return (
     <div className={classes.modalBackground}>
