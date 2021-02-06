@@ -24,7 +24,11 @@ const Info = () => {
 
   return (
     <>
-      <button className={classes.button} onClick={() => setShowing(true)}>
+      <button
+        className={classes.button}
+        onClick={() => setShowing(true)}
+        aria-label="Oversikten hjelp"
+      >
         <HelpIcon />
       </button>
       {modal}

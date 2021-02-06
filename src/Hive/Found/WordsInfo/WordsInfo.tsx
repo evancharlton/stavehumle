@@ -40,7 +40,11 @@ const WordsInfo = () => {
 
   return (
     <>
-      <button onClick={() => setShowing(true)} className={classes.button}>
+      <button
+        onClick={() => setShowing(true)}
+        className={classes.button}
+        aria-label="funnet ord hjelp"
+      >
         <HelpIcon />
       </button>
       {modal}

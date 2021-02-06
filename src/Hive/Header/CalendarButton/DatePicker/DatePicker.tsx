@@ -120,6 +120,8 @@ const DatePicker = ({ onChange, gameId = '' }: Props) => {
         classNames.push(classes.currentButton);
       }
 
+      const ariaLabel = `velg ${year}-${month}-${i}`;
+
       cells.push(
         <button
           key={`date-${i}`}
@@ -127,6 +129,7 @@ const DatePicker = ({ onChange, gameId = '' }: Props) => {
           onClick={() => {
             onChange(`${year}-${twoDigits(month + 1)}-${twoDigits(i)}`);
           }}
+          aria-label={ariaLabel}
         >
           {i}
         </button>
@@ -139,10 +142,10 @@ const DatePicker = ({ onChange, gameId = '' }: Props) => {
   return (
     <div>
       <div className={classes.header}>
-        <button onClick={changeYear(-1)}>
+        <button onClick={changeYear(-1)} aria-label="tilbake ett år">
           <BackYear />
         </button>
-        <button onClick={changeMonth(-1)}>
+        <button onClick={changeMonth(-1)} aria-label="tilbake en måned">
           <BackMonth />
         </button>
         <button
@@ -157,10 +160,10 @@ const DatePicker = ({ onChange, gameId = '' }: Props) => {
           &nbsp;/&nbsp;
           <span className={classes.month}>{MONTHS[month]}</span>
         </button>
-        <button onClick={changeMonth(1)}>
+        <button onClick={changeMonth(1)} aria-label="frem en måned">
           <ForwardMonth />
         </button>
-        <button onClick={changeYear(1)}>
+        <button onClick={changeYear(1)} aria-label="frem ett år">
           <ForwardYear />
         </button>
       </div>

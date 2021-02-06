@@ -33,7 +33,7 @@ const Modal = ({ children, title, onClose }: Props) => {
       <div className={classes.modal} onClick={(e) => e.stopPropagation()}>
         <div className={classes.header}>
           <h2>{title}</h2>
-          <button onClick={onClose}>
+          <button onClick={onClose} aria-label="lukk vinduet">
             <Close />
           </button>
         </div>

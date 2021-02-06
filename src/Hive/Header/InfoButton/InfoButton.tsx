@@ -65,6 +65,7 @@ const InfoButton = () => {
         className={[headerClasses.button, classes.button]
           .filter(Boolean)
           .join(' ')}
+        aria-label="om Staver humle"
       >
         <InfoIcon />
       </button>

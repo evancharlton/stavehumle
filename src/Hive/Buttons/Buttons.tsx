@@ -115,13 +115,13 @@ const Buttons = () => {
         </div>
       </div>
       <div className={classes.controls}>
-        <button onClick={onBackspace}>
+        <button onClick={onBackspace} aria-label="baksiden">
           <Backspace />
         </button>
-        <button onClick={reshuffle}>
+        <button onClick={reshuffle} aria-label="tilfeldig rekkefølge">
           <Shuffle />
         </button>
-        <button onClick={makeGuess}>
+        <button onClick={makeGuess} aria-label="sende inn">
           <Enter />
         </button>
       </div>

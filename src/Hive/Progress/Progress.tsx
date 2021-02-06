@@ -72,7 +72,11 @@ const Progress = () => {
           Poeng: {currentPoints} / {totalPoints}
         </label>
       </div>
-      <button onClick={() => setShowing(true)} className={classes.help}>
+      <button
+        onClick={() => setShowing(true)}
+        className={classes.help}
+        aria-label="poeng hjelp"
+      >
         <Help />
       </button>
       {modal}

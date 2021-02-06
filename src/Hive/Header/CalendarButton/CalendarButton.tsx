@@ -42,6 +42,7 @@ const CalendarButton = () => {
         className={[headerClasses.button, classes.button]
           .filter(Boolean)
           .join(' ')}
+        aria-label="velg en annen dato"
       >
         <CalendarIcon />
       </button>
