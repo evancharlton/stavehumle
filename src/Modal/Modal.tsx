@@ -29,8 +29,8 @@ const Modal = ({ children, title, onClose }: Props) => {
   }, [onKeyDown]);
 
   return (
-    <div className={classes.modalBackground}>
-      <div className={classes.modal}>
+    <div className={classes.modalBackground} onClick={onClose}>
+      <div className={classes.modal} onClick={(e) => e.stopPropagation()}>
         <div className={classes.header}>
           <h2>{title}</h2>
           <button onClick={onClose}>
