@@ -26,12 +26,17 @@
 .monthGrid {
   display: grid;
   grid-template-columns: repeat(7, 40px);
-  grid-template-rows: repeat(6, 40px);
+  grid-template-rows: repeat(7, 40px);
 }
 
 .dateButton {
-  border: 1px solid #ccc;
+  border: 1px solid transparent;
   background-color: transparent;
+}
+
+.dateButton:hover,
+.dateButton:focus {
+  border-color: #ccc;
 }
 
 button.todayButton {
@@ -41,4 +46,13 @@ button.todayButton {
 .currentButton {
   border: 2px solid var(--center-letter-color-hover);
   background-color: #eeec;
+}
+
+.dayHeader {
+  color: #666;
+  font-size: 10pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
 }

@@ -5,10 +5,12 @@ import Modal from 'Modal';
 import headerClasses from '../HeaderButton.module.css';
 import classes from './CalendarButton.module.css';
 import DatePicker from './DatePicker';
+import { useGameId } from 'hooks';
 
 const CalendarButton = () => {
   const history = useHistory();
   const [showing, setShowing] = useState(false);
+  const { gameId } = useGameId();
 
   const onClose = useCallback(() => {
     setShowing(false);
@@ -28,7 +30,7 @@ const CalendarButton = () => {
     }
     return (
       <Modal title="Dato" onClose={() => setShowing(false)}>
-        <DatePicker onChange={onNewDatePicked} />
+        <DatePicker onChange={onNewDatePicked} gameId={gameId} />
       </Modal>
     );
   }, [showing, setShowing, onNewDatePicked]);

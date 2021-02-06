@@ -6,10 +6,11 @@ import {
   BsChevronLeft as BackMonth,
   BsChevronRight as ForwardMonth,
 } from 'react-icons/bs';
-import { useGameId } from 'hooks';
+import { isProbablyDate } from 'hooks';
 import twoDigits from 'twoDigits';
 
-type Props = {
+export type Props = {
+  gameId?: string;
   onChange: (gameId: string) => void;
 };
 
@@ -28,13 +29,32 @@ const MONTHS = [
   'desember',
 ];
 
+const DAYS = [
+  'm', // mandag
+  't', // tirsdag
+  'o', // onsdag
+  't', // torsdag
+  'f', // fredag
+  'l', // lørdag
+  's', // sondag
+];
+
+const DAY_KEYS = [
+  'mandag',
+  'tirsdag',
+  'onsdag',
+  'torsdag',
+  'fredag',
+  'lørdag',
+  'sondag',
+];
+
 const today = new Date();
 
-const DatePicker = ({ onChange }: Props) => {
-  const { gameId, isDate } = useGameId();
+const DatePicker = ({ onChange, gameId = '' }: Props) => {
   const currentGameDate = useMemo(() => {
-    return isDate ? new Date(gameId) : null;
-  }, [isDate, gameId]);
+    return isProbablyDate(gameId) ? new Date(gameId) : null;
+  }, [gameId]);
 
   const [year, setYear] = useState((currentGameDate || today).getFullYear());
   const [month, setMonth] = useState((currentGameDate || today).getMonth());
@@ -63,7 +83,15 @@ const DatePicker = ({ onChange }: Props) => {
     const dayOfWeek = start.getDay();
 
     const cells = [];
-    for (let i = 0; i < dayOfWeek; i += 1) {
+    for (let i = 0; i < 7; i += 1) {
+      cells.push(
+        <div className={classes.dayHeader} key={`day-${DAY_KEYS[i]}`}>
+          {DAYS[i]}
+        </div>
+      );
+    }
+
+    for (let i = 1; i < dayOfWeek; i += 1) {
       cells.push(
         <div key={`filler-${i}`} className={classes.filler}>
           &nbsp;

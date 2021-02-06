@@ -9,18 +9,26 @@ const TODAY = (() => {
     .join('-');
 })();
 
-const isProbablyDate = (ymd: unknown[] | null) => {
+export const isProbablyDate = (gameId: string) => {
+  if (!gameId) {
+    return false;
+  }
+
+  const ymd: unknown[] | null = gameId.match(
+    /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/
+  );
+
   if (!ymd) {
     return false;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, ...rest] = ymd;
+  const rest = ymd.slice(1);
   if (rest.length !== 3) {
     return false;
   }
 
   const [year, month, day] = rest.map(Number);
+
   // Yeah, it's a best-effort thing.
   return year && month >= 1 && month <= 12 && day >= 1 && day <= 31;
 };
@@ -36,7 +44,5 @@ export const useGameId = () => {
     gameId.split('').reverse().join('')
   );
 
-  const match = gameId.match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/);
-
-  return { gameId, gameHash, isDate: isProbablyDate(match) };
+  return { gameId, gameHash };
 };
