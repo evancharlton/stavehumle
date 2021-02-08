@@ -3,6 +3,7 @@ import { MdInfoOutline as InfoIcon } from 'react-icons/md';
 import headerClasses from '../HeaderButton.module.css';
 import classes from './InfoButton.module.css';
 import Modal from 'Modal';
+import Icon from 'Humle.svg';
 
 const InfoButton = () => {
   const [showing, setShowing] = useState(false);
@@ -41,6 +42,23 @@ const InfoButton = () => {
           Det er en ny puslespill <strong>hver dag!</strong>
         </p>
         <p>Lykke til!</p>
+        <p>
+          Icon (
+          <img
+            width={20}
+            height={20}
+            src={Icon}
+            style={{ padding: 0, margin: 0 }}
+          />
+          ) fra{' '}
+          <a
+            href="https://linkedin.com/in/baharshahriari/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Bahar Anvari
+          </a>
+        </p>
         <p>
           <em>
             (Want to play in English? Try the{' '}
