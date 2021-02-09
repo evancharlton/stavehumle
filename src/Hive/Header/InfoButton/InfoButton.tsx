@@ -49,6 +49,7 @@ const InfoButton = () => {
             height={20}
             src={Icon}
             style={{ padding: 0, margin: 0 }}
+            alt="Staver humle logo"
           />
           ) fra{' '}
           <a
