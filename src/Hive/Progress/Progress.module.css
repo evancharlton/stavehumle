@@ -2,6 +2,8 @@
   padding: 0 16px;
   display: flex;
   flex-direction: row;
+  height: min-content;
+  flex-grow: 0;
 }
 
 .bars {

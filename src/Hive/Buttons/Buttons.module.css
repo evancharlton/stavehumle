@@ -34,6 +34,11 @@
   background-color: #eee;
 }
 
+.container button:disabled {
+  cursor: not-allowed !important;
+  filter: grayscale(100) !important;
+}
+
 .centerLetter {
   font-weight: 700;
   background-color: var(--center-letter-color);

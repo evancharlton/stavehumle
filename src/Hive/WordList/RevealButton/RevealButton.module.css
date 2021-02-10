@@ -1,0 +1,47 @@
+.reveal {
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  background: transparent;
+  height: 30px;
+  width: 30px;
+  transition: all 0.2s;
+  color: #999;
+  font-size: 20px;
+}
+
+.reveal:disabled:hover,
+.reveal:disabled:focus {
+  cursor: not-allowed;
+}
+
+.reveal:hover,
+.reveal:focus {
+  background-color: #eee;
+  color: #000;
+}
+
+.revealContainer {
+  width: 100%;
+  padding: 0;
+  text-align: center;
+}
+
+.revealContainer button {
+  padding: 8px 16px;
+  border: 1px solid #000a;
+  border-radius: 5px;
+  background: var(--center-letter-color);
+  color: #000;
+  font-size: 14pt;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.revealContainer button:hover,
+.revealContainer button:focus {
+  background-color: var(--center-letter-color-hover);
+}

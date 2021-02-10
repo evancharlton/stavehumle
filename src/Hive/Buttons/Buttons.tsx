@@ -8,6 +8,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLetters } from 'LettersProvider';
 import { useGame } from '../hooks';
 import useShuffledLetters from './useShuffledLetters';
+import { useRevealed } from 'Hive/useRevealed';
 
 const Buttons = () => {
   const { onGuess } = useGame();
@@ -15,6 +16,7 @@ const Buttons = () => {
   const { all, centerLetter, outerLetters } = useLetters();
   const [guess, setGuess] = useState('');
   const { shuffled, reshuffle } = useShuffledLetters();
+  const { revealed } = useRevealed();
 
   const guessRef = useRef('');
   guessRef.current = guess;
@@ -46,6 +48,10 @@ const Buttons = () => {
     (e: KeyboardEvent) => {
       const { key } = e;
 
+      if (revealed) {
+        return;
+      }
+
       if (key === 'Backspace') {
         setGuess((g) => g.substring(0, g.length - 1));
         return;
@@ -67,7 +73,7 @@ const Buttons = () => {
 
       setGuess((g) => `${g}${key}`);
     },
-    [all, makeGuess, reshuffle]
+    [all, makeGuess, reshuffle, revealed]
   );
 
   useEffect(() => {
@@ -86,6 +92,7 @@ const Buttons = () => {
         onClick={onLetterClick}
         className={[classes.letterButton, className].filter(Boolean).join(' ')}
         {...rest}
+        disabled={revealed}
       >
         {letter}
       </button>
@@ -115,13 +122,17 @@ const Buttons = () => {
         </div>
       </div>
       <div className={classes.controls}>
-        <button onClick={onBackspace} aria-label="baksiden">
+        <button disabled={revealed} onClick={onBackspace} aria-label="baksiden">
           <Backspace />
         </button>
-        <button onClick={reshuffle} aria-label="tilfeldig rekkefølge">
+        <button
+          disabled={revealed}
+          onClick={reshuffle}
+          aria-label="tilfeldig rekkefølge"
+        >
           <Shuffle />
         </button>
-        <button onClick={makeGuess} aria-label="sende inn">
+        <button disabled={revealed} onClick={makeGuess} aria-label="sende inn">
           <Enter />
         </button>
       </div>

@@ -7,6 +7,7 @@
   flex: 1;
   display: flex;
   flex-direction: row;
+  overflow-y: auto;
 }
 
 .wordList {
@@ -16,22 +17,17 @@
   flex-flow: row wrap;
   justify-content: flex-start;
   align-content: flex-start;
+  max-height: 100%;
 
   overflow-y: auto;
 }
 
-.word {
-  font-size: 12pt;
-  margin: 4px;
-  color: #333;
-  font-weight: 700;
-  text-decoration: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  padding: 4px 8px;
+.buttons {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
 }
 
-.word:hover,
-.word:focus {
-  border: 1px solid #ccc;
+.buttons button {
+  margin: 4px 0px;
 }

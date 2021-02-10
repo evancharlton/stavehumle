@@ -1,7 +1,7 @@
 import { createContext, useCallback } from 'react';
 import { useLetters } from '../LettersProvider';
 import { useWords } from '../WordProvider';
-import Found from './Found';
+import WordList from './WordList';
 import Buttons from './Buttons';
 import Progress from './Progress';
 import Header from './Header';
@@ -96,9 +96,13 @@ const Hive = () => {
             <Buttons />
           </div>
           <div className={classes.column}>
-            <Progress />
-            <Found />
-            <Grid />
+            <div className={classes.header}>
+              <Progress />
+            </div>
+            <WordList />
+            <div className={classes.footer}>
+              <Grid />
+            </div>
           </div>
         </div>
       </div>

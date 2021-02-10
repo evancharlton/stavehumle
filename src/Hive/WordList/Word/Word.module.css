@@ -1,0 +1,19 @@
+.word {
+  font-size: 12pt;
+  margin: 4px;
+  color: #333;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.revealed {
+  border-color: #b02d1e;
+}
+
+.word:hover,
+.word:focus {
+  border: 1px solid #ccc;
+}
