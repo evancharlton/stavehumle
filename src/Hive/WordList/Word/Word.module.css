@@ -10,10 +10,16 @@
 }
 
 .revealed {
-  border-color: #b02d1e;
+  border-color: var(--missed-word-color);
+}
+
+.pangram::after {
+  content: ' ⭐️';
+  text-shadow: 0px 0px 2px var(--pangram-color);
+  font-size: 10pt;
 }
 
 .word:hover,
 .word:focus {
-  border: 1px solid #ccc;
+  border-color: #ccc;
 }

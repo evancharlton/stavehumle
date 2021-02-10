@@ -3,6 +3,8 @@
   --center-letter-color-hover: #deb635;
   --button-diameter: 60px;
   --control-button-height: 30px;
+  --pangram-color: var(--center-letter-color-hover);
+  --missed-word-color: #b81f0099;
 }
 
 .no-scroll {

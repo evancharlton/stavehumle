@@ -42,8 +42,14 @@ export const useFoundWords = () => {
     setStateFound(getSavedWords(key));
   }, [key, setStateFound]);
 
+  const foundSet = new Set();
+  for (const word of found) {
+    foundSet.add(word);
+  }
+
   return {
     found,
     addFoundWord,
+    foundSet,
   };
 };
