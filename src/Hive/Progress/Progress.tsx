@@ -56,21 +56,28 @@ const Progress = () => {
     );
   }, [showing]);
 
+  const percent = (100 * currentPoints) / totalPoints;
+  const genius = percent >= 70;
+
   return (
     <div className={classes.container}>
       <div className={classes.bars}>
-        <progress id="word-progress" max={words.length} value={found.length} />
-        <label htmlFor="word-progress">
-          Ord: {found.length} / {words.length}
-        </label>
-        <progress
+        <span className={classes.currentPoints}>{currentPoints}</span>
+        <div
+          className={[classes.progressBarContainer, genius && classes.genius]
+            .filter(Boolean)
+            .join(' ')}
+          title={`${currentPoints} av ${totalPoints} poeng`}
           id="points-progress"
-          max={totalPoints}
-          value={currentPoints}
-        />
-        <label htmlFor="points-progress">
-          Poeng: {currentPoints} / {totalPoints}
-        </label>
+        >
+          <div
+            className={classes.progress}
+            style={{
+              width: `${percent.toFixed(2)}%`,
+            }}
+          />
+        </div>
+        <span className={classes.totalPoints}>{totalPoints}</span>
       </div>
       <button
         onClick={() => setShowing(true)}
