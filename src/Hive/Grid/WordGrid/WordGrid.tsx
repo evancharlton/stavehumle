@@ -1,4 +1,4 @@
-import { useLetters } from '../../../../LettersProvider';
+import { useLetters } from '../../../LettersProvider';
 import classes from '../Grid.module.css';
 
 type Props = {

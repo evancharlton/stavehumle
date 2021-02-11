@@ -1,12 +1,11 @@
 import { useMemo } from 'react';
-import { useGame } from '../../hooks';
+import { useGame } from '../hooks';
 import classes from './WordList.module.css';
 import WordsInfo from './WordsInfo';
 import RevealButton from './RevealButton';
 import Word from './Word';
 import { useRevealed } from 'Hive/useRevealed';
 import { useWords } from 'WordProvider';
-import IconSidebar from '../IconSidebar';
 
 const WordList = () => {
   const { revealed } = useRevealed();
@@ -22,7 +21,7 @@ const WordList = () => {
   return (
     <div className={classes.container}>
       <div className={classes.wordList}>{cleaned}</div>
-      <IconSidebar>
+      <div className={classes.buttons}>
         <WordsInfo />
         <RevealButton />
         <h3
@@ -31,7 +30,7 @@ const WordList = () => {
         >
           {foundWords.length}
         </h3>
-      </IconSidebar>
+      </div>
     </div>
   );
 };

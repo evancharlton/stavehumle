@@ -1,10 +1,9 @@
 import { useWords } from 'WordProvider';
-import { useGame, useScore } from '../../hooks';
+import { useGame, useScore } from '../hooks';
 import classes from './Progress.module.css';
 import { MdHelpOutline as Help } from 'react-icons/md';
 import { useMemo, useState } from 'react';
 import Modal from 'Modal';
-import IconSidebar from '../IconSidebar';
 
 const Progress = () => {
   const { found } = useGame();
@@ -80,15 +79,13 @@ const Progress = () => {
         </div>
         <span className={classes.totalPoints}>{totalPoints}</span>
       </div>
-      <IconSidebar>
-        <button
-          onClick={() => setShowing(true)}
-          className={classes.help}
-          aria-label="poeng hjelp"
-        >
-          <Help />
-        </button>
-      </IconSidebar>
+      <button
+        onClick={() => setShowing(true)}
+        className={classes.help}
+        aria-label="poeng hjelp"
+      >
+        <Help />
+      </button>
       {modal}
     </div>
   );
