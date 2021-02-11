@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/staver-humle/static/css/main.3aeca1d2.chunk.css",
-    "main.js": "/staver-humle/static/js/main.e1606b4d.chunk.js",
-    "main.js.map": "/staver-humle/static/js/main.e1606b4d.chunk.js.map",
+    "main.css": "/staver-humle/static/css/main.f2e2de0a.chunk.css",
+    "main.js": "/staver-humle/static/js/main.1b2e7133.chunk.js",
+    "main.js.map": "/staver-humle/static/js/main.1b2e7133.chunk.js.map",
     "runtime-main.js": "/staver-humle/static/js/runtime-main.084041a3.js",
     "runtime-main.js.map": "/staver-humle/static/js/runtime-main.084041a3.js.map",
-    "static/js/2.0ab798a9.chunk.js": "/staver-humle/static/js/2.0ab798a9.chunk.js",
-    "static/js/2.0ab798a9.chunk.js.map": "/staver-humle/static/js/2.0ab798a9.chunk.js.map",
+    "static/js/2.b65b7583.chunk.js": "/staver-humle/static/js/2.b65b7583.chunk.js",
+    "static/js/2.b65b7583.chunk.js.map": "/staver-humle/static/js/2.b65b7583.chunk.js.map",
     "static/js/3.8681d0ce.chunk.js": "/staver-humle/static/js/3.8681d0ce.chunk.js",
     "static/js/3.8681d0ce.chunk.js.map": "/staver-humle/static/js/3.8681d0ce.chunk.js.map",
     "index.html": "/staver-humle/index.html",
-    "static/css/main.3aeca1d2.chunk.css.map": "/staver-humle/static/css/main.3aeca1d2.chunk.css.map",
-    "static/js/2.0ab798a9.chunk.js.LICENSE.txt": "/staver-humle/static/js/2.0ab798a9.chunk.js.LICENSE.txt",
+    "static/css/main.f2e2de0a.chunk.css.map": "/staver-humle/static/css/main.f2e2de0a.chunk.css.map",
+    "static/js/2.b65b7583.chunk.js.LICENSE.txt": "/staver-humle/static/js/2.b65b7583.chunk.js.LICENSE.txt",
     "static/media/Humle.d54d42c1.svg": "/staver-humle/static/media/Humle.d54d42c1.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.084041a3.js",
-    "static/js/2.0ab798a9.chunk.js",
-    "static/css/main.3aeca1d2.chunk.css",
-    "static/js/main.e1606b4d.chunk.js"
+    "static/js/2.b65b7583.chunk.js",
+    "static/css/main.f2e2de0a.chunk.css",
+    "static/js/main.1b2e7133.chunk.js"
   ]
 }
