@@ -3,7 +3,7 @@ import { MdInfoOutline as InfoIcon } from 'react-icons/md';
 import headerClasses from '../HeaderButton.module.css';
 import classes from './InfoButton.module.css';
 import Modal from 'Modal';
-import Icon from 'Humle.svg';
+import Icon from 'Humle';
 
 const LAST_CLOSED_DATE = 'info-dialog/has-closed';
 
@@ -53,16 +53,9 @@ const InfoButton = () => {
           Det er en ny puslespill <strong>hver dag!</strong>
         </p>
         <p>Lykke til!</p>
+        <hr />
         <p>
-          Icon (
-          <img
-            width={20}
-            height={20}
-            src={Icon}
-            style={{ padding: 0, margin: 0 }}
-            alt="Staver humle logo"
-          />
-          ) fra{' '}
+          <Icon size={20} /> fra{' '}
           <a
             href="https://linkedin.com/in/baharshahriari/"
             target="_blank"
@@ -72,17 +65,15 @@ const InfoButton = () => {
           </a>
         </p>
         <p>
-          <em>
-            (Want to play in English? Try the{' '}
-            <a
-              href="https://www.nytimes.com/puzzles/spelling-bee"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              NYT Spelling Bee
-            </a>
-            !)
-          </em>
+          (Want to play in English? Try the{' '}
+          <a
+            href="https://www.nytimes.com/puzzles/spelling-bee"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            NYT Spelling Bee
+          </a>
+          !)
         </p>
       </Modal>
     );
