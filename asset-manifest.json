@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/staver-humle/static/css/main.7d1fa1f7.chunk.css",
+    "main.css": "/staver-humle/static/css/main.3aeca1d2.chunk.css",
     "main.js": "/staver-humle/static/js/main.0df181a0.chunk.js",
     "main.js.map": "/staver-humle/static/js/main.0df181a0.chunk.js.map",
     "runtime-main.js": "/staver-humle/static/js/runtime-main.b4d2f98e.js",
@@ -10,14 +10,14 @@
     "static/js/3.32d3190b.chunk.js": "/staver-humle/static/js/3.32d3190b.chunk.js",
     "static/js/3.32d3190b.chunk.js.map": "/staver-humle/static/js/3.32d3190b.chunk.js.map",
     "index.html": "/staver-humle/index.html",
-    "static/css/main.7d1fa1f7.chunk.css.map": "/staver-humle/static/css/main.7d1fa1f7.chunk.css.map",
+    "static/css/main.3aeca1d2.chunk.css.map": "/staver-humle/static/css/main.3aeca1d2.chunk.css.map",
     "static/js/2.6ca1d30f.chunk.js.LICENSE.txt": "/staver-humle/static/js/2.6ca1d30f.chunk.js.LICENSE.txt",
     "static/media/Humle.d54d42c1.svg": "/staver-humle/static/media/Humle.d54d42c1.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.b4d2f98e.js",
     "static/js/2.6ca1d30f.chunk.js",
-    "static/css/main.7d1fa1f7.chunk.css",
+    "static/css/main.3aeca1d2.chunk.css",
     "static/js/main.0df181a0.chunk.js"
   ]
 }
