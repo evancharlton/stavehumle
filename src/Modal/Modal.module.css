@@ -49,6 +49,7 @@
 .contents {
   padding: 0 16px;
   text-align: justify;
+  overflow-y: auto;
 }
 
 .contents p {
@@ -77,6 +78,10 @@
   border: 2px solid #ccc;
   border-radius: 16px;
   max-width: 500px;
+  max-height: 80vh;
+
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 800px) {
