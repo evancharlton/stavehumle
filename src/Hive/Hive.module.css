@@ -15,21 +15,6 @@
   flex: 1;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 400px;
-
-  border: 1px solid black;
-  margin-right: 100px;
-  border-radius: 16px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  border: 1px solid #999;
-  color: #333;
-}
-
 .header,
 .footer {
   height: min-content;
@@ -38,11 +23,5 @@
 @media (max-width: 800px) {
   .gameContainer {
     flex-direction: column;
-  }
-
-  .column {
-    width: 90%;
-    margin: 0 auto;
-    height: auto;
   }
 }
