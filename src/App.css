@@ -10,3 +10,10 @@
 .no-scroll {
   overflow: hidden;
 }
+
+@media (pointer: coarse) {
+  :root {
+    --button-diameter: 70px;
+    --control-button-height: 40px;
+  }
+}
