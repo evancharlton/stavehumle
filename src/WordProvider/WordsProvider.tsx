@@ -15,8 +15,8 @@ export const Context = createContext<ContextType>({
   words: [],
 });
 
-const GameCreator = ({ children }: Props) => {
-  const { all, centerLetter } = useLetters();
+const WordsProvider = ({ children }: Props) => {
+  const { all, centerLetter, puzzleId } = useLetters();
 
   const [words, setWords] = useState<string[]>([]);
   const [error, setError] = useState<Error | undefined>();
@@ -41,7 +41,11 @@ const GameCreator = ({ children }: Props) => {
     return <Loading />;
   }
 
-  return <Context.Provider value={{ words }}>{children}</Context.Provider>;
+  return (
+    <Context.Provider key={puzzleId} value={{ words }}>
+      {children}
+    </Context.Provider>
+  );
 };
 
-export default GameCreator;
+export default WordsProvider;

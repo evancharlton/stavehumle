@@ -1,5 +1,5 @@
 import { useLetters } from 'LettersProvider';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const getSavedWords = (key: string) => {
   try {
@@ -25,7 +25,7 @@ export const useFoundWords = () => {
     [centerLetter, ...outerLetters].join(''),
   ].join('/');
 
-  const [found, setStateFound] = useState<string[]>([]);
+  const [found, setStateFound] = useState<string[]>(() => getSavedWords(key));
 
   const addFoundWord = useCallback(
     (newWord) => {
@@ -38,18 +38,9 @@ export const useFoundWords = () => {
     [setStateFound, key]
   );
 
-  useEffect(() => {
-    setStateFound(getSavedWords(key));
-  }, [key, setStateFound]);
-
-  const foundSet = new Set();
-  for (const word of found) {
-    foundSet.add(word);
-  }
-
   return {
     found,
     addFoundWord,
-    foundSet,
+    foundSet: new Set(found),
   };
 };

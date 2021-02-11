@@ -11,12 +11,14 @@ type ContextType = {
   centerLetter: string;
   outerLetters: [string, string, string, string, string, string];
   all: string;
+  puzzleId: string;
 };
 
 export const Context = createContext<ContextType>({
   centerLetter: '',
   outerLetters: ['', '', '', '', '', ''],
   all: '',
+  puzzleId: '',
 });
 
 const LettersProvider = ({ children }: Props) => {
@@ -48,8 +50,13 @@ const LettersProvider = ({ children }: Props) => {
     (letter) => letter !== centerLetter
   ) as ContextType['outerLetters'];
 
+  const puzzleId = [centerLetter, ...outerLetters.sort()].join('');
+
   return (
-    <Context.Provider value={{ centerLetter, outerLetters, all: option }}>
+    <Context.Provider
+      key={puzzleId}
+      value={{ centerLetter, outerLetters, all: option, puzzleId }}
+    >
       {children}
     </Context.Provider>
   );
