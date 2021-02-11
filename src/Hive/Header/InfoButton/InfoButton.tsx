@@ -5,15 +5,26 @@ import classes from './InfoButton.module.css';
 import Modal from 'Modal';
 import Icon from 'Humle.svg';
 
+const LAST_CLOSED_DATE = 'info-dialog/has-closed';
+
 const InfoButton = () => {
-  const [showing, setShowing] = useState(false);
+  const [showing, setShowing] = useState(() => {
+    return !localStorage.getItem(LAST_CLOSED_DATE);
+  });
 
   const modal = useMemo(() => {
     if (!showing) {
       return null;
     }
+
     return (
-      <Modal title="Staver Humle!" onClose={() => setShowing(false)}>
+      <Modal
+        title="Staver Humle!"
+        onClose={() => {
+          setShowing(false);
+          localStorage.setItem(LAST_CLOSED_DATE, new Date().toISOString());
+        }}
+      >
         <p>
           Staver Humle er et ordspill hvor du lage så mange ord som du kan.
           Hvert puslespill har syv ulike bokstaver&mdash;en fast i midten og
