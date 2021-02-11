@@ -24,6 +24,12 @@ const WordList = () => {
       <div className={classes.buttons}>
         <WordsInfo />
         <RevealButton />
+        <h3
+          className={classes.count}
+          title={`Du har funnet ${foundWords.length} ord`}
+        >
+          {foundWords.length}
+        </h3>
       </div>
     </div>
   );
