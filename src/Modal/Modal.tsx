@@ -1,3 +1,4 @@
+import ReactDOM from 'react-dom';
 import classes from './Modal.module.css';
 import { MdClose as Close } from 'react-icons/md';
 import { useNoBodyScroll } from '../useNoBodyScroll';
@@ -28,7 +29,7 @@ const Modal = ({ children, title, onClose }: Props) => {
     };
   }, [onKeyDown]);
 
-  return (
+  return ReactDOM.createPortal(
     <div className={classes.modalBackground} onClick={onClose}>
       <div className={classes.modal} onClick={(e) => e.stopPropagation()}>
         <div className={classes.header}>
@@ -42,7 +43,8 @@ const Modal = ({ children, title, onClose }: Props) => {
           <button onClick={onClose}>Lukk</button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
