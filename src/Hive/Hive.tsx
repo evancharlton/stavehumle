@@ -9,7 +9,6 @@ import Messages from './Messages';
 import Grid from './Grid';
 import classes from './Hive.module.css';
 import { useFoundWords } from './useFoundWords';
-import isPangram from '../isPangram';
 
 export type BadGuess =
   | 'too-short'
@@ -79,9 +78,7 @@ const Hive = () => {
       }
 
       addFoundWord(word);
-      if (isPangram(word)) {
-        dispatchEvent(new CustomEvent('pangram'));
-      }
+      dispatchEvent(new CustomEvent('found-word', { detail: word }));
     },
     [all, centerLetter, found, words, addFoundWord]
   );

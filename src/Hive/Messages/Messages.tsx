@@ -2,19 +2,26 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import ErrorMessage from './ErrorMessage';
 import { BadGuess } from '../Hive';
 import classes from './Messages.module.css';
+import isPangram from 'isPangram';
 
 const Messages = () => {
   const [displayedMessage, setDisplayedMessage] = useState<
-    BadGuess | 'pangram'
+    BadGuess | 'pangram' | undefined
   >();
   const timerIdRef = useRef<NodeJS.Timeout | null>();
 
   const showMessage = useCallback(
-    (msg: BadGuess | 'pangram') => {
+    (msg: BadGuess | 'pangram' | undefined) => {
       setDisplayedMessage(msg);
       if (timerIdRef.current) {
         clearTimeout(timerIdRef.current);
       }
+
+      if (!msg) {
+        timerIdRef.current = null;
+        return;
+      }
+
       timerIdRef.current = setTimeout(() => {
         setDisplayedMessage(undefined);
         timerIdRef.current = null;
@@ -31,18 +38,26 @@ const Messages = () => {
     [showMessage]
   );
 
-  const onPangram = useCallback(() => {
-    showMessage('pangram');
-  }, [showMessage]);
+  const onWordFound = useCallback(
+    (e: Event) => {
+      const { detail: word } = e as CustomEvent;
+      if (isPangram(word)) {
+        showMessage('pangram');
+      } else {
+        showMessage(undefined);
+      }
+    },
+    [showMessage]
+  );
 
   useEffect(() => {
     window.addEventListener('bad-guess', onBadGuess);
-    window.addEventListener('pangram', onPangram);
+    window.addEventListener('found-word', onWordFound);
     return () => {
       window.removeEventListener('bad-guess', onBadGuess);
-      window.removeEventListener('pangram', onPangram);
+      window.removeEventListener('found-word', onWordFound);
     };
-  }, [onBadGuess, onPangram]);
+  }, [onBadGuess, onWordFound]);
 
   const message = useMemo(() => {
     if (!displayedMessage) {
