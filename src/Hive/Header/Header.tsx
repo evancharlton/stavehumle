@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div className={classes.header}>
       <h1>
-        <Link to="/">Staver humle</Link>
+        <Link to="/">Stavehumle</Link>
         <Icon />
       </h1>
       <CalendarButton />

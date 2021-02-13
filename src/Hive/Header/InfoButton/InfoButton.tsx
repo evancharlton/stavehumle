@@ -19,16 +19,16 @@ const InfoButton = () => {
 
     return (
       <Modal
-        title="Staver Humle!"
+        title="Stavehumle!"
         onClose={() => {
           setShowing(false);
           localStorage.setItem(LAST_CLOSED_DATE, new Date().toISOString());
         }}
       >
         <p>
-          Staver Humle er et ordspill hvor du lage så mange ord som du kan.
-          Hvert puslespill har syv ulike bokstaver&mdash;en fast i midten og
-          seks rundt.
+          Stavehumle er et ordspill hvor du lage så mange ord som du kan. Hvert
+          puslespill har syv ulike bokstaver&mdash;en fast i midten og seks
+          rundt.
         </p>
         <h3>Reglene</h3>
         <p>Hvert ord:</p>
@@ -86,7 +86,7 @@ const InfoButton = () => {
         className={[headerClasses.button, classes.button]
           .filter(Boolean)
           .join(' ')}
-        aria-label="om Staver humle"
+        aria-label="om Stavehumle"
       >
         <InfoIcon />
       </button>

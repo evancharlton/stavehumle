@@ -1,4 +1,4 @@
-# Staver Humle
+# Stavehumle
 
 This is a tribute to the delightful [Spelling Bee] game published by the [New York Times].
 It is intended to help me expand my Norwegian vocabulary, and it's also intended to just be fun.

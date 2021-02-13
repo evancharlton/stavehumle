@@ -13,7 +13,7 @@ const Icon = ({ size, style = {} }: Props) => {
       width={size}
       height={size}
       style={{ margin: 0, padding: 0, ...style }}
-      alt="Staver humle ikon"
+      alt="Stavehumle ikon"
     />
   );
 };
