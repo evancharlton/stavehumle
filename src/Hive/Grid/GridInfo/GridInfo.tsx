@@ -13,11 +13,11 @@ const Info = () => {
     return (
       <Modal title="Oversikt" onClose={() => setShowing(false)}>
         <p>
-          Oversikten er et verktøy for å hjelp du finne alle ordene i
-          puslespillet. Radene er ord som starter med hver bokstav, og kolonnene
-          er hvor mange ord av hver lengde.
+          Oversikten er et verktøy for å hjelpe deg å finne alle ordene i
+          puslespillet. Radene viser antall ord som starter med en viss bokstav, og kolonnene
+          viser antall ord av hver lengde.
         </p>
-        <p>Oversikten viser ord totalt, også. Lykke til med å finne alt!</p>
+        <p>Oversikten viser også antall ord totalt. Lykke til med å finne alt!</p>
       </Modal>
     );
   }, [showing, setShowing]);
