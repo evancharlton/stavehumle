@@ -3,15 +3,33 @@ import ErrorMessage from './ErrorMessage';
 import { BadGuess } from '../Hive';
 import classes from './Messages.module.css';
 import isPangram from 'isPangram';
+import scoreWord from 'score';
+
+type FoundWord = {
+  points: number;
+};
+
+type PangramMessage = {
+  points: number;
+  isPangram: true;
+};
+
+type MessageType = BadGuess | PangramMessage | FoundWord | undefined;
+
+const isFoundWord = (obj: unknown): obj is FoundWord => {
+  return !!(obj && (obj as FoundWord).points);
+};
+
+const isPangramMessage = (obj: unknown): obj is PangramMessage => {
+  return !!(obj && (obj as PangramMessage).isPangram);
+};
 
 const Messages = () => {
-  const [displayedMessage, setDisplayedMessage] = useState<
-    BadGuess | 'pangram' | undefined
-  >();
+  const [displayedMessage, setDisplayedMessage] = useState<MessageType>();
   const timerIdRef = useRef<NodeJS.Timeout | null>();
 
   const showMessage = useCallback(
-    (msg: BadGuess | 'pangram' | undefined) => {
+    (msg: MessageType) => {
       setDisplayedMessage(msg);
       if (timerIdRef.current) {
         clearTimeout(timerIdRef.current);
@@ -42,9 +60,9 @@ const Messages = () => {
     (e: Event) => {
       const { detail: word } = e as CustomEvent;
       if (isPangram(word)) {
-        showMessage('pangram');
+        showMessage({ points: scoreWord(word), isPangram: true });
       } else {
-        showMessage(undefined);
+        showMessage({ points: scoreWord(word) });
       }
     },
     [showMessage]
@@ -64,8 +82,19 @@ const Messages = () => {
       return null;
     }
 
-    if (displayedMessage === 'pangram') {
-      return <span className={classes.pangram}>Pangram!</span>;
+    if (isPangramMessage(displayedMessage)) {
+      return (
+        <span className={classes.pangram}>
+          Pangram!
+          <br />+{displayedMessage.points} poeng
+        </span>
+      );
+    }
+
+    if (isFoundWord(displayedMessage)) {
+      return (
+        <span className={classes.points}>+{displayedMessage.points} poeng</span>
+      );
     }
 
     return <ErrorMessage reason={displayedMessage} />;
