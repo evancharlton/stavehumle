@@ -22,7 +22,7 @@ const Progress = () => {
     return (
       <Modal title="Poeng" onClose={() => setShowing(false)}>
         <p>
-          Poengene beregnes ut fra hvor mange ord som blir funnet. Hvert ord har
+          Poeng beregnes ut fra antall ord som har blitt funnet. Hvert ord gir
           ulike poengsummer.
         </p>
         <ul>
@@ -33,7 +33,7 @@ const Progress = () => {
             hver bokstave etter fire er verdt <strong>ett ekstra poeng</strong>
           </li>
           <li>
-            ord som bruker alle bokstavenve minst en gang (et pangram) gir{' '}
+            ord som bruker alle bokstavene minst en gang (et pangram) gir{' '}
             <strong>syv ekstra poeng</strong>
           </li>
         </ul>
