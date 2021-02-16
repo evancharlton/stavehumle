@@ -26,7 +26,7 @@ const InfoButton = () => {
         }}
       >
         <p>
-          Stavehumle er et ordspill hvor du lage så mange ord som du kan. Hvert
+          Stavehumle er et ordspill hvor du lager så mange ord som du kan. Hvert
           puslespill har syv ulike bokstaver&mdash;en fast i midten og seks
           rundt.
         </p>
@@ -37,10 +37,10 @@ const InfoButton = () => {
             <strong>må bruke</strong> den midterste bokstaven
           </li>
           <li>
-            være minst <strong>fire bokstaver</strong> lange
+            må være minst <strong>fire bokstaver</strong> langt
           </li>
           <li>
-            bruker <strong>bare</strong> de syv bokstavene
+            bruker <strong>kun</strong> de syv bokstavene
             <br />
             (men bokstaver kan gjentas)
           </li>
@@ -50,7 +50,7 @@ const InfoButton = () => {
           <strong>alle bokstavene</strong>.
         </p>
         <p>
-          Det er en ny puslespill <strong>hver dag!</strong>
+          Det finnes en ny puslespill <strong>hver dag!</strong>
         </p>
         <p>Lykke til!</p>
         <hr />

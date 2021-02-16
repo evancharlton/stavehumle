@@ -19,9 +19,9 @@ const WordsInfo = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Norsk ordbank
+            Norske ordbanken
           </a>
-          . Alle ordene stemmer, men noen ord blir sjelden (eller aldri) sett i
+          . Alle ord finnes, men noen ord blir sjelden (eller aldri) sett i
           det virkelige liv.
         </p>
         <p>

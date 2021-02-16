@@ -21,7 +21,7 @@ const RevealButton = () => {
       <Modal title="Er du ferdig?" onClose={() => setPrompting(false)}>
         <h2>Avdekke alle ordene?</h2>
         <p>
-          Når du er ferdig, du kan vise alle ordene. Du har {remaining} ord
+          Når du er ferdig, kan du vise alle ordene. Du har {remaining} ord som
           gjenstår!
         </p>
         <div className={classes.revealContainer}>
@@ -35,7 +35,7 @@ const RevealButton = () => {
           </button>
         </div>
         <p>
-          Hvis du vil forsett å søke, klikk på <strong>«Lukk»</strong> nedenfor.
+          Hvis du vil forsette å søke, klikk på <strong>«Lukk»</strong> nedenfor.
         </p>
       </Modal>
     );
