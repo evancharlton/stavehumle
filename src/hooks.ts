@@ -2,13 +2,6 @@ import { useParams } from 'react-router-dom';
 import hashCode from './hashCode';
 import twoDigits from './twoDigits';
 
-const TODAY = (() => {
-  const now = new Date();
-  return [now.getFullYear(), now.getMonth() + 1, now.getDate()]
-    .map(twoDigits)
-    .join('-');
-})();
-
 export const isProbablyDate = (gameId: string) => {
   if (!gameId) {
     return false;
@@ -35,7 +28,15 @@ export const isProbablyDate = (gameId: string) => {
 
 export const useGameId = () => {
   const { gameId: gameIdParam } = useParams<{ gameId?: string }>();
-  const gameId = gameIdParam ?? TODAY;
+  let gameId = gameIdParam;
+  if (!gameId) {
+    // Default it to "today" (whenever this is being called)
+    const now = new Date();
+    gameId = [now.getFullYear(), now.getMonth() + 1, now.getDate()]
+      .map(twoDigits)
+      .join('-');
+  }
+
   const gameHash = hashCode(
     // Note: we reverse the game ID here because otherwise, sequential dates
     // will only have hashCodes that differ by one value. Instead, we want to
