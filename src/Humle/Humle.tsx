@@ -6,7 +6,7 @@ type Props = {
   style?: CSSProperties;
 };
 
-const Icon = ({ size, style = {} }: Props) => {
+const Icon = ({ size = 36, style = {} }: Props) => {
   return (
     <img
       src={SVG}
