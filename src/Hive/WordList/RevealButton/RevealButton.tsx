@@ -35,7 +35,8 @@ const RevealButton = () => {
           </button>
         </div>
         <p>
-          Hvis du vil forsette å søke, klikk på <strong>«Lukk»</strong> nedenfor.
+          Hvis du vil forsette å søke, klikk på <strong>«Lukk»</strong>{' '}
+          nedenfor.
         </p>
       </Modal>
     );
@@ -47,6 +48,7 @@ const RevealButton = () => {
         className={classes.reveal}
         disabled={revealed}
         onClick={() => setPrompting(true)}
+        aria-label="Avdekke alle ordene"
       >
         <Reveal />
       </button>
