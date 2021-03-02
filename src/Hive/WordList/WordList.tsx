@@ -20,17 +20,11 @@ const WordList = () => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.wordList}>{cleaned}</div>
       <div className={classes.buttons}>
         <WordsInfo />
         <RevealButton />
-        <h2
-          className={classes.count}
-          title={`Du har funnet ${foundWords.length} ord`}
-        >
-          {foundWords.length}
-        </h2>
       </div>
+      <div className={classes.wordList}>{cleaned}</div>
     </div>
   );
 };
