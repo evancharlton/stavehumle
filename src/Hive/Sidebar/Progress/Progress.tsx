@@ -1,5 +1,5 @@
 import { useWords } from 'WordProvider';
-import { useGame, useScore } from '../hooks';
+import { useGame, useScore } from '../../hooks';
 import classes from './Progress.module.css';
 import { MdHelpOutline as Help } from 'react-icons/md';
 import { useMemo, useState } from 'react';

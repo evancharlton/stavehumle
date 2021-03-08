@@ -1,14 +1,12 @@
 import { createContext, useCallback } from 'react';
 import { useLetters } from '../LettersProvider';
 import { useWords } from '../WordProvider';
-import WordList from './WordList';
 import Buttons from './Buttons';
-import Progress from './Progress';
 import Header from './Header';
 import Messages from './Messages';
-import Grid from './Grid';
 import classes from './Hive.module.css';
 import { useFoundWords } from './useFoundWords';
+import Sidebar from './Sidebar';
 
 export type BadGuess =
   | 'too-short'
@@ -92,15 +90,7 @@ const Hive = () => {
             <Messages />
             <Buttons />
           </div>
-          <div className={classes.column}>
-            <div className={classes.header}>
-              <Progress />
-            </div>
-            <WordList />
-            <div className={classes.footer}>
-              <Grid />
-            </div>
-          </div>
+          <Sidebar />
         </div>
       </div>
     </Context.Provider>
