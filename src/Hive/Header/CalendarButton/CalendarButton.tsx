@@ -29,7 +29,7 @@ const CalendarButton = () => {
       return null;
     }
     return (
-      <Modal title="Dato" onClose={() => setShowing(false)}>
+      <Modal title="Velg dato" onClose={() => setShowing(false)}>
         <DatePicker onChange={onNewDatePicked} gameId={gameId} />
       </Modal>
     );

@@ -49,9 +49,14 @@ const DAY_KEYS = [
   'sondag',
 ];
 
-const today = new Date();
-
 const DatePicker = ({ onChange, gameId = '' }: Props) => {
+  const today = new Date();
+  const [todayYear, todayMonth, todayDate] = [
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate(),
+  ];
+
   const currentGameDate = useMemo(() => {
     return isProbablyDate(gameId) ? new Date(gameId) : null;
   }, [gameId]);
@@ -102,9 +107,7 @@ const DatePicker = ({ onChange, gameId = '' }: Props) => {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     for (let i = 1; i <= daysInMonth; i += 1) {
       const isToday =
-        year === today.getFullYear() &&
-        month === today.getMonth() &&
-        i === today.getDate();
+        year === todayYear && month === todayMonth && i === todayDate;
 
       const isCurrent =
         currentGameDate &&
@@ -137,7 +140,15 @@ const DatePicker = ({ onChange, gameId = '' }: Props) => {
     }
 
     return <div className={classes.monthGrid}>{cells}</div>;
-  }, [year, month, onChange, currentGameDate]);
+  }, [
+    year,
+    month,
+    onChange,
+    currentGameDate,
+    todayYear,
+    todayMonth,
+    todayDate,
+  ]);
 
   return (
     <div>
