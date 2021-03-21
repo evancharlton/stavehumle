@@ -10,7 +10,7 @@ import headerClasses from '../HeaderButton.module.css';
 const UserDialog = () => {
   const { userId } = useLogin();
   const [signingIn, setSigningIn] = useState(false);
-  const [showing, setShowing] = useState(false);
+  const [showing, setShowing] = useState(true);
 
   const onClose = useCallback(() => {
     setShowing(false);
@@ -46,25 +46,37 @@ const UserDialog = () => {
       return null;
     }
 
+    let title = '';
     let content = null;
     if (!userId) {
+      title = 'Save your progress';
       content = (
         <>
-          <button
-            disabled={signingIn}
-            onClick={() => beginLogin(new firebase.auth.GoogleAuthProvider())}
-          >
-            <GoogleIcon />
-          </button>
-          <button
-            disabled={signingIn}
-            onClick={() => beginLogin(new firebase.auth.GithubAuthProvider())}
-          >
-            <GithubIcon />
-          </button>
+          <p>
+            If you sign in, it becomes possible to play on multiple devices.
+            Find words on your phone when on the bus, and pick up where you left
+            off when you are on your laptop at home!
+          </p>
+          <div className={classes.providersContainer}>
+            <button
+              className={classes.provider}
+              disabled={signingIn}
+              onClick={() => beginLogin(new firebase.auth.GoogleAuthProvider())}
+            >
+              <GoogleIcon />
+            </button>
+            <button
+              className={classes.provider}
+              disabled={signingIn}
+              onClick={() => beginLogin(new firebase.auth.GithubAuthProvider())}
+            >
+              <GithubIcon />
+            </button>
+          </div>
         </>
       );
     } else {
+      title = 'Din konto';
       content = (
         <>
           <p>
@@ -84,7 +96,7 @@ const UserDialog = () => {
     }
 
     return (
-      <Modal title="User" onClose={onClose}>
+      <Modal title={title} onClose={onClose}>
         {content}
       </Modal>
     );
