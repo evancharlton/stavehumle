@@ -5,7 +5,7 @@ import WordsInfo from './WordsInfo';
 import RevealButton from './RevealButton';
 import Word from './Word';
 import { useRevealed } from 'Hive/useRevealed';
-import { useWords } from 'WordProvider';
+import { useWords } from 'GameLoader';
 
 const WordList = () => {
   const { revealed } = useRevealed();

@@ -5,7 +5,7 @@ import {
 } from 'react-icons/md';
 import classes from './Buttons.module.css';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useLetters } from 'LettersProvider';
+import { useLetters } from 'GameLoader';
 import { useGame } from '../hooks';
 import useShuffledLetters from './useShuffledLetters';
 import { useRevealed } from 'Hive/useRevealed';

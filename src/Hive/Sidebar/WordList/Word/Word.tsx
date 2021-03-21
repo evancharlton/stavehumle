@@ -1,4 +1,4 @@
-import { useFoundWords } from 'Hive/useFoundWords';
+import { useFoundWords } from 'GameLoader';
 import isPangram from 'isPangram';
 import classes from './Word.module.css';
 
@@ -9,9 +9,9 @@ type Props = {
 const blurLink = (e: React.MouseEvent<HTMLElement>) => e.currentTarget.blur();
 
 const Word = ({ children: word }: Props) => {
-  const { foundSet } = useFoundWords();
+  const { found } = useFoundWords();
 
-  const revealed = !foundSet.has(word);
+  const revealed = !found[word];
   const pangram = isPangram(word);
 
   return (

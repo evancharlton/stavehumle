@@ -1,6 +1,6 @@
 import { useGame } from 'Hive/hooks';
 import { useMemo, useState } from 'react';
-import { useWords } from 'WordProvider';
+import { useWords } from 'GameLoader';
 import classes from './Grid.module.css';
 import WordGrid from './WordGrid';
 import GridInfo from './GridInfo';

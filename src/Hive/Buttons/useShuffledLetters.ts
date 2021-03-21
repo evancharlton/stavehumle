@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useLetters } from 'LettersProvider';
+import { useLetters } from 'GameLoader';
 import shuffle from 'shuffle';
 
 const useShuffledLetters = () => {

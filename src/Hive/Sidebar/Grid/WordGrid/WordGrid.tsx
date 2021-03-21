@@ -1,4 +1,4 @@
-import { useLetters } from '../../../../LettersProvider';
+import { useLetters } from 'GameLoader';
 import classes from '../Grid.module.css';
 
 type Props = {

@@ -1,4 +1,4 @@
-import { useLetters } from 'LettersProvider';
+import { useLetters } from 'GameLoader';
 
 import { useCallback, useEffect, useState } from 'react';
 

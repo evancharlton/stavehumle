@@ -1,14 +1,14 @@
-import WordsProvider from 'WordProvider';
-import LettersProvider from 'LettersProvider';
 import Hive from 'Hive';
+import GameLoader from 'GameLoader';
+import { RecoilRoot } from 'recoil';
 
 const Play = () => {
   return (
-    <LettersProvider>
-      <WordsProvider>
+    <RecoilRoot>
+      <GameLoader>
         <Hive />
-      </WordsProvider>
-    </LettersProvider>
+      </GameLoader>
+    </RecoilRoot>
   );
 };
 

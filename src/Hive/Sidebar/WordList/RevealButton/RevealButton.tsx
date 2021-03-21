@@ -2,8 +2,8 @@ import { useGame } from 'Hive/hooks';
 import Modal from 'Modal';
 import { useMemo, useState } from 'react';
 import { MdCheck as Reveal } from 'react-icons/md';
-import { useWords } from 'WordProvider';
-import { useRevealed } from '../../../useRevealed';
+import { useWords } from 'GameLoader';
+import { useRevealed } from 'Hive/useRevealed';
 import classes from './RevealButton.module.css';
 
 const RevealButton = () => {

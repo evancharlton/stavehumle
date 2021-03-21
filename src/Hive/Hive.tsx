@@ -1,11 +1,7 @@
-import { createContext, useCallback } from 'react';
-import { useLetters } from '../LettersProvider';
-import { useWords } from '../WordProvider';
 import Buttons from './Buttons';
 import Header from './Header';
 import Messages from './Messages';
 import classes from './Hive.module.css';
-import { useFoundWords } from './useFoundWords';
 import Sidebar from './Sidebar';
 
 export type BadGuess =
@@ -15,85 +11,18 @@ export type BadGuess =
   | 'unknown-word'
   | 'invalid-letters';
 
-type ContextType = {
-  found: string[];
-  onGuess: (guess: string) => void;
-};
-
-export const Context = createContext<ContextType>({
-  found: [],
-  onGuess: () => undefined,
-});
-
 const Hive = () => {
-  const { all, centerLetter } = useLetters();
-  const { words } = useWords();
-
-  const { found, addFoundWord } = useFoundWords();
-
-  const makeGuess = useCallback(
-    (input: string) => {
-      if (!input) {
-        // No error message for this.
-        return;
-      }
-
-      const word = input
-        .toLocaleLowerCase()
-        .split('')
-        .filter((letter) => all.includes(letter))
-        .join('');
-
-      if (word.length !== input.length) {
-        dispatchEvent(
-          new CustomEvent('bad-guess', { detail: 'invalid-letters' })
-        );
-        return;
-      }
-
-      if (word.length < 4) {
-        dispatchEvent(new CustomEvent('bad-guess', { detail: 'too-short' }));
-        return;
-      }
-
-      if (!word.includes(centerLetter)) {
-        dispatchEvent(
-          new CustomEvent('bad-guess', { detail: 'missing-center' })
-        );
-        return;
-      }
-
-      if (found.includes(word)) {
-        dispatchEvent(
-          new CustomEvent('bad-guess', { detail: 'already-found' })
-        );
-        return;
-      }
-
-      if (!words.includes(word)) {
-        dispatchEvent(new CustomEvent('bad-guess', { detail: 'unknown-word' }));
-        return;
-      }
-
-      addFoundWord(word);
-      dispatchEvent(new CustomEvent('found-word', { detail: word }));
-    },
-    [all, centerLetter, found, words, addFoundWord]
-  );
-
   return (
-    <Context.Provider value={{ found, onGuess: makeGuess }}>
-      <div className={classes.container}>
-        <Header />
-        <div className={classes.gameContainer}>
-          <div className={classes.buttonsContainer}>
-            <Messages />
-            <Buttons />
-          </div>
-          <Sidebar />
+    <div className={classes.container}>
+      <Header />
+      <div className={classes.gameContainer}>
+        <div className={classes.buttonsContainer}>
+          <Messages />
+          <Buttons />
         </div>
+        <Sidebar />
       </div>
-    </Context.Provider>
+    </div>
   );
 };
 
