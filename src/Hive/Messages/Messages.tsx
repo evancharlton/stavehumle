@@ -4,6 +4,7 @@ import { BadGuess } from '../Hive';
 import classes from './Messages.module.css';
 import isPangram from 'isPangram';
 import scoreWord from 'score';
+import { NewWordInfo, useNewWordFound } from 'custom-events';
 
 type FoundWord = {
   points: number;
@@ -57,8 +58,11 @@ const Messages = () => {
   );
 
   const onWordFound = useCallback(
-    (e: Event) => {
-      const { detail: word } = e as CustomEvent;
+    ({ word, source }: NewWordInfo) => {
+      if (source !== 'local') {
+        return;
+      }
+
       if (isPangram(word)) {
         showMessage({ points: scoreWord(word), isPangram: true });
       } else {
@@ -70,12 +74,12 @@ const Messages = () => {
 
   useEffect(() => {
     window.addEventListener('bad-guess', onBadGuess);
-    window.addEventListener('found-word', onWordFound);
     return () => {
       window.removeEventListener('bad-guess', onBadGuess);
-      window.removeEventListener('found-word', onWordFound);
     };
-  }, [onBadGuess, onWordFound]);
+  }, [onBadGuess]);
+
+  useNewWordFound(onWordFound);
 
   const message = useMemo(() => {
     if (!displayedMessage) {

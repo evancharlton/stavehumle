@@ -1,3 +1,4 @@
+import { FoundWordEvent } from 'custom-events';
 import { useFoundWords, useLetters, useWords } from 'GameLoader';
 import { useCallback, useMemo } from 'react';
 import scoreWord from 'score';
@@ -61,7 +62,7 @@ export const useGame = () => {
         return;
       }
 
-      dispatchEvent(new CustomEvent('found-word', { detail: word }));
+      dispatchEvent(new FoundWordEvent(word, new Date(), 'local'));
     },
     [all, centerLetter, foundWordsMap, words]
   );
