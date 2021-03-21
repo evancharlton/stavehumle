@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import { BiUserCircle as AvatarIcon } from 'react-icons/bi';
 import { FaGoogle as GoogleIcon, FaGithub as GithubIcon } from 'react-icons/fa';
 import firebase, { useLogin } from 'sync';
+import classes from './UserDialog.module.css';
+import headerClasses from '../HeaderButton.module.css';
 
 const UserDialog = () => {
   const { userId } = useLogin();
@@ -91,7 +93,10 @@ const UserDialog = () => {
   const portal = ReactDOM.createPortal(modal, document.body);
   return (
     <>
-      <button onClick={() => setShowing(true)}>
+      <button
+        onClick={() => setShowing(true)}
+        className={[classes.avatarButton, headerClasses.button].join(' ')}
+      >
         <AvatarIcon />
       </button>
       {portal}

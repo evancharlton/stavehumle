@@ -3,7 +3,6 @@ import { MdToday as CalendarIcon } from 'react-icons/md';
 import { useHistory } from 'react-router-dom';
 import Modal from 'Modal';
 import headerClasses from '../HeaderButton.module.css';
-import classes from './CalendarButton.module.css';
 import DatePicker from './DatePicker';
 import { useGameId } from 'hooks';
 
@@ -39,9 +38,7 @@ const CalendarButton = () => {
     <>
       <button
         onClick={() => setShowing(true)}
-        className={[headerClasses.button, classes.button]
-          .filter(Boolean)
-          .join(' ')}
+        className={headerClasses.button}
         aria-label="velg en annen dato"
       >
         <CalendarIcon />

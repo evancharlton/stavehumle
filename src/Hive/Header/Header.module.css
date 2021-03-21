@@ -31,3 +31,20 @@
 .header h1 a:focus {
   text-decoration: underline;
 }
+
+.buttons {
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.right {
+  right: 10px;
+}
+
+.left {
+  left: 10px;
+}

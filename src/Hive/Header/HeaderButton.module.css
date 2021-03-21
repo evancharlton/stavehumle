@@ -1,12 +1,11 @@
 .button {
   font-size: 30px;
-  position: absolute;
   border: 0;
   background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
+  padding: 4px;
   color: #999;
 
   transition: all 0.2s;
