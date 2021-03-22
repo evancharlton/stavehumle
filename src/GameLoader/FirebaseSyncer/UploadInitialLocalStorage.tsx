@@ -35,7 +35,6 @@ const UploadInitialLocalStorage = ({ children, node }: Props2) => {
         values[key] = localStorage.getItem(key);
       }
     }
-    console.log(Object.keys(values));
 
     if (Object.keys(values).length === 0) {
       return;
