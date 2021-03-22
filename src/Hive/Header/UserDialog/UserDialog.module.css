@@ -24,3 +24,20 @@
   height: 40px;
   width: 40px;
 }
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.logOut {
+  padding: 4px 8px;
+  border: 1px solid #000a;
+  border-radius: 5px;
+  background: var(--center-letter-color);
+  color: #000;
+  font-size: 12pt;
+  transition: all 0.2s;
+  cursor: pointer;
+}

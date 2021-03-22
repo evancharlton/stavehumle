@@ -8,10 +8,9 @@ type Props = {
   title: string;
   children: React.ReactNode;
   onClose: () => void;
-  contentClassName?: string;
 };
 
-const Modal = ({ children, title, onClose, contentClassName }: Props) => {
+const Modal = ({ children, title, onClose }: Props) => {
   useNoBodyScroll();
 
   const onKeyDown = useCallback(
@@ -39,13 +38,7 @@ const Modal = ({ children, title, onClose, contentClassName }: Props) => {
             <Close />
           </button>
         </div>
-        <div
-          className={[classes.contents, contentClassName]
-            .filter(Boolean)
-            .join(' ')}
-        >
-          {children}
-        </div>
+        <div className={classes.contents}>{children}</div>
         <div className={classes.footer}>
           <button onClick={onClose}>Lukk</button>
         </div>
