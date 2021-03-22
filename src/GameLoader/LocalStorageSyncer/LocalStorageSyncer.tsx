@@ -1,37 +1,12 @@
 import { useNewWordFound } from 'custom-events';
 import { gameFoundWords } from 'GameLoader/recoil';
-import { WordMap } from 'GameLoader/types';
 import { usePuzzlePath } from 'GameLoader/usePuzzlePath';
 import { useCallback, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
+import { getSavedWords } from 'storage';
 
 type Props = {
   children: React.ReactNode;
-};
-
-const getSavedWords = (key: string): WordMap => {
-  try {
-    const item = localStorage.getItem(key);
-    if (item) {
-      const saved = JSON.parse(item);
-      if (Array.isArray(saved)) {
-        // We're about to destructively migrate some data. Let's stash a copy
-        // just because I'm scared.
-        localStorage.setItem(`backup/${key}`, item);
-
-        return saved
-          .filter((word) => typeof word === 'string')
-          .reduce((acc, word, i) => ({ ...acc, [word]: new Date(i) }), {});
-      }
-      return Object.entries(saved)
-        .filter(([_, date]) => !!date)
-        .reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});
-    }
-  } catch (ex) {
-    // Do nothing
-  }
-
-  return {} as WordMap;
 };
 
 const LocalStorageSyncer = ({ children }: Props) => {

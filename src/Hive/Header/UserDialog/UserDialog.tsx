@@ -8,10 +8,13 @@ import classes from './UserDialog.module.css';
 import headerClasses from '../HeaderButton.module.css';
 import DeleteAccountButton from './DeleteAccountButton';
 
+// This takes some more work; flag it out for now
+const ENABLE_DELETE_ACCOUNT = false;
+
 const UserDialog = () => {
   const { userId } = useLogin();
   const [signingIn, setSigningIn] = useState(false);
-  const [showing, setShowing] = useState(true);
+  const [showing, setShowing] = useState(false);
 
   const onClose = useCallback(() => {
     setShowing(false);
@@ -82,6 +85,17 @@ const UserDialog = () => {
         </>
       );
     } else {
+      const deleteAccount = ENABLE_DELETE_ACCOUNT && (
+        <>
+          <hr />
+          <p>
+            Hvis du vil, du kan slette kontoen din (og alle relaterte
+            informasjon)
+          </p>
+          <DeleteAccountButton onDelete={() => eraseEverything()} />
+        </>
+      );
+
       title = 'Din konto';
       content = (
         <>
@@ -100,12 +114,7 @@ const UserDialog = () => {
               Logg ut
             </button>
           </div>
-          <hr />
-          <p>
-            Hvis du vil, du kan slette kontoen din (og alle relaterte
-            informasjon)
-          </p>
-          <DeleteAccountButton onDelete={() => eraseEverything()} />
+          {deleteAccount}
         </>
       );
     }

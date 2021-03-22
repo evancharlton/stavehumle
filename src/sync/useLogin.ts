@@ -21,5 +21,5 @@ export const useLogin = () => {
     return firebase.auth().onAuthStateChanged(onAuthStateChanged);
   }, [onAuthStateChanged]);
 
-  return { userId };
+  return { userId, path: userId ? `/users/${userId}` : '' };
 };
