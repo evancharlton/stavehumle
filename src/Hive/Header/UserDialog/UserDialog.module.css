@@ -11,6 +11,10 @@
   text-align: center;
 }
 
+.providersContainer button {
+  padding: 0px;
+}
+
 .provider {
   font-size: 30px;
   background-color: transparent;
