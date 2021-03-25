@@ -32,6 +32,10 @@
   padding: 8px 64px;
 }
 
+.header button {
+  margin: 0px;
+}
+
 .mode {
   flex: 1;
   border: 1px solid #ccc;

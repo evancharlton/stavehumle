@@ -2,7 +2,7 @@
   position: absolute;
   right: 0px;
 
-  margin-right: 16px;
+  margin-right: 16px !important;
   border: 0;
   background-color: transparent;
   font-size: 20px;
