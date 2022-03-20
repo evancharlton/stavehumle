@@ -10,6 +10,36 @@ import { useGame } from '../hooks';
 import useShuffledLetters from './useShuffledLetters';
 import { useRevealed } from 'Hive/useRevealed';
 
+type ButtonProps = JSX.IntrinsicElements['button'];
+
+type LetterButtonProps = {
+  letter: string;
+  onClick: ButtonProps['onClick'];
+  disabled: ButtonProps['disabled'];
+} & JSX.IntrinsicElements['button'];
+
+const LetterButton = ({
+  letter,
+  className,
+  onClick,
+  ...rest
+}: LetterButtonProps) => {
+  return (
+    <button
+      data-letter={letter}
+      className={[classes.letterButton, className].filter(Boolean).join(' ')}
+      {...rest}
+      onMouseUp={onClick}
+    >
+      {letter}
+    </button>
+  );
+};
+
+const CenterLetterButton = (props: LetterButtonProps) => (
+  <LetterButton {...props} className={classes.centerLetter} />
+);
+
 const Buttons = () => {
   const { onGuess } = useGame();
 
@@ -83,42 +113,50 @@ const Buttons = () => {
     };
   }, [onKeyPress]);
 
-  type LetterButtonProps = { letter: string } & JSX.IntrinsicElements['button'];
-
-  const LetterButton = ({ letter, className, ...rest }: LetterButtonProps) => {
-    return (
-      <button
-        data-letter={letter}
-        onClick={onLetterClick}
-        className={[classes.letterButton, className].filter(Boolean).join(' ')}
-        {...rest}
-        disabled={revealed}
-      >
-        {letter}
-      </button>
-    );
-  };
-
-  const CenterLetterButton = (props: LetterButtonProps) => (
-    <LetterButton {...props} className={classes.centerLetter} />
-  );
-
   return (
     <div className={classes.container}>
       <div className={classes.guess}>{guess || <>&nbsp;</>}</div>
       <div className={classes.letterButtons}>
         <div className={classes.topRow}>
-          <LetterButton letter={shuffled[0]} />
-          <LetterButton letter={shuffled[1]} />
+          <LetterButton
+            onClick={onLetterClick}
+            disabled={revealed}
+            letter={shuffled[0]}
+          />
+          <LetterButton
+            onClick={onLetterClick}
+            disabled={revealed}
+            letter={shuffled[1]}
+          />
         </div>
         <div className={classes.middleRow}>
-          <LetterButton letter={shuffled[2]} />
-          <CenterLetterButton letter={centerLetter} />
-          <LetterButton letter={shuffled[3]} />
+          <LetterButton
+            onClick={onLetterClick}
+            disabled={revealed}
+            letter={shuffled[2]}
+          />
+          <CenterLetterButton
+            onClick={onLetterClick}
+            disabled={revealed}
+            letter={centerLetter}
+          />
+          <LetterButton
+            onClick={onLetterClick}
+            disabled={revealed}
+            letter={shuffled[3]}
+          />
         </div>
         <div className={classes.bottomRow}>
-          <LetterButton letter={shuffled[4]} />
-          <LetterButton letter={shuffled[5]} />
+          <LetterButton
+            onClick={onLetterClick}
+            disabled={revealed}
+            letter={shuffled[4]}
+          />
+          <LetterButton
+            onClick={onLetterClick}
+            disabled={revealed}
+            letter={shuffled[5]}
+          />
         </div>
       </div>
       <div className={classes.controls}>
