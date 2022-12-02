@@ -3,7 +3,7 @@
 This is a tribute to the delightful [Spelling Bee] game published by the [New York Times].
 It is intended to help me expand my Norwegian vocabulary, and it's also intended to just be fun.
 
-It's [freely playable online](https://evancharlton.github.io/staver-humle/) on any modern browser.
+It's [freely playable online](https://evancharlton.github.io/stavehumle/) on any modern browser.
 
 ## Running locally
 
