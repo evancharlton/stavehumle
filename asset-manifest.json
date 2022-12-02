@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/staveumle/static/css/main.23c928f5.chunk.css",
-    "main.js": "/staveumle/static/js/main.4ea7f117.chunk.js",
-    "main.js.map": "/staveumle/static/js/main.4ea7f117.chunk.js.map",
-    "runtime-main.js": "/staveumle/static/js/runtime-main.37a8befd.js",
-    "runtime-main.js.map": "/staveumle/static/js/runtime-main.37a8befd.js.map",
-    "static/js/2.53e01f75.chunk.js": "/staveumle/static/js/2.53e01f75.chunk.js",
-    "static/js/2.53e01f75.chunk.js.map": "/staveumle/static/js/2.53e01f75.chunk.js.map",
-    "static/js/3.b5b248ad.chunk.js": "/staveumle/static/js/3.b5b248ad.chunk.js",
-    "static/js/3.b5b248ad.chunk.js.map": "/staveumle/static/js/3.b5b248ad.chunk.js.map",
-    "index.html": "/staveumle/index.html",
-    "static/css/main.23c928f5.chunk.css.map": "/staveumle/static/css/main.23c928f5.chunk.css.map",
-    "static/js/2.53e01f75.chunk.js.LICENSE.txt": "/staveumle/static/js/2.53e01f75.chunk.js.LICENSE.txt",
-    "static/media/Humle.d54d42c1.svg": "/staveumle/static/media/Humle.d54d42c1.svg"
+    "main.css": "/stavehumle/static/css/main.23c928f5.chunk.css",
+    "main.js": "/stavehumle/static/js/main.ac1c8c85.chunk.js",
+    "main.js.map": "/stavehumle/static/js/main.ac1c8c85.chunk.js.map",
+    "runtime-main.js": "/stavehumle/static/js/runtime-main.a9c532dc.js",
+    "runtime-main.js.map": "/stavehumle/static/js/runtime-main.a9c532dc.js.map",
+    "static/js/2.194f32a5.chunk.js": "/stavehumle/static/js/2.194f32a5.chunk.js",
+    "static/js/2.194f32a5.chunk.js.map": "/stavehumle/static/js/2.194f32a5.chunk.js.map",
+    "static/js/3.b8084122.chunk.js": "/stavehumle/static/js/3.b8084122.chunk.js",
+    "static/js/3.b8084122.chunk.js.map": "/stavehumle/static/js/3.b8084122.chunk.js.map",
+    "index.html": "/stavehumle/index.html",
+    "static/css/main.23c928f5.chunk.css.map": "/stavehumle/static/css/main.23c928f5.chunk.css.map",
+    "static/js/2.194f32a5.chunk.js.LICENSE.txt": "/stavehumle/static/js/2.194f32a5.chunk.js.LICENSE.txt",
+    "static/media/Humle.d54d42c1.svg": "/stavehumle/static/media/Humle.d54d42c1.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.37a8befd.js",
-    "static/js/2.53e01f75.chunk.js",
+    "static/js/runtime-main.a9c532dc.js",
+    "static/js/2.194f32a5.chunk.js",
     "static/css/main.23c928f5.chunk.css",
-    "static/js/main.4ea7f117.chunk.js"
+    "static/js/main.ac1c8c85.chunk.js"
   ]
 }
