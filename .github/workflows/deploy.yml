@@ -13,6 +13,7 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn build
+          echo "stavehumle.no" > build/CNAME
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
