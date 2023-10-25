@@ -6,7 +6,7 @@ const ErrorMessage = ({ reason }: Props) => {
   let msg = '';
   switch (reason) {
     case 'already-found':
-      msg = 'ordet har blitt allerede funnet';
+      msg = 'ordet er allerede funnet';
       break;
     case 'invalid-letters':
       msg = 'bruker ugyldige bokstaver';
