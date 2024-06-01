@@ -13,7 +13,7 @@ const WordList = () => {
   const { found: foundWords } = useGame();
 
   const cleaned = useMemo(() => {
-    return (revealed ? words : foundWords)
+    return [...(revealed ? words : foundWords)]
       .sort()
       .map((word) => <Word key={word}>{word}</Word>);
   }, [foundWords, revealed, words]);
