@@ -24,7 +24,7 @@ const Word = ({ children: word }: Props) => {
         .filter(Boolean)
         .join(' ')}
       key={word}
-      href={`https://naob.no/s%C3%B8k/${encodeURIComponent(word)}`}
+      href={`https://naob.no/søk?q=${word}`}
       target="_blank"
       rel="noopener noreferrer"
       onClick={blurLink}
