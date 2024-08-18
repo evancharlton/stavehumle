@@ -1,10 +1,10 @@
-import { useMemo, useState } from 'react';
-import { MdInfoOutline as InfoIcon } from 'react-icons/md';
-import headerClasses from '../HeaderButton.module.css';
-import Modal from 'Modal';
-import Icon from 'Humle';
+import { useMemo, useState } from "react";
+import { MdInfoOutline as InfoIcon } from "react-icons/md";
+import headerClasses from "../HeaderButton.module.css";
+import Modal from "../../../Modal";
+import Icon from "../../../Humle";
 
-const LAST_CLOSED_DATE = 'info-dialog/has-closed';
+const LAST_CLOSED_DATE = "info-dialog/has-closed";
 
 const InfoButton = () => {
   const [showing, setShowing] = useState(() => {
@@ -45,7 +45,7 @@ const InfoButton = () => {
           </li>
         </ul>
         <p>
-          Hver puslespill har <strong>minst ett</strong> ord som bruker{' '}
+          Hver puslespill har <strong>minst ett</strong> ord som bruker{" "}
           <strong>alle bokstavene</strong>.
         </p>
         <p>
@@ -54,7 +54,7 @@ const InfoButton = () => {
         <p>Lykke til!</p>
         <hr />
         <p>
-          <Icon size={20} /> fra{' '}
+          <Icon size={20} /> fra{" "}
           <a
             href="https://linkedin.com/in/baharshahriari/"
             target="_blank"
@@ -64,7 +64,7 @@ const InfoButton = () => {
           </a>
         </p>
         <p>
-          (Want to play in English? Try the{' '}
+          (Want to play in English? Try the{" "}
           <a
             href="https://www.nytimes.com/puzzles/spelling-bee"
             target="_blank"

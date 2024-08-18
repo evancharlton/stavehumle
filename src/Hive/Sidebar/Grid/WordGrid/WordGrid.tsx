@@ -1,5 +1,5 @@
-import { useLetters } from 'GameLoader';
-import classes from '../Grid.module.css';
+import { useLetters } from "../../../../GameLoader";
+import classes from "../Grid.module.css";
 
 type Props = {
   words: string[];
@@ -29,13 +29,14 @@ const WordGrid = ({ words, range: [shortest, longest] }: Props) => {
     const matchingWords = words.filter((word) => word[0] === letter);
 
     const cells = [
-      <td key={letter} className={[classes.border, classes.letter].join(' ')}>
+      <td key={letter} className={[classes.border, classes.letter].join(" ")}>
         {letter}
       </td>,
     ];
     for (let i = shortest; i <= longest; i += 1) {
-      const matchingLength = matchingWords.filter((word) => word.length === i)
-        .length;
+      const matchingLength = matchingWords.filter(
+        (word) => word.length === i
+      ).length;
       cells.push(<td key={`${letter} @ ${i}`}>{matchingLength || EMPTY}</td>);
     }
     cells.push(

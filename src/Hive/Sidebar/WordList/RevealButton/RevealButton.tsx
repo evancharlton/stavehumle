@@ -1,10 +1,10 @@
-import { useGame } from 'Hive/hooks';
-import Modal from 'Modal';
-import { useMemo, useState } from 'react';
-import { MdCheck as Reveal } from 'react-icons/md';
-import { useWords } from 'GameLoader';
-import { useRevealed } from 'Hive/useRevealed';
-import classes from './RevealButton.module.css';
+import { useGame } from "../../../hooks";
+import Modal from "../../../../Modal";
+import { useMemo, useState } from "react";
+import { MdCheck as Reveal } from "react-icons/md";
+import { useWords } from "../../../../GameLoader";
+import { useRevealed } from "../../../useRevealed";
+import classes from "./RevealButton.module.css";
 
 const RevealButton = () => {
   const { revealed, revealAnswers } = useRevealed();
@@ -35,7 +35,7 @@ const RevealButton = () => {
           </button>
         </div>
         <p>
-          Hvis du vil forsette å søke, klikk på <strong>«Lukk»</strong>{' '}
+          Hvis du vil forsette å søke, klikk på <strong>«Lukk»</strong>{" "}
           nedenfor.
         </p>
       </Modal>

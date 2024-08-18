@@ -1,4 +1,4 @@
-import isPangram from 'isPangram';
+import isPangram from "./isPangram";
 
 const scoreWord = (word: string) => {
   if (word.length < 4) {

@@ -1,11 +1,11 @@
-import { useMemo } from 'react';
-import { useGame } from '../../hooks';
-import classes from './WordList.module.css';
-import WordsInfo from './WordsInfo';
-import RevealButton from './RevealButton';
-import Word from './Word';
-import { useRevealed } from 'Hive/useRevealed';
-import { useWords } from 'GameLoader';
+import { useMemo } from "react";
+import { useGame } from "../../hooks";
+import classes from "./WordList.module.css";
+import WordsInfo from "./WordsInfo";
+import RevealButton from "./RevealButton";
+import Word from "./Word";
+import { useRevealed } from "../../useRevealed";
+import { useWords } from "../../../GameLoader";
 
 const WordList = () => {
   const { revealed } = useRevealed();

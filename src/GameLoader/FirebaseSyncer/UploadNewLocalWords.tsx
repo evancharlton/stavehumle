@@ -1,6 +1,6 @@
-import { NewWordInfo, useNewWordFound } from 'custom-events';
-import { useCallback } from 'react';
-import firebase from 'sync';
+import { NewWordInfo, useNewWordFound } from "../../custom-events";
+import { useCallback } from "react";
+import firebase from "../../sync";
 
 type Props = {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ type Props = {
 const UploadNewLocalWords = ({ children, node }: Props) => {
   const onWordFound = useCallback(
     ({ word, when, source }: NewWordInfo) => {
-      if (source !== 'local') {
+      if (source !== "local") {
         return;
       }
 

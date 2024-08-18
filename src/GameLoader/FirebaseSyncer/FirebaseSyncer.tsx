@@ -1,9 +1,9 @@
-import { usePuzzlePath } from 'GameLoader/usePuzzlePath';
-import { useLogin } from '../../sync';
-import UploadNewLocalWords from './UploadNewLocalWords';
-import InsertNewRemoteWords from './InsertNewRemoteWords';
-import UploadInitialLocalStorage from './UploadInitialLocalStorage';
-import DownloadInitialRemoteWords from './DownloadInitialRemoteWords';
+import { usePuzzlePath } from "../usePuzzlePath";
+import { useLogin } from "../../sync";
+import UploadNewLocalWords from "./UploadNewLocalWords";
+import InsertNewRemoteWords from "./InsertNewRemoteWords";
+import UploadInitialLocalStorage from "./UploadInitialLocalStorage";
+import DownloadInitialRemoteWords from "./DownloadInitialRemoteWords";
 
 type Props = {
   children: React.ReactNode;

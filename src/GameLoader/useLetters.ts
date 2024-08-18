@@ -1,5 +1,5 @@
-import { gameLetters, gamePuzzleId } from 'GameLoader/recoil';
-import { useRecoilValue } from 'recoil';
+import { gameLetters, gamePuzzleId } from "./recoil";
+import { useRecoilValue } from "recoil";
 
 export const useLetters = () => {
   const puzzleId = useRecoilValue(gamePuzzleId);

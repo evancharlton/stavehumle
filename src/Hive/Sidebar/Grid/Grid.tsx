@@ -1,25 +1,25 @@
-import { useGame } from 'Hive/hooks';
-import { useMemo, useState } from 'react';
-import { useWords } from 'GameLoader';
-import classes from './Grid.module.css';
-import WordGrid from './WordGrid';
-import GridInfo from './GridInfo';
+import { useGame } from "../../hooks";
+import { useMemo, useState } from "react";
+import { useWords } from "../../../GameLoader";
+import classes from "./Grid.module.css";
+import WordGrid from "./WordGrid";
+import GridInfo from "./GridInfo";
 
 const cls = (...classNames: (string | boolean)[]): string => {
-  return classNames.filter(Boolean).join(' ');
+  return classNames.filter(Boolean).join(" ");
 };
 
 const Grid = () => {
   const { found: foundWords } = useGame();
   const { words: allWords } = useWords();
-  const [mode, setMode] = useState<'all' | 'remaining' | 'found'>('remaining');
+  const [mode, setMode] = useState<"all" | "remaining" | "found">("remaining");
 
   const gridWords = useMemo(() => {
-    if (mode === 'all') {
+    if (mode === "all") {
       return allWords;
     }
 
-    if (mode === 'found') {
+    if (mode === "found") {
       return foundWords;
     }
 
@@ -42,31 +42,31 @@ const Grid = () => {
     <div className={classes.container}>
       <div className={classes.header}>
         <button
-          onClick={() => setMode('found')}
+          onClick={() => setMode("found")}
           className={cls(
             classes.mode,
             classes.found,
-            mode === 'found' && classes.active
+            mode === "found" && classes.active
           )}
         >
           Funnet
         </button>
         <button
-          onClick={() => setMode('remaining')}
+          onClick={() => setMode("remaining")}
           className={cls(
             classes.mode,
             classes.remaining,
-            mode === 'remaining' && classes.active
+            mode === "remaining" && classes.active
           )}
         >
           Gjenstår
         </button>
         <button
-          onClick={() => setMode('all')}
+          onClick={() => setMode("all")}
           className={cls(
             classes.mode,
             classes.all,
-            mode === 'all' && classes.active
+            mode === "all" && classes.active
           )}
         >
           Alt

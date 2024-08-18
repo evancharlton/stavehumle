@@ -12,12 +12,12 @@ jobs:
       - name: Set node version
         uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version: 20
       - name: Install and Build 🔧
         run: |
-          yarn install --frozen-lockfile
-          yarn build
-          echo "stavehumle.no" > build/CNAME
+          npm ci
+          npm run build
+          echo "stavehumle.no" > dist/CNAME
 
       - run: tofu init
       - id: plan
@@ -30,7 +30,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: build # The folder the action should deploy.
+          FOLDER: dist # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch
 
       - run: tofu apply -auto-approve

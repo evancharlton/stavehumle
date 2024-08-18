@@ -16,11 +16,11 @@ export const useLoadWords = () => {
     }
 
     const key = all.substring(0, 3);
-    const url = `${process.env.PUBLIC_URL}/words/${key}.json.gz`;
+    const url = `${import.meta.env.BASE_URL}/words/${key}.json.gz`;
     gzipJsonFetch(url)
       .then((obj) => obj[all])
       .then((loadedWords) =>
-        loadedWords.filter((word: string) => word.includes(centerLetter))
+        loadedWords.filter((word: string) => word.includes(centerLetter)),
       )
       .then(setWords)
       .catch(setError);

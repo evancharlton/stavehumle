@@ -1,6 +1,6 @@
-import { useFoundWords } from 'GameLoader';
-import isPangram from 'isPangram';
-import classes from './Word.module.css';
+import { useFoundWords } from "../../../../GameLoader";
+import isPangram from "../../../../isPangram";
+import classes from "./Word.module.css";
 
 type Props = {
   children: string;
@@ -22,7 +22,7 @@ const Word = ({ children: word }: Props) => {
         pangram && classes.pangram,
       ]
         .filter(Boolean)
-        .join(' ')}
+        .join(" ")}
       key={word}
       href={`https://naob.no/søk?q=${word}`}
       target="_blank"

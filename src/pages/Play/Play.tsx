@@ -1,7 +1,7 @@
-import Hive from 'Hive';
-import GameLoader from 'GameLoader';
-import { RecoilRoot } from 'recoil';
-import { useGameId } from 'hooks';
+import Hive from "../../Hive";
+import GameLoader from "../../GameLoader";
+import { RecoilRoot } from "recoil";
+import { useGameId } from "../../hooks";
 
 const Play = () => {
   const { gameHash } = useGameId();

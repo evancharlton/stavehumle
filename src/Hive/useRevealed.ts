@@ -1,14 +1,14 @@
-import { useLetters } from 'GameLoader';
+import { useLetters } from "../GameLoader";
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
 export const useRevealed = () => {
   const { centerLetter, outerLetters } = useLetters();
   const key = [
-    'nb-no', // Multi-lingual .. some day
-    'revealed',
-    [centerLetter, ...outerLetters].join(''),
-  ].join('/');
+    "nb-no", // Multi-lingual .. some day
+    "revealed",
+    [centerLetter, ...outerLetters].join(""),
+  ].join("/");
 
   const [revealed, setLocalRevealed] = useState(false);
 
@@ -19,7 +19,7 @@ export const useRevealed = () => {
 
   const revealAnswers = useCallback(() => {
     localStorage.setItem(key, new Date().toISOString());
-    window.dispatchEvent(new CustomEvent('revealed', { detail: key }));
+    window.dispatchEvent(new CustomEvent("revealed", { detail: key }));
   }, [key]);
 
   const onRevealed = useCallback(
@@ -34,9 +34,9 @@ export const useRevealed = () => {
   );
 
   useEffect(() => {
-    window.addEventListener('revealed', onRevealed);
+    window.addEventListener("revealed", onRevealed);
     return () => {
-      window.removeEventListener('revealed', onRevealed);
+      window.removeEventListener("revealed", onRevealed);
     };
   }, [onRevealed]);
 

@@ -1,10 +1,10 @@
-import { useCallback, useMemo, useState } from 'react';
-import { MdToday as CalendarIcon } from 'react-icons/md';
-import { useHistory } from 'react-router-dom';
-import Modal from 'Modal';
-import headerClasses from '../HeaderButton.module.css';
-import DatePicker from './DatePicker';
-import { useGameId } from 'hooks';
+import { useCallback, useMemo, useState } from "react";
+import { MdToday as CalendarIcon } from "react-icons/md";
+import { useHistory } from "react-router-dom";
+import Modal from "../../../Modal";
+import headerClasses from "../HeaderButton.module.css";
+import DatePicker from "./DatePicker";
+import { useGameId } from "../../../hooks";
 
 const CalendarButton = () => {
   const history = useHistory();

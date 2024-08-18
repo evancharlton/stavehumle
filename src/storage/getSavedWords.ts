@@ -1,4 +1,4 @@
-import { WordMap } from 'GameLoader/types';
+import { WordMap } from "../GameLoader/types";
 
 export const getSavedWords = (key: string): WordMap => {
   try {
@@ -11,7 +11,7 @@ export const getSavedWords = (key: string): WordMap => {
         localStorage.setItem(`backup/${key}`, item);
 
         const migrated = saved
-          .filter((word) => typeof word === 'string')
+          .filter((word) => typeof word === "string")
           .reduce((acc, word, i) => ({ ...acc, [word]: new Date(i) }), {});
         localStorage.setItem(key, JSON.stringify(migrated));
         return getSavedWords(key);
@@ -20,7 +20,7 @@ export const getSavedWords = (key: string): WordMap => {
         .filter(([_, date]) => !!date)
         .reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});
     }
-  } catch (ex) {
+  } catch (_) {
     // Do nothing
   }
 

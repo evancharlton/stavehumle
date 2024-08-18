@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useLetters } from 'GameLoader';
-import shuffle from 'shuffle';
+import { useCallback, useEffect, useState } from "react";
+import { useLetters } from "../../GameLoader";
+import shuffle from "../../shuffle";
 
 const useShuffledLetters = () => {
   const { outerLetters } = useLetters();

@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
-import firebase from 'sync';
-import { useWords } from 'GameLoader/useWords';
-import { FoundWordEvent } from 'custom-events';
-import { WordMap } from 'GameLoader/types';
+import { useEffect } from "react";
+import firebase from "../../sync";
+import { useWords } from "../useWords";
+import { FoundWordEvent } from "../../custom-events";
+import { WordMap } from "../types";
 
 type Props2 = {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ const DownloadInitialRemoteWords = ({ children, node }: Props2) => {
     firebase
       .database()
       .ref(node)
-      .once('value')
+      .once("value")
       .then((snap) => {
         if (!snap.exists()) {
           return;
@@ -44,11 +44,11 @@ const DownloadInitialRemoteWords = ({ children, node }: Props2) => {
         });
 
         Object.entries(newWords)
-          .sort(([wordA, whenA], [wordB, whenB]) => {
+          .sort(([_wordA, whenA], [_wordB, whenB]) => {
             return +whenA - +whenB;
           })
           .forEach(([word, when]) => {
-            window.dispatchEvent(new FoundWordEvent(word, when, 'remote'));
+            window.dispatchEvent(new FoundWordEvent(word, when, "remote"));
           });
       });
   }, [node, validWords]);

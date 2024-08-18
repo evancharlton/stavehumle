@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
-import firebase, { useLogin } from 'sync';
-import { getSavedWords } from 'storage';
+import { useEffect } from "react";
+import firebase, { useLogin } from "../../sync";
+import { getSavedWords } from "../../storage";
 
 type Props2 = {
   children: React.ReactNode;
   node: string;
 };
 
-const UploadInitialLocalStorage = ({ children, node }: Props2) => {
+const UploadInitialLocalStorage = ({ children }: Props2) => {
   const { path } = useLogin();
 
   useEffect(() => {
@@ -18,11 +18,11 @@ const UploadInitialLocalStorage = ({ children, node }: Props2) => {
         continue;
       }
 
-      if (key.startsWith('backup')) {
+      if (key.startsWith("backup")) {
         continue;
       }
 
-      if (key.includes('/saved/')) {
+      if (key.includes("/saved/")) {
         const words = getSavedWords(key);
         if (Object.keys(words).length === 0) {
           continue;
@@ -31,7 +31,7 @@ const UploadInitialLocalStorage = ({ children, node }: Props2) => {
         values[key] = words;
       }
 
-      if (key.includes('/revealed/')) {
+      if (key.includes("/revealed/")) {
         values[key] = localStorage.getItem(key);
       }
     }

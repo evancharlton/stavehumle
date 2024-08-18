@@ -1,9 +1,9 @@
-import { FoundWordEvent } from 'custom-events';
-import { gameFoundWords } from 'GameLoader/recoil';
-import { useWords } from 'GameLoader/useWords';
-import { useCallback, useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
-import firebase from 'sync';
+import { FoundWordEvent } from "../../custom-events";
+import { gameFoundWords } from "../recoil";
+import { useWords } from "../useWords";
+import { useCallback, useEffect } from "react";
+import { useRecoilValue } from "recoil";
+import firebase from "../../sync";
 
 type Props = {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ const InsertNewRemoteWords = ({ children, node }: Props) => {
     (snap: firebase.database.DataSnapshot) => {
       const newWord = snap.key;
       if (!newWord) {
-        console.warn('No key specified');
+        console.warn("No key specified");
         return;
       }
 
@@ -40,7 +40,7 @@ const InsertNewRemoteWords = ({ children, node }: Props) => {
       }
 
       window.dispatchEvent(
-        new FoundWordEvent(newWord, new Date(timestamp), 'remote')
+        new FoundWordEvent(newWord, new Date(timestamp), "remote")
       );
     },
     [validWords, foundWords]
@@ -48,9 +48,9 @@ const InsertNewRemoteWords = ({ children, node }: Props) => {
 
   useEffect(() => {
     const ref = firebase.database().ref(node);
-    ref.on('child_added', onWordFound);
+    ref.on("child_added", onWordFound);
     return () => {
-      ref.off('child_added', onWordFound);
+      ref.off("child_added", onWordFound);
     };
   }, [onWordFound, node]);
 
