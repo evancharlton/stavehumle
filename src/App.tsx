@@ -1,19 +1,14 @@
 import './App.css';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Play from './pages/Play';
 
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact>
-          <Play />
-        </Route>
-
-        <Route path="/:gameId">
-          <Play />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Play />} />
+        <Route path="/:gameId" element={<Play />} />
+      </Routes>
     </Router>
   );
 };
