@@ -1,50 +1,27 @@
-# React + TypeScript + Vite
+# Stavehumle
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a tribute to the delightful [Spelling Bee] game published by the [New York Times].
+It is intended to help me expand my Norwegian vocabulary, and it's also intended to just be fun.
 
-Currently, two official plugins are available:
+It's [freely playable online](https://evancharlton.github.io/stavehumle/) on any modern browser.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Running locally
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```sh
+yarn # install the dependencies
+yarn start
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+That's it!
+You should now have a server running and you should be able to navigate to https://localhost:3000 and see the app.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Updating the dictionary
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+The word bank is sourced from [nb.no].
+It is currently using the [2019-10-10 version][ordbank].
+There are instructions for how to generate the necessary data files in the `wordlist/README.md` file.
+
+[spelling bee]: https://www.nytimes.com/puzzles/spelling-bee
+[new york times]: https://nytimes.com
+[nb.no]: https://nb.no
+[ordbank]: https://www.nb.no/sprakbanken/ressurskatalog/oai-nb-no-sbr-5/
