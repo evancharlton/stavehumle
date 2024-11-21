@@ -34,7 +34,7 @@
 }
 
 .confirmButton:hover,
-.confirmButton:focus {
+.confirmButton:focus-visible {
   border-color: #fff;
   color: #fff;
   background-color: #d42000;

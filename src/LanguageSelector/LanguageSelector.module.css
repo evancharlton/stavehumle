@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.container a {
+  text-decoration: none;
+  font-size: 2em;
+  border: 2px solid var(--center-letter-color);
+  color: rgba(var(--text-color-rgb), 0.5);
+  border-radius: 0.55em;
+  padding: 1em;
+  font-weight: bold;
+}
+
+.container a:hover,
+.container a:focus-visible {
+  color: var(--text-color);
+  border-color: var(--center-letter-color-hover);
+  box-shadow: 0px 0px 6px var(--center-letter-color);
+  transition: all 0.5s;
+}

@@ -29,7 +29,7 @@
 }
 
 .letterButton:hover,
-.letterButton:focus,
+.letterButton:focus-visible,
 .letterButton:active {
   background-color: #eee;
 }
@@ -45,7 +45,7 @@
 }
 
 .centerLetter:hover,
-.centerLetter:focus,
+.centerLetter:focus-visible,
 .centerLetter:active {
   background-color: var(--center-letter-color-hover);
 }
@@ -76,7 +76,7 @@
 }
 
 .controls button:hover,
-.controls button:focus {
+.controls button:focus-visible {
   color: #000;
   border-color: #000;
 }

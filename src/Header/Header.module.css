@@ -28,7 +28,7 @@
 }
 
 .header h1 a:hover,
-.header h1 a:focus {
+.header h1 a:focus-visible {
   text-decoration: underline;
 }
 

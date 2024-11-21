@@ -1,10 +1,10 @@
-import Loading from "../Loading";
-import { useRecoilValue } from "recoil";
-import { useLoadLetters } from "./useLoadLetters";
-import { gameWords } from "./recoil";
-import { useLoadWords } from "./useLoadWords";
-import FirebaseSyncer from "./FirebaseSyncer";
-import LocalStorageSyncer from "./LocalStorageSyncer";
+import Loading from '../Loading';
+import { useRecoilValue } from 'recoil';
+import { useLoadLetters } from './useLoadLetters';
+import { gameWords } from './recoil';
+import { useLoadWords } from './useLoadWords';
+import FirebaseSyncer from './FirebaseSyncer';
+import LocalStorageSyncer from './LocalStorageSyncer';
 
 type Props = {
   children: React.ReactNode;

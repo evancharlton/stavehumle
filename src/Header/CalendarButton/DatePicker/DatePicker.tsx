@@ -1,13 +1,13 @@
-import { useMemo, useState } from "react";
-import classes from "./DatePicker.module.css";
+import { useMemo, useState } from 'react';
+import classes from './DatePicker.module.css';
 import {
   BsChevronDoubleLeft as BackYear,
   BsChevronDoubleRight as ForwardYear,
   BsChevronLeft as BackMonth,
   BsChevronRight as ForwardMonth,
-} from "react-icons/bs";
-import { isProbablyDate } from "../../../../hooks";
-import twoDigits from "../../../../twoDigits";
+} from 'react-icons/bs';
+import { isProbablyDate } from '../../../hooks';
+import twoDigits from '../../../twoDigits';
 
 export type Props = {
   gameId?: string;
@@ -15,41 +15,41 @@ export type Props = {
 };
 
 const MONTHS = [
-  "januar",
-  "februar",
-  "mars",
-  "april",
-  "mai",
-  "juni",
-  "juli",
-  "august",
-  "september",
-  "oktober",
-  "november",
-  "desember",
+  'januar',
+  'februar',
+  'mars',
+  'april',
+  'mai',
+  'juni',
+  'juli',
+  'august',
+  'september',
+  'oktober',
+  'november',
+  'desember',
 ];
 
 const DAYS = [
-  "m", // mandag
-  "t", // tirsdag
-  "o", // onsdag
-  "t", // torsdag
-  "f", // fredag
-  "l", // lørdag
-  "s", // sondag
+  'm', // mandag
+  't', // tirsdag
+  'o', // onsdag
+  't', // torsdag
+  'f', // fredag
+  'l', // lørdag
+  's', // sondag
 ];
 
 const DAY_KEYS = [
-  "mandag",
-  "tirsdag",
-  "onsdag",
-  "torsdag",
-  "fredag",
-  "lørdag",
-  "sondag",
+  'mandag',
+  'tirsdag',
+  'onsdag',
+  'torsdag',
+  'fredag',
+  'lørdag',
+  'sondag',
 ];
 
-const DatePicker = ({ onChange, gameId = "" }: Props) => {
+const DatePicker = ({ onChange, gameId = '' }: Props) => {
   const today = new Date();
   const [todayYear, todayMonth, todayDate] = [
     today.getFullYear(),
@@ -92,7 +92,7 @@ const DatePicker = ({ onChange, gameId = "" }: Props) => {
       cells.push(
         <div className={classes.dayHeader} key={`day-${DAY_KEYS[i]}`}>
           {DAYS[i]}
-        </div>
+        </div>,
       );
     }
 
@@ -100,7 +100,7 @@ const DatePicker = ({ onChange, gameId = "" }: Props) => {
       cells.push(
         <div key={`filler-${i}`} className={classes.filler}>
           &nbsp;
-        </div>
+        </div>,
       );
     }
 
@@ -128,14 +128,14 @@ const DatePicker = ({ onChange, gameId = "" }: Props) => {
       cells.push(
         <button
           key={`date-${i}`}
-          className={classNames.join(" ")}
+          className={classNames.join(' ')}
           onClick={() => {
             onChange(`${year}-${twoDigits(month + 1)}-${twoDigits(i)}`);
           }}
           aria-label={ariaLabel}
         >
           {i}
-        </button>
+        </button>,
       );
     }
 

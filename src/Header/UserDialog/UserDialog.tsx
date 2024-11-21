@@ -1,12 +1,12 @@
-import Modal from "../../../Modal";
-import { useCallback, useMemo, useState } from "react";
-import ReactDOM from "react-dom";
-import { BiUserCircle as AvatarIcon } from "react-icons/bi";
-import { FaGoogle as GoogleIcon, FaGithub as GithubIcon } from "react-icons/fa";
-import firebase, { useLogin } from "../../../sync";
-import classes from "./UserDialog.module.css";
-import headerClasses from "../HeaderButton.module.css";
-import DeleteAccountButton from "./DeleteAccountButton";
+import Modal from '../../Modal';
+import { useCallback, useMemo, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { BiUserCircle as AvatarIcon } from 'react-icons/bi';
+import { FaGoogle as GoogleIcon, FaGithub as GithubIcon } from 'react-icons/fa';
+import firebase, { useLogin } from '../../sync';
+import classes from './UserDialog.module.css';
+import headerClasses from '../HeaderButton.module.css';
+import DeleteAccountButton from './DeleteAccountButton';
 
 // This takes some more work; flag it out for now
 const ENABLE_DELETE_ACCOUNT = false;
@@ -51,10 +51,10 @@ const UserDialog = () => {
       return null;
     }
 
-    let title = "";
+    let title = '';
     let content = null;
     if (!userId) {
-      title = "Lagre fremgangen";
+      title = 'Lagre fremgangen';
       content = (
         <>
           <p>
@@ -96,7 +96,7 @@ const UserDialog = () => {
         </>
       );
 
-      title = "Din konto";
+      title = 'Din konto';
       content = (
         <>
           <p>
@@ -131,7 +131,7 @@ const UserDialog = () => {
     <>
       <button
         onClick={() => setShowing(true)}
-        className={[classes.avatarButton, headerClasses.button].join(" ")}
+        className={[classes.avatarButton, headerClasses.button].join(' ')}
       >
         <AvatarIcon />
       </button>

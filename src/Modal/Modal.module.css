@@ -37,7 +37,7 @@
   color: #666;
 }
 
-.header button:focus,
+.header button:focus-visible,
 .header button:hover {
   color: #000;
 }

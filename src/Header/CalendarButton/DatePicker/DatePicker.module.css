@@ -35,7 +35,7 @@
 }
 
 .dateButton:hover,
-.dateButton:focus {
+.dateButton:focus-visible {
   border-color: #ccc;
 }
 

@@ -1,10 +1,14 @@
 :root {
-  --center-letter-color: #ffd240;
+  --center-letter-color-rgb: 255, 210, 64;
+  --center-letter-color: rgb(var(--center-letter-color-rgb));
   --center-letter-color-hover: #deb635;
   --button-diameter: 60px;
   --control-button-height: 30px;
   --pangram-color: var(--center-letter-color-hover);
   --missed-word-color: #b81f0099;
+
+  --text-color-rgb: 0, 0, 0;
+  --text-color: rgb(var(--text-color-rgb));
 }
 
 .no-scroll {

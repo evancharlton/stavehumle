@@ -64,7 +64,7 @@
   padding: 0px;
 }
 
-.help:focus,
+.help:focus-visible,
 .help:hover {
   color: #000;
 }

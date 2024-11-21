@@ -14,6 +14,6 @@
 }
 
 .button:hover,
-.button:focus {
+.button:focus-visible {
   color: #000;
 }

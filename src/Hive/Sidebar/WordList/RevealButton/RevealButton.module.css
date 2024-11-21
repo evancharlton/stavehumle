@@ -14,12 +14,12 @@
 }
 
 .reveal:disabled:hover,
-.reveal:disabled:focus {
+.reveal:disabled:focus-visible {
   cursor: not-allowed;
 }
 
 .reveal:hover,
-.reveal:focus {
+.reveal:focus-visible {
   background-color: #eee;
   color: #000;
 }
@@ -42,6 +42,6 @@
 }
 
 .revealContainer button:hover,
-.revealContainer button:focus {
+.revealContainer button:focus-visible {
   background-color: var(--center-letter-color-hover);
 }

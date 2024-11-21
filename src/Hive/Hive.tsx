@@ -1,5 +1,4 @@
 import Buttons from './Buttons';
-import Header from './Header';
 import Messages from './Messages';
 import classes from './Hive.module.css';
 import Sidebar from './Sidebar';
@@ -13,15 +12,12 @@ export type BadGuess =
 
 const Hive = () => {
   return (
-    <div className={classes.container}>
-      <Header />
-      <div className={classes.gameContainer}>
-        <div className={classes.buttonsContainer}>
-          <Messages />
-          <Buttons />
-        </div>
-        <Sidebar />
+    <div className={classes.gameContainer}>
+      <div className={classes.buttonsContainer}>
+        <Messages />
+        <Buttons />
       </div>
+      <Sidebar />
     </div>
   );
 };

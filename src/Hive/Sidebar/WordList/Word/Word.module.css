@@ -20,6 +20,6 @@
 }
 
 .word:hover,
-.word:focus {
+.word:focus-visible {
   border-color: #ccc;
 }
