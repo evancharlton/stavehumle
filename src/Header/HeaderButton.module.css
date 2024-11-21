@@ -6,14 +6,13 @@
   align-items: center;
   justify-content: center;
   padding: 4px;
-  color: #999;
-
-  transition: all 0.2s;
+  color: currentColor;
+  filter: var(--dim);
 
   cursor: pointer;
 }
 
 .button:hover,
 .button:focus-visible {
-  color: #000;
+  filter: unset;
 }

@@ -6,12 +6,12 @@
   background: transparent;
   height: 30px;
   width: 30px;
-  transition: all 0.2s;
-  color: #999;
+  color: currentColor;
+  filter: var(--dim);
   font-size: 20px;
 }
 
 .button:focus-visible,
 .button:hover {
-  color: #000;
+  filter: unset;
 }

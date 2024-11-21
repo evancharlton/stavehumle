@@ -32,20 +32,21 @@
 .dateButton {
   border: 1px solid transparent;
   background-color: transparent;
+  color: currentColor;
 }
 
 .dateButton:hover,
 .dateButton:focus-visible {
-  border-color: #ccc;
+  border-color: var(--subtle-border);
 }
 
 button.todayButton {
   background-color: var(--center-letter-color);
+  color: #000;
 }
 
 .currentButton {
   border: 2px solid var(--center-letter-color-hover);
-  background-color: #eeec;
 }
 
 .dayHeader {

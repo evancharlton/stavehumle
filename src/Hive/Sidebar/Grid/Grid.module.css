@@ -20,7 +20,7 @@
 }
 
 .filler {
-  color: #999;
+  color: var(--subtle-border);
 }
 
 .header {
@@ -38,12 +38,14 @@
 
 .mode {
   flex: 1;
-  border: 1px solid #ccc;
+  border: 1px solid var(--subtle-border);
   background-color: transparent;
+  color: currentColor;
 }
 
 .active {
   background-color: var(--center-letter-color);
+  color: #000;
 }
 
 .header button:first-child {

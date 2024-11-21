@@ -8,8 +8,8 @@
   background: transparent;
   height: 30px;
   width: 30px;
-  transition: all 0.2s;
-  color: #999;
+  color: currentColor;
+  filter: var(--dim) saturate(0%);
   font-size: 20px;
 }
 
@@ -20,8 +20,8 @@
 
 .reveal:hover,
 .reveal:focus-visible {
-  background-color: #eee;
-  color: #000;
+  background-color: rgb(53, 129, 53);
+  filter: unset;
 }
 
 .revealContainer {
@@ -37,11 +37,11 @@
   background: var(--center-letter-color);
   color: #000;
   font-size: 14pt;
-  transition: all 0.2s;
   cursor: pointer;
 }
 
 .revealContainer button:hover,
 .revealContainer button:focus-visible {
   background-color: var(--center-letter-color-hover);
+  box-shadow: 0px 0px 8px var(--center-letter-color);
 }

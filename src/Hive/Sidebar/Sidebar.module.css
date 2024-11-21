@@ -8,12 +8,11 @@
   border-radius: 16px;
   padding-top: 16px;
   padding-bottom: 16px;
-  border: 1px solid #999;
-  color: #333;
+  border: 1px solid var(--subtle-border);
 }
 
 .header {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid var(--subtle-border);
 }
 
 .header {

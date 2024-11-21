@@ -6,7 +6,6 @@
   padding: 4px 8px;
   border-radius: 5px;
   font-size: 12pt;
-  transition: all 0.2s;
   cursor: pointer;
 }
 
@@ -18,13 +17,13 @@
 
 .deleteAccount {
   border: 1px solid #000a;
-  color: #000;
+  color: currentColor;
 }
 
 .cancelButton {
   border: 1px solid #000a;
   background: var(--center-letter-color);
-  color: #000;
+  color: currentColor;
 }
 
 .confirmButton {

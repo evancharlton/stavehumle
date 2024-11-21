@@ -27,6 +27,13 @@
   align-items: center;
   height: 40px;
   width: 40px;
+  color: currentColor;
+  filter: var(--dim);
+}
+
+.provider:focus-visible,
+.provider:hover {
+  filter: unset;
 }
 
 .buttons {
@@ -43,6 +50,10 @@
   background: var(--center-letter-color);
   color: #000;
   font-size: 12pt;
-  transition: all 0.2s;
   cursor: pointer;
+}
+
+.logOut:focus-visible,
+.logOut:hover {
+  box-shadow: 0px 0px 8px var(--center-letter-color);
 }

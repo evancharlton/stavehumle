@@ -15,7 +15,7 @@
 }
 
 .letterButton {
-  border: 2px solid #333a;
+  border: 2px solid var(--letter-button-border);
   background: transparent;
   text-transform: uppercase;
   font-size: 16pt;
@@ -25,13 +25,14 @@
   margin: 4px;
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.2s;
+  color: currentColor;
 }
 
 .letterButton:hover,
 .letterButton:focus-visible,
 .letterButton:active {
-  background-color: #eee;
+  background-color: var(--letter-button-background-hover);
+  color: var(--letter-button-color-hover);
 }
 
 .container button:disabled {
@@ -42,12 +43,14 @@
 .centerLetter {
   font-weight: 700;
   background-color: var(--center-letter-color);
+  color: #000;
 }
 
 .centerLetter:hover,
 .centerLetter:focus-visible,
 .centerLetter:active {
   background-color: var(--center-letter-color-hover);
+  color: #000;
 }
 
 .letterButtons {
@@ -62,8 +65,8 @@
 }
 
 .controls button {
-  color: #000a;
-  border: 1px solid #000a;
+  color: rgba(var(--text-color-rgb), 10);
+  border: 1px solid rgba(var(--subtle-border-rgb), 10);
   font-size: 16pt;
   margin: 16px;
   border-radius: 10px;
@@ -77,6 +80,6 @@
 
 .controls button:hover,
 .controls button:focus-visible {
-  color: #000;
-  border-color: #000;
+  color: currentColor;
+  border-color: currentColor;
 }
