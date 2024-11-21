@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { gzipJsonFetch } from '../api';
+import { jsonFetch } from '../api';
 import { useGameId } from '../hooks';
 import { gamePuzzleId } from './recoil';
 
@@ -12,7 +12,7 @@ export const useLoadLetters = () => {
   const setPuzzleId = useSetRecoilState(gamePuzzleId);
 
   useEffect(() => {
-    gzipJsonFetch(`${import.meta.env.BASE_URL}/words/options.json.gz`)
+    jsonFetch(`${import.meta.env.BASE_URL}/words/nb/options.json`)
       .then((options) => options[gameHash % options.length])
       .then((option: string) => {
         const letters = option.split('');

@@ -8,7 +8,7 @@ export const isProbablyDate = (gameId: string) => {
   }
 
   const ymd: unknown[] | null = gameId.match(
-    /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/
+    /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/,
   );
 
   if (!ymd) {
@@ -42,7 +42,7 @@ export const useGameId = () => {
     // will only have hashCodes that differ by one value. Instead, we want to
     // put the least-significant bit in the beginning to lead to more entropy.
     // Of course, it's not real entropy but that's not really what we want here.
-    gameId.split('').reverse().join('')
+    gameId.split('').reverse().join(''),
   );
 
   return { gameId, gameHash };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { gzipJsonFetch } from '../api';
+import { jsonFetch } from '../api';
 import { gameWords } from './recoil';
 import { useLetters } from './useLetters';
 
@@ -15,14 +15,22 @@ export const useLoadWords = () => {
       return;
     }
 
-    const key = all.substring(0, 3);
-    const url = `${import.meta.env.BASE_URL}/words/${key}.json.gz`;
-    gzipJsonFetch(url)
-      .then((obj) => obj[all])
-      .then((loadedWords) =>
-        loadedWords.filter((word: string) => word.includes(centerLetter)),
-      )
-      .then(setWords)
+    const letters = new Set(all.split(''));
+
+    jsonFetch(`${import.meta.env.BASE_URL}/words/words.json`)
+      .then((loadedWords) => {
+        return loadedWords.filter((word: string) => {
+          for (let i = 0; i < word.length; i += 1) {
+            if (!letters.has(word[i])) {
+              return false;
+            }
+          }
+          return true;
+        });
+      })
+      .then((words) => {
+        setWords(words);
+      })
       .catch(setError);
 
     return () => {
