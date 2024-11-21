@@ -17,7 +17,7 @@ export const useLoadWords = () => {
 
     const letters = new Set(all.split(''));
 
-    jsonFetch(`${import.meta.env.BASE_URL}/words/words.json`)
+    jsonFetch(`${import.meta.env.BASE_URL}/words/nb/words.json`)
       .then((loadedWords) => {
         return loadedWords.filter((word: string) => {
           for (let i = 0; i < word.length; i += 1) {
