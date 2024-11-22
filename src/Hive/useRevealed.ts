@@ -1,44 +1,80 @@
-import { useLetters } from "../GameLoader";
-
-import { useCallback, useEffect, useState } from "react";
+import { useLetters } from '../GameLoader';
+import { useCallback, useEffect, useState } from 'react';
+import { useLang } from '../LanguageSelector';
+import { useRecoilState } from 'recoil';
+import { wordReveals } from '../GameLoader/recoil';
+import { RevealOption, StoredRevealOptions } from '../GameLoader/types';
+import { usePuzzlePath } from '../GameLoader/usePuzzlePath';
 
 export const useRevealed = () => {
+  const lang = useLang();
   const { centerLetter, outerLetters } = useLetters();
   const key = [
-    "nb-no", // Multi-lingual .. some day
-    "revealed",
-    [centerLetter, ...outerLetters].join(""),
-  ].join("/");
+    'stavehumle',
+    lang,
+    'revealed',
+    [centerLetter, ...outerLetters].join(''),
+  ].join('/');
 
-  const [revealed, setLocalRevealed] = useState(false);
+  const [reveals, setReveals] = useState<StoredRevealOptions>([]);
 
   useEffect(() => {
-    const when = localStorage.getItem(key);
-    setLocalRevealed(!!when);
-  }, [key, setLocalRevealed]);
+    localStorage.setItem(key, JSON.stringify(reveals));
+  }, [key, reveals]);
 
-  const revealAnswers = useCallback(() => {
-    localStorage.setItem(key, new Date().toISOString());
-    window.dispatchEvent(new CustomEvent("revealed", { detail: key }));
-  }, [key]);
+  const revealAnswers = useCallback((option: RevealOption) => {
+    if (!option) {
+      // No un-reveal allowed!
+      return;
+    }
 
-  const onRevealed = useCallback(
-    (e: Event) => {
-      const { detail } = e as CustomEvent<string>;
-      if (detail !== key) {
+    setReveals((reveals) => [
+      ...reveals,
+      { ...option, when: new Date().toISOString() },
+    ]);
+  }, []);
+
+  return { reveals, revealAnswers };
+};
+
+export const useRevealWords = () => {
+  const key = usePuzzlePath('revealed');
+  const [reveals, setReveals] = useRecoilState(wordReveals);
+
+  useEffect(() => {
+    const value = localStorage.getItem(key);
+    if (!value) {
+      setReveals([]);
+      return;
+    }
+
+    try {
+      const parsed = JSON.parse(value);
+      if (!Array.isArray(parsed)) {
         return;
       }
-      setLocalRevealed(true);
-    },
-    [key, setLocalRevealed]
-  );
 
-  useEffect(() => {
-    window.addEventListener("revealed", onRevealed);
-    return () => {
-      window.removeEventListener("revealed", onRevealed);
-    };
-  }, [onRevealed]);
+      setReveals(parsed);
+    } catch (ex) {
+      console.error(ex);
+    }
+  }, [key, setReveals]);
 
-  return { revealed, revealAnswers };
+  return {
+    reveals,
+    revealAnswers: useCallback(
+      (option: RevealOption) => {
+        setReveals((reveals) => {
+          const next = [
+            ...reveals,
+            { ...option, when: new Date().toISOString() },
+          ];
+
+          localStorage.setItem(key, JSON.stringify(next));
+          return next;
+        });
+      },
+      [key, setReveals],
+    ),
+  };
 };

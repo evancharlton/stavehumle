@@ -2,21 +2,20 @@ import {
   MdKeyboardBackspace as Backspace,
   MdRefresh as Shuffle,
   MdKeyboardReturn as Enter,
-} from "react-icons/md";
-import classes from "./Buttons.module.css";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useLetters } from "../../GameLoader";
-import { useGame } from "../hooks";
-import useShuffledLetters from "./useShuffledLetters";
-import { useRevealed } from "../useRevealed";
+} from 'react-icons/md';
+import classes from './Buttons.module.css';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useLetters } from '../../GameLoader';
+import { useGame } from '../hooks';
+import useShuffledLetters from './useShuffledLetters';
 
-type ButtonProps = JSX.IntrinsicElements["button"];
+type ButtonProps = JSX.IntrinsicElements['button'];
 
 type LetterButtonProps = {
   letter: string;
-  onClick: ButtonProps["onClick"];
-  disabled: ButtonProps["disabled"];
-} & JSX.IntrinsicElements["button"];
+  onClick: ButtonProps['onClick'];
+  disabled: ButtonProps['disabled'];
+} & JSX.IntrinsicElements['button'];
 
 const LetterButton = ({
   letter,
@@ -27,7 +26,7 @@ const LetterButton = ({
   return (
     <button
       data-letter={letter}
-      className={[classes.letterButton, className].filter(Boolean).join(" ")}
+      className={[classes.letterButton, className].filter(Boolean).join(' ')}
       {...rest}
       onMouseUp={onClick}
     >
@@ -44,30 +43,29 @@ const Buttons = () => {
   const { onGuess } = useGame();
 
   const { all, centerLetter, outerLetters } = useLetters();
-  const [guess, setGuess] = useState("");
+  const [guess, setGuess] = useState('');
   const { shuffled, reshuffle } = useShuffledLetters();
-  const { revealed } = useRevealed();
 
-  const guessRef = useRef("");
+  const guessRef = useRef('');
   guessRef.current = guess;
 
   useEffect(() => {
-    guessRef.current = "";
-    setGuess("");
+    guessRef.current = '';
+    setGuess('');
   }, [outerLetters, centerLetter]);
 
   const makeGuess = useCallback(() => {
     onGuess(guessRef.current);
-    setGuess("");
+    setGuess('');
   }, [onGuess, guessRef]);
 
   const onLetterClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       const button = event.currentTarget;
-      const letter = button.getAttribute("data-letter");
+      const letter = button.getAttribute('data-letter');
       setGuess((g) => `${g}${letter}`);
     },
-    [setGuess]
+    [setGuess],
   );
 
   const onBackspace = useCallback(() => {
@@ -78,22 +76,18 @@ const Buttons = () => {
     (e: KeyboardEvent) => {
       const { key } = e;
 
-      if (revealed) {
-        return;
-      }
-
-      if (key === "Backspace") {
+      if (key === 'Backspace') {
         setGuess((g) => g.substring(0, g.length - 1));
         return;
       }
 
-      if (key === " ") {
+      if (key === ' ') {
         reshuffle();
         e.preventDefault();
         return;
       }
 
-      if (key === "Enter") {
+      if (key === 'Enter') {
         makeGuess();
       }
 
@@ -103,13 +97,13 @@ const Buttons = () => {
 
       setGuess((g) => `${g}${key}`);
     },
-    [all, makeGuess, reshuffle, revealed]
+    [all, makeGuess, reshuffle],
   );
 
   useEffect(() => {
-    document.addEventListener("keydown", onKeyPress);
+    document.addEventListener('keydown', onKeyPress);
     return () => {
-      document.removeEventListener("keydown", onKeyPress);
+      document.removeEventListener('keydown', onKeyPress);
     };
   }, [onKeyPress]);
 
@@ -119,58 +113,54 @@ const Buttons = () => {
       <div className={classes.letterButtons}>
         <div className={classes.topRow}>
           <LetterButton
+            disabled={false}
             onClick={onLetterClick}
-            disabled={revealed}
             letter={shuffled[0]}
           />
           <LetterButton
+            disabled={false}
             onClick={onLetterClick}
-            disabled={revealed}
             letter={shuffled[1]}
           />
         </div>
         <div className={classes.middleRow}>
           <LetterButton
+            disabled={false}
             onClick={onLetterClick}
-            disabled={revealed}
             letter={shuffled[2]}
           />
           <CenterLetterButton
+            disabled={false}
             onClick={onLetterClick}
-            disabled={revealed}
             letter={centerLetter}
           />
           <LetterButton
+            disabled={false}
             onClick={onLetterClick}
-            disabled={revealed}
             letter={shuffled[3]}
           />
         </div>
         <div className={classes.bottomRow}>
           <LetterButton
+            disabled={false}
             onClick={onLetterClick}
-            disabled={revealed}
             letter={shuffled[4]}
           />
           <LetterButton
+            disabled={false}
             onClick={onLetterClick}
-            disabled={revealed}
             letter={shuffled[5]}
           />
         </div>
       </div>
       <div className={classes.controls}>
-        <button disabled={revealed} onClick={onBackspace} aria-label="baksiden">
+        <button onClick={onBackspace} aria-label="baksiden">
           <Backspace />
         </button>
-        <button
-          disabled={revealed}
-          onClick={reshuffle}
-          aria-label="tilfeldig rekkefølge"
-        >
+        <button onClick={reshuffle} aria-label="tilfeldig rekkefølge">
           <Shuffle />
         </button>
-        <button disabled={revealed} onClick={makeGuess} aria-label="sende inn">
+        <button onClick={makeGuess} aria-label="sende inn">
           <Enter />
         </button>
       </div>

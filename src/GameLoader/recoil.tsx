@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil';
-import type { WordMap } from './types';
+import type { StoredRevealOptions, WordMap } from './types';
 
 export const gamePuzzleId = atom({
   key: 'game/puzzleId',
@@ -27,4 +27,9 @@ export const gameWords = atom({
 export const gameFoundWords = atom({
   key: 'game/words/found',
   default: {} as WordMap,
+});
+
+export const wordReveals = atom({
+  key: 'game/reveals',
+  default: [] as StoredRevealOptions,
 });

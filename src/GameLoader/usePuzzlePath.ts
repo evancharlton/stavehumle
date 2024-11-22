@@ -1,8 +1,9 @@
 import { useRecoilValue } from 'recoil';
 import { gamePuzzleId } from './recoil';
+import { useLang } from '../LanguageSelector';
 
-// I'm not thrilled about this.
-export const usePuzzlePath = () => {
+export const usePuzzlePath = (key: string = 'saved') => {
+  const lang = useLang();
   const puzzleId = useRecoilValue(gamePuzzleId);
-  return ['nb-no', 'saved', puzzleId].join('/');
+  return ['stavehumle', lang, key, puzzleId].join('/');
 };

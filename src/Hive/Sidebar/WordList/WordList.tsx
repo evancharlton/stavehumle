@@ -1,22 +1,18 @@
-import { useMemo } from "react";
-import { useGame } from "../../hooks";
-import classes from "./WordList.module.css";
-import WordsInfo from "./WordsInfo";
-import RevealButton from "./RevealButton";
-import Word from "./Word";
-import { useRevealed } from "../../useRevealed";
-import { useWords } from "../../../GameLoader";
+import { useMemo } from 'react';
+import { useGame } from '../../hooks';
+import classes from './WordList.module.css';
+import WordsInfo from './WordsInfo';
+import RevealButton from './RevealButton';
+import Word from './Word';
 
 const WordList = () => {
-  const { revealed } = useRevealed();
-  const { words } = useWords();
-  const { found: foundWords } = useGame();
+  const { found: foundWords, revealedWords } = useGame();
 
   const cleaned = useMemo(() => {
-    return [...(revealed ? words : foundWords)]
+    return [...foundWords, ...revealedWords]
       .sort()
       .map((word) => <Word key={word}>{word}</Word>);
-  }, [foundWords, revealed, words]);
+  }, [foundWords, revealedWords]);
 
   return (
     <div className={classes.container}>
