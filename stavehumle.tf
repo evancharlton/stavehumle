@@ -4,10 +4,18 @@ terraform {
       source  = "cloudflare/cloudflare"
       version = "~> 4"
     }
+    github = {
+      source  = "integrations/github"
+      version = "6.4.0"
+    }
   }
 }
 
 variable "cloudflare_api_token" {
+  default = ""
+}
+
+variable "github_token" {
   default = ""
 }
 
@@ -32,6 +40,10 @@ locals {
 
 provider "cloudflare" {
   api_token = var.cloudflare_api_token
+}
+
+provider "github" {
+  token = var.github_token
 }
 
 resource "cloudflare_record" "a_records" {
@@ -115,17 +127,17 @@ resource "cloudflare_record" "cname_no" {
   for_each = {
     "www" = "stavehumle.no"
   }
-  zone_id  = local.zones["stavehumle.no"]
-  name     = each.key
-  content  = each.value
-  proxied  = true
-  ttl      = 1
-  type     = "CNAME"
+  zone_id = local.zones["stavehumle.no"]
+  name    = each.key
+  content = each.value
+  proxied = true
+  ttl     = 1
+  type    = "CNAME"
 }
 
 resource "cloudflare_record" "cname_com" {
   for_each = {
-    "@" = "stavehumle.no"
+    "@"   = "stavehumle.no"
     "www" = "stavehumle.no"
   }
   zone_id = local.zones["stavehumle.com"]
@@ -134,4 +146,23 @@ resource "cloudflare_record" "cname_com" {
   proxied = true
   ttl     = 1
   type    = "CNAME"
+}
+
+resource "github_repository" "stavehumle" {
+  name        = "stavehumle"
+  description = "Finn ord i bikuben"
+
+  visibility         = "public"
+  has_discussions    = false
+  has_downloads      = false
+  has_issues         = true
+  allow_auto_merge   = true
+  allow_merge_commit = false
+  allow_rebase_merge = false
+  delete_branch_on_merge = true
+
+  pages {
+    build_type = "workflow"
+    cname      = "stavehumle.no"
+  }
 }
