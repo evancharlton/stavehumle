@@ -22,7 +22,7 @@
 
   --dim: opacity(50%);
 
-  --link-color: rgb(226, 204, 0);
+  --link-color: rgb(214, 175, 0);
 }
 
 @media (pointer: coarse) {
@@ -40,6 +40,7 @@
     --letter-button-border: #999a;
     --letter-button-background-hover: #333a;
     --dim2: brightness(50%);
+    --link-color: rgb(255, 212, 19);
   }
 }
 
