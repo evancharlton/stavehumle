@@ -27,7 +27,6 @@ wordlist/solutions
 
 # OpenTofu stuff
 .terraform
-.terraform.lock.hcl
 terraform.tfstate.backup
 
 # Logs

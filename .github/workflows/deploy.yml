@@ -35,7 +35,7 @@ jobs:
         run: |
           tofu init
           tofu plan -no-color
-          tofu state rm cloudflare_zone_settings_override.ssl_settings
+          tofu state rm cloudflare_zone_settings_override.ssl_settings || true
           tofu apply -auto-approve
         env:
           TF_VAR_cloudflare_api_token: ${{ secrets.TF_VAR_cloudflare_api_token }}
