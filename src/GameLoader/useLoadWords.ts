@@ -22,12 +22,15 @@ export const useLoadWords = () => {
     jsonFetch(`${import.meta.env.BASE_URL}/words/${lang}/words.json`)
       .then((loadedWords) => {
         return loadedWords.filter((word: string) => {
+          let hasCenter = false;
           for (let i = 0; i < word.length; i += 1) {
             if (!letters.has(word[i])) {
               return false;
             }
+
+            hasCenter = hasCenter || word[i] === centerLetter;
           }
-          return true;
+          return hasCenter;
         });
       })
       .then((words) => {
