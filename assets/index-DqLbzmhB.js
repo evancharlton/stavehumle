@@ -1,1 +1,0 @@
-import{j as n,L as s}from"./index-CXYANt7Y.js";import{u as i}from"./useLang-BNnM_o1C.js";const e="_container_15t0b_1",o={container:e},r=()=>n.jsxs("div",{className:o.container,children:[n.jsx(s,{to:"/nb",children:"bokmål"}),n.jsx(s,{to:"/nn",children:"nynorsk"})]});export{r as default,i as useLang};
