@@ -1,3 +1,4 @@
+import { neverGuard } from '../../neverGuard';
 import { BadGuess } from '../Hive';
 
 type Props = { reason: BadGuess };
@@ -20,8 +21,11 @@ const ErrorMessage = ({ reason }: Props) => {
     case 'unknown-word':
       msg = 'ukjent ord';
       break;
+    case 'revealed':
+      msg = 'tidligere avslørt';
+      break;
     default:
-      return null;
+      return neverGuard(reason, null);
   }
 
   return <span>{msg}</span>;

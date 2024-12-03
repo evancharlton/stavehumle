@@ -57,6 +57,11 @@ export const useGame = () => {
         return;
       }
 
+      if (revealedWords.includes(word)) {
+        dispatchEvent(new CustomEvent('bad-guess', { detail: 'revealed' }));
+        return;
+      }
+
       if (!words.includes(word)) {
         dispatchEvent(new CustomEvent('bad-guess', { detail: 'unknown-word' }));
         return;
@@ -64,7 +69,7 @@ export const useGame = () => {
 
       dispatchEvent(new FoundWordEvent(word, new Date(), 'local'));
     },
-    [all, centerLetter, foundWordsMap, words],
+    [all, centerLetter, foundWordsMap, revealedWords, words],
   );
 
   return {

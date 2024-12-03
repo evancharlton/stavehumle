@@ -8,6 +8,7 @@ export type BadGuess =
   | 'missing-center'
   | 'already-found'
   | 'unknown-word'
+  | 'revealed'
   | 'invalid-letters';
 
 const Hive = () => {
