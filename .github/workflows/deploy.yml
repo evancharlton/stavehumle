@@ -24,7 +24,6 @@ jobs:
         with:
           create_credentials_file: true
           workload_identity_provider: 'projects/594849475420/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
-          service_account: 'github-stavehumle@ordspill.iam.gserviceaccount.com'
 
       - uses: opentofu/setup-opentofu@v1
 
