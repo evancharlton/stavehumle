@@ -52,6 +52,7 @@ jobs:
         env:
           TF_VAR_cloudflare_api_token: ${{ secrets.TF_VAR_cloudflare_api_token }}
           TF_VAR_github_token: ${{ secrets.TF_VAR_github_token }}
+          TF_LOG: ${{ vars.TF_LOG }}
 
   deploy:
     needs: build
