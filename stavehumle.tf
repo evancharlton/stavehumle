@@ -32,6 +32,31 @@ locals {
   github_challenge = "7529f02d6b4bbb75da2aff8d412322"
 }
 
+resource "github_repository" "stavehumle" {
+  name         = "stavehumle"
+  description  = "Finn ord i bikuben! 🐝"
+  homepage_url = "https://${local.main_domain}"
+
+  visibility                  = "public"
+  has_discussions             = false
+  has_downloads               = false
+  has_issues                  = true
+  allow_auto_merge            = true
+  allow_merge_commit          = false
+  allow_rebase_merge          = false
+  allow_squash_merge          = true
+  squash_merge_commit_title   = "PR_TITLE"
+  squash_merge_commit_message = "PR_BODY"
+  delete_branch_on_merge      = true
+
+  license_template = "mit"
+
+  pages {
+    build_type = "workflow"
+    cname      = local.main_domain
+  }
+}
+
 variable "cloudflare_api_token" {
   default = ""
 }
@@ -164,23 +189,4 @@ resource "cloudflare_record" "cnames_www" {
   proxied  = true
   ttl      = 1
   type     = "CNAME"
-}
-
-resource "github_repository" "stavehumle" {
-  name        = "stavehumle"
-  description = "Finn ord i bikuben"
-
-  visibility             = "public"
-  has_discussions        = false
-  has_downloads          = false
-  has_issues             = true
-  allow_auto_merge       = true
-  allow_merge_commit     = false
-  allow_rebase_merge     = false
-  delete_branch_on_merge = true
-
-  pages {
-    build_type = "workflow"
-    cname      = local.main_domain
-  }
 }
