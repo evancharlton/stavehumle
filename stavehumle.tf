@@ -82,19 +82,6 @@ provider "google" {
   region  = "europe-west10"
 }
 
-resource "google_storage_bucket" "default" {
-  name     = "ordspill-terraform-remote-backend"
-  location = "EU"
-
-  force_destroy               = false
-  public_access_prevention    = "enforced"
-  uniform_bucket_level_access = true
-
-  versioning {
-    enabled = false
-  }
-}
-
 resource "local_file" "default" {
   file_permission = "0644"
   filename        = "${path.module}/backend.tf"
@@ -102,11 +89,13 @@ resource "local_file" "default" {
   # You can store the template in a file and use the templatefile function for
   # more modularity, if you prefer, instead of storing the template inline as
   # we do here.
+
+  # TODO: Can we source the bucket name from somewhere?
   content = <<-EOT
   terraform {
     backend "gcs" {
       prefix = "${local.project}/terraform"
-      bucket = "${google_storage_bucket.default.name}"
+      bucket = "terraform-remote-backend-2180c2249d350f10"
     }
   }
   EOT
