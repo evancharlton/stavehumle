@@ -37,12 +37,6 @@ jobs:
         run: |
           ./build.sh
 
-      - name: Upload static files as artifact
-        id: deployment
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist/
-
       - name: Terraform
         run: |
           tofu init
@@ -53,6 +47,12 @@ jobs:
           TF_VAR_cloudflare_api_token: ${{ secrets.TF_VAR_cloudflare_api_token }}
           TF_VAR_github_token: ${{ secrets.TF_VAR_github_token }}
           TF_LOG: ${{ vars.TF_LOG }}
+
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
 
   deploy:
     needs: build
