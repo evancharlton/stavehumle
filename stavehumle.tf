@@ -135,7 +135,7 @@ resource "cloudflare_record" "mail_records_dmarc" {
   for_each = setunion([local.main_domain], local.redirects)
   zone_id  = local.zones[each.value]
   name     = "_dmarc"
-  content  = "'v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;'"
+  content  = "\"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;\""
   proxied  = false
   ttl      = 1
   type     = "TXT"
@@ -145,7 +145,7 @@ resource "cloudflare_record" "mail_records_domainkey" {
   for_each = setunion([local.main_domain], local.redirects)
   zone_id  = local.zones[each.value]
   name     = "*._domainkey"
-  content  = "'v=DKIM1; p='"
+  content  = "\"v=DKIM1; p=\""
   proxied  = false
   ttl      = 1
   type     = "TXT"
@@ -155,7 +155,7 @@ resource "cloudflare_record" "mail_records_spf" {
   for_each = setunion([local.main_domain], local.redirects)
   zone_id  = local.zones[each.value]
   name     = each.value
-  content  = "'v=spf1 -all'"
+  content  = "\"v=spf1 -all\""
   proxied  = false
   ttl      = 1
   type     = "TXT"
@@ -164,12 +164,11 @@ resource "cloudflare_record" "mail_records_spf" {
 resource "cloudflare_record" "github_challenge" {
   zone_id = local.zones[local.main_domain]
   name    = "_github-pages-challenge-evancharlton"
-  content = "'${local.github_challenge}'"
+  content = "\"${local.github_challenge}\""
   proxied = false
   ttl     = 1
   type    = "TXT"
 }
-
 
 resource "cloudflare_record" "cnames_www" {
   zone_id = local.zones[local.main_domain]
