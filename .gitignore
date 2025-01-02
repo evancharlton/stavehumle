@@ -10,6 +10,8 @@
 
 # production
 /build
+/dev-dist
+*.tsbuildinfo
 
 # misc
 .DS_Store
@@ -58,3 +60,4 @@ dist-ssr
 # Wordlists
 
 public/words/
+*storybook.log

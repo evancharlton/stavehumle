@@ -1,10 +1,10 @@
-import Loading from '../Loading';
 import { useRecoilValue } from 'recoil';
 import { useLoadLetters } from './useLoadLetters';
 import { gameWords } from './recoil';
 import { useLoadWords } from './useLoadWords';
 import FirebaseSyncer from './FirebaseSyncer';
 import LocalStorageSyncer from './LocalStorageSyncer';
+import { Loader } from '../spa-components/Loader';
 
 type Props = {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ const GameLoader = ({ children }: Props) => {
   const words = useRecoilValue(gameWords);
 
   if (!words.length) {
-    return <Loading />;
+    return <Loader />;
   }
 
   if (loadLettersError) {

@@ -3,10 +3,10 @@ import { useSetRecoilState } from 'recoil';
 import { jsonFetch } from '../api';
 import { gameWords } from './recoil';
 import { useLetters } from './useLetters';
-import { useLang } from '../LanguageSelector';
+import { useParams } from 'react-router';
 
 export const useLoadWords = () => {
-  const lang = useLang();
+  const { lang } = useParams();
   const { all, centerLetter } = useLetters();
 
   const setWords = useSetRecoilState(gameWords);

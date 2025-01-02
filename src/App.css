@@ -22,7 +22,13 @@
 
   --dim: opacity(50%);
 
-  --link-color: rgb(214, 175, 0);
+  --theme-color: #ffc400;
+  --language-link-color: #ffc400;
+  --link-color: #e6c510;
+  --header-background-color: #000;
+  --header-foreground-color: var(--theme-color);
+  --header-button-color: var(--theme-color);
+  --header-shadow-color: var(--theme-color);
 }
 
 @media (pointer: coarse) {
@@ -40,7 +46,7 @@
     --letter-button-border: #999a;
     --letter-button-background-hover: #333a;
     --dim2: brightness(50%);
-    --link-color: rgb(255, 212, 19);
+    --link-color: #ffd413;
   }
 }
 
@@ -55,7 +61,7 @@ body {
 
 button,
 a {
-  transition: all 0.25s;
+  transition: background-color 0.25s;
 }
 
 a:link,

@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import ErrorMessage from "./ErrorMessage";
-import { BadGuess } from "../Hive";
-import classes from "./Messages.module.css";
-import isPangram from "../../isPangram";
-import scoreWord from "../../score";
-import { NewWordInfo, useNewWordFound } from "../../custom-events";
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import ErrorMessage from './ErrorMessage';
+import { BadGuess } from '../Hive';
+import classes from './Messages.module.css';
+import isPangram from '../../isPangram';
+import scoreWord from '../../score';
+import { NewWordInfo, useNewWordFound } from '../../custom-events';
 
 type FoundWord = {
   points: number;
@@ -27,7 +27,7 @@ const isPangramMessage = (obj: unknown): obj is PangramMessage => {
 
 const Messages = () => {
   const [displayedMessage, setDisplayedMessage] = useState<MessageType>();
-  const timerIdRef = useRef<NodeJS.Timeout | null>();
+  const timerIdRef = useRef<ReturnType<typeof setTimeout> | null>();
 
   const showMessage = useCallback(
     (msg: MessageType) => {
@@ -46,7 +46,7 @@ const Messages = () => {
         timerIdRef.current = null;
       }, 2500);
     },
-    [timerIdRef, setDisplayedMessage]
+    [timerIdRef, setDisplayedMessage],
   );
 
   const onBadGuess = useCallback(
@@ -54,12 +54,12 @@ const Messages = () => {
       const badGuess = (e as CustomEvent<string>).detail as BadGuess;
       showMessage(badGuess);
     },
-    [showMessage]
+    [showMessage],
   );
 
   const onWordFound = useCallback(
     ({ word, source }: NewWordInfo) => {
-      if (source !== "local") {
+      if (source !== 'local') {
         return;
       }
 
@@ -69,13 +69,13 @@ const Messages = () => {
         showMessage({ points: scoreWord(word) });
       }
     },
-    [showMessage]
+    [showMessage],
   );
 
   useEffect(() => {
-    window.addEventListener("bad-guess", onBadGuess);
+    window.addEventListener('bad-guess', onBadGuess);
     return () => {
-      window.removeEventListener("bad-guess", onBadGuess);
+      window.removeEventListener('bad-guess', onBadGuess);
     };
   }, [onBadGuess]);
 

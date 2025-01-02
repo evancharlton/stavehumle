@@ -1,14 +1,13 @@
 import { useCallback, useMemo, useState } from 'react';
 import { MdToday as CalendarIcon } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router';
 import Modal from '../../Modal';
 import headerClasses from '../HeaderButton.module.css';
 import DatePicker from './DatePicker';
 import { useGameId } from '../../hooks';
-import { useLang } from '../../LanguageSelector';
 
 const CalendarButton = () => {
-  const lang = useLang();
+  const { lang } = useParams();
   const navigate = useNavigate();
   const [showing, setShowing] = useState(false);
   const { gameId } = useGameId();

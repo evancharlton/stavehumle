@@ -1,9 +1,9 @@
 import { useRecoilValue } from 'recoil';
 import { gamePuzzleId } from './recoil';
-import { useLang } from '../LanguageSelector';
+import { useParams } from 'react-router';
 
 export const usePuzzlePath = (key: string = 'saved') => {
-  const lang = useLang();
+  const { lang } = useParams();
   const puzzleId = useRecoilValue(gamePuzzleId);
   return ['stavehumle', lang, key, puzzleId].join('/');
 };

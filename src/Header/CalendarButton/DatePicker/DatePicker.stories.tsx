@@ -1,6 +1,6 @@
 import DatePicker, { Props } from './DatePicker';
 import { action } from '@storybook/addon-actions';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router';
 
 const info = {
   title: 'Hive / Header / CalendarButton / DatePicker',

@@ -3,12 +3,12 @@ import { useSetRecoilState } from 'recoil';
 import { jsonFetch } from '../api';
 import { useGameId } from '../hooks';
 import { gamePuzzleId } from './recoil';
-import { useLang } from '../LanguageSelector';
+import { useParams } from 'react-router';
 
 type OuterLetters = [string, string, string, string, string, string];
 
 export const useLoadLetters = () => {
-  const lang = useLang();
+  const { lang } = useParams();
   const { gameHash } = useGameId();
   const [error, setError] = useState<Error | undefined>();
   const setPuzzleId = useSetRecoilState(gamePuzzleId);

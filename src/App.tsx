@@ -1,55 +1,70 @@
 import './App.css';
-import { HashRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, Outlet } from 'react-router';
 import { lazy, Suspense } from 'react';
-import Loading from './Loading';
+import PwaContainer from './spa-components/PwaContainer';
+import { Loader } from './spa-components/Loader';
 
 const LazyGameLoader = lazy(() => import('./GameLoader'));
 const LazyHive = lazy(() => import('./Hive'));
-const LazyLanguageSelector = lazy(() => import('./LanguageSelector'));
+const LazyLanguageSelector = lazy(
+  () => import('./spa-components/LanguageSelector'),
+);
 const LazyPage = lazy(() => import('./Page'));
 
 const App = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<LazyPage />}>
-        <Route
-          path=""
-          element={
-            <Suspense fallback={<Loading />}>
-              <LazyLanguageSelector />
-            </Suspense>
-          }
-        />
-        <Route
-          path=":lang"
-          element={
-            <Suspense fallback={<Loading />}>
-              <LazyGameLoader>
-                <Outlet />
-              </LazyGameLoader>
-            </Suspense>
-          }
-        >
+  <PwaContainer>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LazyPage />}>
           <Route
             path=""
             element={
-              <Suspense fallback={<Loading />}>
-                <LazyHive />
+              <Suspense fallback={<Loader />}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                    flex: 1,
+                  }}
+                >
+                  <LazyLanguageSelector />
+                </div>
               </Suspense>
             }
           />
           <Route
-            path=":gameId"
+            path=":lang"
             element={
-              <Suspense fallback={<Loading />}>
-                <LazyHive />
+              <Suspense fallback={<Loader />}>
+                <LazyGameLoader>
+                  <Outlet />
+                </LazyGameLoader>
               </Suspense>
             }
-          />
+          >
+            <Route
+              path=""
+              element={
+                <Suspense fallback={<Loader />}>
+                  <LazyHive />
+                </Suspense>
+              }
+            />
+            <Route
+              path=":gameId"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <LazyHive />
+                </Suspense>
+              }
+            />
+          </Route>
         </Route>
-      </Route>
-    </Routes>
-  </Router>
+      </Routes>
+    </Router>
+  </PwaContainer>
 );
 
 export default App;

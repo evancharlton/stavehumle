@@ -1,7 +1,10 @@
 .column {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  align-self: stretch;
+
+  margin-top: 8px;
+  margin-bottom: 8px;
   width: 400px;
 
   margin-right: 100px;
