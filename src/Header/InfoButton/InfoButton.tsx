@@ -60,7 +60,14 @@ const InfoButton = () => {
           </p>
           <p>Lykke til!</p>
           <hr />
-          <p>
+          <p
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 4,
+              alignItems: 'center',
+            }}
+          >
             <Icon size={20} /> fra{' '}
             <a
               href="https://linkedin.com/in/baharshahriari/"
