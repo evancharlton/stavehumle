@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { MdInfoOutline as InfoIcon } from 'react-icons/md';
 import headerClasses from '../HeaderButton.module.css';
-import Icon from '../../Humle';
 import { Modal } from '../../spa-components/Modal';
 import classes from './InfoButton.module.css';
 
@@ -68,9 +67,10 @@ const InfoButton = () => {
               alignItems: 'center',
             }}
           >
-            <Icon size={20} /> fra{' '}
+            <img src="/logo.svg" alt="Stavehumle ikon (en bie)" height="20" />{' '}
+            fra{' '}
             <a
-              href="https://linkedin.com/in/baharshahriari/"
+              href="https://www.linkedin.com/in/baharanvari/"
               target="_blank"
               rel="noopener noreferrer"
             >
