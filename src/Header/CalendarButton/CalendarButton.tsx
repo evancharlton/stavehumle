@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { MdToday as CalendarIcon } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router';
 import headerClasses from '../HeaderButton.module.css';
@@ -34,7 +34,9 @@ const CalendarButton = () => {
         <CalendarIcon />
       </button>
       <Modal open={showing} title="Velg dato" onClose={() => setShowing(false)}>
-        <DatePicker onChange={onNewDatePicked} gameId={gameId} />
+        <div style={{ width: 'min-content', margin: '0 auto' }}>
+          <DatePicker onChange={onNewDatePicked} gameId={gameId} />
+        </div>
       </Modal>
     </>
   );
