@@ -17,4 +17,10 @@ do
   "logo.svg"
 done
 
-cp "./logo.svg" "src/logo.svg"
+cp \
+  "./logo.svg" \
+  "src/logo.svg"
+
+cp \
+  "./logo.svg" \
+  "public/logo.svg"

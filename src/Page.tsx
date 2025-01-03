@@ -12,12 +12,10 @@ const Page = () => {
   return (
     <div className={classes.container}>
       <RecoilRoot key={[lang ?? '<lang>', gameHash ?? '<game-hash>'].join('/')}>
-        <Header title="Stavehumle" logo="/logo.svg">
-          <>
-            {lang && <CalendarButton />}
-            {lang && <UserDialog />}
-            <InfoButton />
-          </>
+        <Header title="Stavehumle" logo="/logo.svg" className={classes.header}>
+          {lang && <CalendarButton />}
+          {lang && <UserDialog />}
+          <InfoButton />
         </Header>
         <Outlet />
       </RecoilRoot>
