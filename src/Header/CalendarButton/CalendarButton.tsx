@@ -1,10 +1,10 @@
 import { useCallback, useMemo, useState } from 'react';
 import { MdToday as CalendarIcon } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router';
-import Modal from '../../Modal';
 import headerClasses from '../HeaderButton.module.css';
 import DatePicker from './DatePicker';
 import { useGameId } from '../../hooks';
+import { Modal } from '../../spa-components/Modal';
 
 const CalendarButton = () => {
   const { lang } = useParams();
@@ -24,17 +24,6 @@ const CalendarButton = () => {
     [onClose, navigate, lang],
   );
 
-  const modal = useMemo(() => {
-    if (!showing) {
-      return null;
-    }
-    return (
-      <Modal title="Velg dato" onClose={() => setShowing(false)}>
-        <DatePicker onChange={onNewDatePicked} gameId={gameId} />
-      </Modal>
-    );
-  }, [showing, setShowing, onNewDatePicked, gameId]);
-
   return (
     <>
       <button
@@ -44,7 +33,9 @@ const CalendarButton = () => {
       >
         <CalendarIcon />
       </button>
-      {modal}
+      <Modal open={showing} title="Velg dato" onClose={() => setShowing(false)}>
+        <DatePicker onChange={onNewDatePicked} gameId={gameId} />
+      </Modal>
     </>
   );
 };

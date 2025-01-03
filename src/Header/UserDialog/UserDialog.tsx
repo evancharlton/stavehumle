@@ -1,12 +1,11 @@
-import Modal from '../../Modal';
 import { useCallback, useMemo, useState } from 'react';
-import ReactDOM from 'react-dom';
 import { BiUserCircle as AvatarIcon } from 'react-icons/bi';
 import { FaGoogle as GoogleIcon, FaGithub as GithubIcon } from 'react-icons/fa';
 import firebase, { useLogin } from '../../sync';
 import classes from './UserDialog.module.css';
 import headerClasses from '../HeaderButton.module.css';
 import DeleteAccountButton from './DeleteAccountButton';
+import { Modal } from '../../spa-components/Modal';
 
 // This takes some more work; flag it out for now
 const ENABLE_DELETE_ACCOUNT = false;
@@ -120,13 +119,12 @@ const UserDialog = () => {
     }
 
     return (
-      <Modal title={title} onClose={onClose}>
+      <Modal open={showing} title={title} onClose={onClose}>
         {content}
       </Modal>
     );
   }, [showing, onClose, userId, signingIn, performLogin, eraseEverything]);
 
-  const portal = ReactDOM.createPortal(modal, document.body);
   return (
     <>
       <button
@@ -135,7 +133,7 @@ const UserDialog = () => {
       >
         <AvatarIcon />
       </button>
-      {portal}
+      {modal}
     </>
   );
 };

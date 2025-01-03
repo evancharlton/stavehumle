@@ -1,13 +1,13 @@
-import Modal from '../../../../Modal';
 import { ReactNode, useMemo, useState } from 'react';
 import { MdCheck as Reveal } from 'react-icons/md';
 import { useFoundWords, useLetters, useWords } from '../../../../GameLoader';
 import { useRevealWords } from '../../../useRevealed';
 import classes from './RevealButton.module.css';
+import { Modal } from '../../../../spa-components/Modal';
 
 const RevealButton = () => {
   const { revealAnswers } = useRevealWords();
-  const [prompting, setPrompting] = useState(false);
+  const [showing, setShowing] = useState(false);
   const { found: foundWords, revealedWords } = useFoundWords();
   const { words: allWords } = useWords();
   const { all } = useLetters();
@@ -26,7 +26,7 @@ const RevealButton = () => {
   );
 
   const modal = useMemo(() => {
-    if (!prompting) {
+    if (!showing) {
       return null;
     }
 
@@ -44,7 +44,7 @@ const RevealButton = () => {
           disabled={!remainingWords.some((word) => word.length === i)}
           onClick={() => {
             revealAnswers({ which: 'length', length: i });
-            setPrompting(false);
+            setShowing(false);
           }}
         >
           {i}
@@ -59,7 +59,7 @@ const RevealButton = () => {
           disabled={!remainingWords.some((word) => word[0] === letter)}
           onClick={() => {
             revealAnswers({ which: 'letter', letter });
-            setPrompting(false);
+            setShowing(false);
           }}
         >
           {letter}
@@ -75,7 +75,7 @@ const RevealButton = () => {
             disabled={count === 0}
             onClick={() => {
               revealAnswers({ which: 'letter-length', length: i, letter });
-              setPrompting(false);
+              setShowing(false);
             }}
           >
             {count}
@@ -85,7 +85,11 @@ const RevealButton = () => {
     }
 
     return (
-      <Modal title="Er du ferdig?" onClose={() => setPrompting(false)}>
+      <Modal
+        open={showing}
+        title="Er du ferdig?"
+        onClose={() => setShowing(false)}
+      >
         <h2>Avdekke alle ordene?</h2>
         <p>
           Når du er ferdig, kan du vise alle ordene. Du har{' '}
@@ -103,7 +107,7 @@ const RevealButton = () => {
           <button
             onClick={() => {
               revealAnswers({ which: 'all' });
-              setPrompting(false);
+              setShowing(false);
             }}
           >
             Jeg er helt ferdig!
@@ -116,7 +120,7 @@ const RevealButton = () => {
       </Modal>
     );
   }, [
-    prompting,
+    showing,
     revealedWords,
     allWords,
     longest,
@@ -130,7 +134,7 @@ const RevealButton = () => {
     <>
       <button
         className={classes.reveal}
-        onClick={() => setPrompting(true)}
+        onClick={() => setShowing(true)}
         aria-label="Avdekke ordene"
       >
         <Reveal />

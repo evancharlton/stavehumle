@@ -1,0 +1,14 @@
+.modal {
+  hr {
+    border: 1px solid #9996;
+    width: 90%;
+  }
+
+  p:last-child {
+    margin-bottom: 10px;
+  }
+
+  button {
+    border: 0;
+  }
+}

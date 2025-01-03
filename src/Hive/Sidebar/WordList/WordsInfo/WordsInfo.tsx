@@ -1,19 +1,27 @@
-import classes from "./WordsInfo.module.css";
-import { useMemo, useState } from "react";
-import { MdHelpOutline as HelpIcon } from "react-icons/md";
-import Modal from "../../../../Modal";
+import classes from './WordsInfo.module.css';
+import { useState } from 'react';
+import { MdHelpOutline as HelpIcon } from 'react-icons/md';
+import { Modal } from '../../../../spa-components/Modal';
 
 const WordsInfo = () => {
   const [showing, setShowing] = useState(false);
 
-  const modal = useMemo(() => {
-    if (!showing) {
-      return false;
-    }
-    return (
-      <Modal title="«Hva er disse ordene?»" onClose={() => setShowing(false)}>
+  return (
+    <>
+      <button
+        onClick={() => setShowing(true)}
+        className={classes.button}
+        aria-label="funnet ord hjelp"
+      >
+        <HelpIcon />
+      </button>
+      <Modal
+        open={showing}
+        title="«Hva er disse ordene?»"
+        onClose={() => setShowing(false)}
+      >
         <p>
-          Ordene som brukes her kommer fra den{" "}
+          Ordene som brukes her kommer fra den{' '}
           <a
             href="https://www.nb.no/sprakbanken/ressurskatalog/oai-nb-no-sbr-5/"
             target="_blank"
@@ -31,23 +39,10 @@ const WordsInfo = () => {
             rel="noopener noreferrer"
           >
             Skriv en e-post
-          </a>{" "}
+          </a>{' '}
           hvis du finner et galt ord 😀
         </p>
       </Modal>
-    );
-  }, [showing]);
-
-  return (
-    <>
-      <button
-        onClick={() => setShowing(true)}
-        className={classes.button}
-        aria-label="funnet ord hjelp"
-      >
-        <HelpIcon />
-      </button>
-      {modal}
     </>
   );
 };
