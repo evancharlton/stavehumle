@@ -78,7 +78,6 @@ const Buttons = () => {
     (event: React.MouseEvent<HTMLElement>) => {
       const button = event.currentTarget;
       const letter = button.getAttribute('data-letter');
-      alert(letter);
       setGuess((g) => `${g}${letter}`);
     },
     [setGuess],
