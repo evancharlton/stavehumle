@@ -36,7 +36,7 @@ export const HamburgerMenu = () => {
       />
       <ShareDialog
         url={useCurrentUrl()}
-        shareText="Prøve å finne alle ord i idags bikuben!"
+        shareText="Prøve å finne alle ordene i idags bikuben!"
         open={share.open}
         onClose={() => share.hide()}
       />
