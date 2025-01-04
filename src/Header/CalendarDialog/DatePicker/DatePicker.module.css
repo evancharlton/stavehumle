@@ -11,6 +11,7 @@
 
   border: 0;
   background-color: transparent;
+  border-radius: 4px;
 
   display: flex;
   align-items: center;
@@ -30,9 +31,12 @@
 }
 
 .dateButton {
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   background-color: transparent;
   color: currentColor;
+  border-radius: 4px;
+  transition: filter 0.25s;
+  transition: border-color 0.25s;
 }
 
 .dateButton:hover,
@@ -46,7 +50,7 @@ button.todayButton {
 }
 
 .currentButton {
-  border: 2px solid var(--center-letter-color-hover);
+  border: 2px solid hsl(from var(--center-letter-color) h s calc(l * 0.7));
 }
 
 .dayHeader {

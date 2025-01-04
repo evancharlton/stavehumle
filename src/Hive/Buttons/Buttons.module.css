@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+.stack {
+  display: grid;
+  grid-template-areas: 'cell';
+  justify-content: center;
+  align-items: center;
+}
+
 .guess {
   font-size: 40px;
   font-weight: 700;
@@ -14,47 +21,9 @@
   margin: 16px;
 }
 
-.letterButton {
-  border: 2px solid var(--letter-button-border);
-  background: transparent;
-  text-transform: uppercase;
-  font-size: 16pt;
-  padding: 8px;
-  width: var(--button-diameter);
-  height: var(--button-diameter);
-  margin: 4px;
-  border-radius: 50%;
-  cursor: pointer;
-  color: currentColor;
-}
-
-.letterButton:hover,
-.letterButton:focus-visible,
-.letterButton:active {
-  background-color: var(--letter-button-background-hover);
-  color: var(--letter-button-color-hover);
-}
-
 .container button:disabled {
   cursor: not-allowed !important;
   filter: grayscale(100) !important;
-}
-
-.centerLetter {
-  font-weight: 700;
-  background-color: var(--center-letter-color);
-  color: #000;
-}
-
-.centerLetter:hover,
-.centerLetter:focus-visible,
-.centerLetter:active {
-  background-color: var(--center-letter-color-hover);
-  color: #000;
-}
-
-.letterButtons {
-  text-align: center;
 }
 
 .controls {
@@ -65,8 +34,8 @@
 }
 
 .controls button {
-  color: rgba(var(--text-color-rgb), 10);
-  border: 1px solid rgba(var(--subtle-border-rgb), 10);
+  color: rgba(from var(--text-color) r g b / 0.6);
+  border: 1px solid rgba(from var(--subtle-border) r g b / 0.6);
   font-size: 16pt;
   margin: 16px;
   border-radius: 10px;
@@ -82,4 +51,44 @@
 .controls button:focus-visible {
   color: currentColor;
   border-color: currentColor;
+}
+
+.honeycomb {
+  a {
+    text-decoration: none;
+
+    text {
+      text-anchor: middle;
+      dominant-baseline: central;
+      font-size: 0.5em;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      fill: var(--text-color);
+    }
+
+    path {
+      transition: filter 0.25s;
+      fill: var(--background-color);
+      stroke: #333;
+      stroke-width: 1;
+    }
+  }
+
+  a:hover,
+  a:focus-visible {
+    path {
+      filter: brightness(90%);
+    }
+  }
+
+  .center {
+    path {
+      fill: var(--center-letter-color);
+    }
+
+    text {
+      fill: #000;
+    }
+  }
 }

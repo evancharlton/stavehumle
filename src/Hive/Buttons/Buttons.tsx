@@ -4,40 +4,55 @@ import {
   MdKeyboardReturn as Enter,
 } from 'react-icons/md';
 import classes from './Buttons.module.css';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { SVGProps, useCallback, useEffect, useRef, useState } from 'react';
 import { useLetters } from '../../GameLoader';
 import { useGame } from '../hooks';
 import useShuffledLetters from './useShuffledLetters';
 
-type ButtonProps = JSX.IntrinsicElements['button'];
+const L = 15;
+const W = 100;
 
-type LetterButtonProps = {
-  letter: string;
-  onClick: ButtonProps['onClick'];
-  disabled: ButtonProps['disabled'];
-} & JSX.IntrinsicElements['button'];
+const dx = L * Math.sin(60 * (Math.PI / 180));
+const dy = L * Math.sin(30 * (Math.PI / 180));
 
-const LetterButton = ({
-  letter,
-  className,
+const Hexagon = ({
+  x,
+  y,
   onClick,
-  ...rest
-}: LetterButtonProps) => {
+  letter,
+  ...props
+}: { x: number; y: number; letter: string } & Required<
+  Pick<SVGProps<HTMLAnchorElement>, 'onClick'>
+> &
+  Omit<SVGProps<HTMLAnchorElement>, 'onClick'>) => {
+  const hexagon = useCallback((x: number, y: number) => {
+    return [
+      `M ${x},${y - (L / 2 + dy)}`,
+      `l ${dx},${dy}`,
+      `l ${0},${L}`,
+      `l ${-dx},${dy}`,
+      `l ${-dx},${-dy}`,
+      `l ${0},${-L}`,
+      `Z`,
+    ].join(' ');
+  }, []);
   return (
-    <button
+    <a
       data-letter={letter}
-      className={[classes.letterButton, className].filter(Boolean).join(' ')}
-      {...rest}
-      onMouseUp={onClick}
+      href={window.location.href}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick?.(e);
+      }}
+      {...props}
     >
-      {letter}
-    </button>
+      <path d={hexagon(x, y)} />
+      <text x={x} y={y}>
+        {letter}
+      </text>
+    </a>
   );
 };
-
-const CenterLetterButton = (props: LetterButtonProps) => (
-  <LetterButton {...props} className={classes.centerLetter} />
-);
 
 const Buttons = () => {
   const { onGuess } = useGame();
@@ -60,9 +75,10 @@ const Buttons = () => {
   }, [onGuess, guessRef]);
 
   const onLetterClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (event: React.MouseEvent<HTMLElement>) => {
       const button = event.currentTarget;
       const letter = button.getAttribute('data-letter');
+      alert(letter);
       setGuess((g) => `${g}${letter}`);
     },
     [setGuess],
@@ -110,48 +126,56 @@ const Buttons = () => {
   return (
     <div className={classes.container}>
       <div className={classes.guess}>{guess || <>&nbsp;</>}</div>
-      <div className={classes.letterButtons}>
-        <div className={classes.topRow}>
-          <LetterButton
-            disabled={false}
-            onClick={onLetterClick}
-            letter={shuffled[0]}
-          />
-          <LetterButton
-            disabled={false}
-            onClick={onLetterClick}
-            letter={shuffled[1]}
-          />
-        </div>
-        <div className={classes.middleRow}>
-          <LetterButton
-            disabled={false}
-            onClick={onLetterClick}
-            letter={shuffled[2]}
-          />
-          <CenterLetterButton
-            disabled={false}
-            onClick={onLetterClick}
+      <div className={classes.stack}>
+        <svg
+          className={classes.honeycomb}
+          style={{ gridArea: 'cell', minWidth: 400 }}
+          viewBox={`0 0 ${W} ${W}`}
+        >
+          <Hexagon
             letter={centerLetter}
-          />
-          <LetterButton
-            disabled={false}
             onClick={onLetterClick}
+            x={W / 2}
+            y={W / 2}
+            className={classes.center}
+          />
+          <Hexagon
+            letter={shuffled[0]}
+            onClick={onLetterClick}
+            x={W / 2 - dx}
+            y={W / 2 - (L / 2 + dy + L / 2)}
+          />
+          <Hexagon
+            letter={shuffled[1]}
+            onClick={onLetterClick}
+            x={W / 2 + dx}
+            y={W / 2 - (L / 2 + dy + L / 2)}
+          />
+          <Hexagon
+            letter={shuffled[2]}
+            onClick={onLetterClick}
+            x={W / 2 - (dx + dx)}
+            y={W / 2}
+          />
+          <Hexagon
             letter={shuffled[3]}
-          />
-        </div>
-        <div className={classes.bottomRow}>
-          <LetterButton
-            disabled={false}
             onClick={onLetterClick}
+            x={W / 2 + (dx + dx)}
+            y={W / 2}
+          />
+          <Hexagon
             letter={shuffled[4]}
-          />
-          <LetterButton
-            disabled={false}
             onClick={onLetterClick}
-            letter={shuffled[5]}
+            x={W / 2 - dx}
+            y={W / 2 + (L / 2 + dy + L / 2)}
           />
-        </div>
+          <Hexagon
+            letter={shuffled[5]}
+            onClick={onLetterClick}
+            x={W / 2 + dx}
+            y={W / 2 + (L / 2 + dy + L / 2)}
+          />
+        </svg>
       </div>
       <div className={classes.controls}>
         <button onClick={onBackspace} aria-label="baksiden">
@@ -160,7 +184,7 @@ const Buttons = () => {
         <button onClick={reshuffle} aria-label="tilfeldig rekkefølge">
           <Shuffle />
         </button>
-        <button onClick={makeGuess} aria-label="sende inn">
+        <button onClick={makeGuess} aria-label="send inn">
           <Enter />
         </button>
       </div>
