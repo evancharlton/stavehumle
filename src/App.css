@@ -59,6 +59,10 @@ body {
   color: var(--text-color);
 }
 
+button {
+  border: 0;
+}
+
 button,
 a {
   transition: background-color 0.25s;

@@ -2,8 +2,8 @@ import Buttons from './Buttons';
 import Messages from './Messages';
 import classes from './Hive.module.css';
 import Sidebar from './Sidebar';
-import { ButtonsPortal } from '../spa-components/Header';
-import CalendarButton from '../Header/CalendarButton';
+import { HamburgerMenu } from './HamburgerMenu';
+import CalendarDialog from '../Header/CalendarDialog';
 import UserDialog from '../Header/UserDialog';
 
 export type BadGuess =
@@ -17,10 +17,6 @@ export type BadGuess =
 const Hive = () => {
   return (
     <>
-      <ButtonsPortal>
-        <CalendarButton />
-        <UserDialog />
-      </ButtonsPortal>
       <div className={classes.gameContainer}>
         <div className={classes.buttonsContainer}>
           <Messages />
@@ -28,6 +24,9 @@ const Hive = () => {
         </div>
         <Sidebar />
       </div>
+      <HamburgerMenu />
+      <CalendarDialog />
+      <UserDialog />
     </>
   );
 };
