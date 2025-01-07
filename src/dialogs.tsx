@@ -1,11 +1,11 @@
-import { useCallback } from 'react';
-import { atom, useRecoilState, useSetRecoilState } from 'recoil';
+import { useCallback } from "react";
+import { atom, useRecoilState, useSetRecoilState } from "recoil";
 
-type DialogKind = 'hamburger' | 'about' | 'date' | 'account' | 'share';
+type DialogKind = "hamburger" | "about" | "date" | "account" | "share";
 
-const dialog = atom<DialogKind | ''>({
-  key: 'ui/dialog',
-  default: '',
+const dialog = atom<DialogKind | "">({
+  key: "ui/dialog",
+  default: "",
 });
 
 export const useShowDialog = () => {
@@ -23,7 +23,7 @@ export const useDialog = (which: DialogKind) => {
           if (v !== which) {
             return v;
           }
-          return '';
+          return "";
         }),
       [which, setDialog],
     ),

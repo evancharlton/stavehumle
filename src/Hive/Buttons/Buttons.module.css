@@ -4,7 +4,7 @@
 
 .stack {
   display: grid;
-  grid-template-areas: 'cell';
+  grid-template-areas: "cell";
   justify-content: center;
   align-items: center;
 }

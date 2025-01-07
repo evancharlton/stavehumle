@@ -1,9 +1,9 @@
-import { ReactNode, useMemo, useState } from 'react';
-import { MdCheck as Reveal } from 'react-icons/md';
-import { useFoundWords, useLetters, useWords } from '../../../../GameLoader';
-import { useRevealWords } from '../../../useRevealed';
-import classes from './RevealButton.module.css';
-import { Modal } from '../../../../spa-components/Modal';
+import { ReactNode, useMemo, useState } from "react";
+import { MdCheck as Reveal } from "react-icons/md";
+import { useFoundWords, useLetters, useWords } from "../../../../GameLoader";
+import { useRevealWords } from "../../../useRevealed";
+import classes from "./RevealButton.module.css";
+import { Modal } from "../../../../spa-components/Modal";
 
 const RevealButton = () => {
   const { revealAnswers } = useRevealWords();
@@ -43,7 +43,7 @@ const RevealButton = () => {
           key={`length-${i}`}
           disabled={!remainingWords.some((word) => word.length === i)}
           onClick={() => {
-            revealAnswers({ which: 'length', length: i });
+            revealAnswers({ which: "length", length: i });
             setShowing(false);
           }}
         >
@@ -58,7 +58,7 @@ const RevealButton = () => {
           key={`letter-${letter}`}
           disabled={!remainingWords.some((word) => word[0] === letter)}
           onClick={() => {
-            revealAnswers({ which: 'letter', letter });
+            revealAnswers({ which: "letter", letter });
             setShowing(false);
           }}
         >
@@ -74,7 +74,7 @@ const RevealButton = () => {
             key={`letter-length-${letter}-${i}`}
             disabled={count === 0}
             onClick={() => {
-              revealAnswers({ which: 'letter-length', length: i, letter });
+              revealAnswers({ which: "letter-length", length: i, letter });
               setShowing(false);
             }}
           >
@@ -92,7 +92,7 @@ const RevealButton = () => {
       >
         <h2>Avdekke alle ordene?</h2>
         <p>
-          Når du er ferdig, kan du vise alle ordene. Du har{' '}
+          Når du er ferdig, kan du vise alle ordene. Du har{" "}
           {remainingWords.length} ord som gjenstår!
         </p>
         <div className={classes.revealContainer}>
@@ -106,7 +106,7 @@ const RevealButton = () => {
           </div>
           <button
             onClick={() => {
-              revealAnswers({ which: 'all' });
+              revealAnswers({ which: "all" });
               setShowing(false);
             }}
           >
@@ -114,7 +114,7 @@ const RevealButton = () => {
           </button>
         </div>
         <p>
-          Hvis du vil forsette å søke, klikk på <strong>«Lukk»</strong>{' '}
+          Hvis du vil forsette å søke, klikk på <strong>«Lukk»</strong>{" "}
           nedenfor.
         </p>
       </Modal>

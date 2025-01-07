@@ -1,15 +1,15 @@
-import './App.css';
-import { HashRouter as Router, Route, Routes, Outlet } from 'react-router';
-import { lazy, Suspense } from 'react';
-import PwaContainer from './spa-components/PwaContainer';
-import { Loader } from './spa-components/Loader';
+import "./App.css";
+import { HashRouter as Router, Route, Routes, Outlet } from "react-router";
+import { lazy, Suspense } from "react";
+import PwaContainer from "./spa-components/PwaContainer";
+import { Loader } from "./spa-components/Loader";
 
-const LazyGameLoader = lazy(() => import('./GameLoader'));
-const LazyHive = lazy(() => import('./Hive'));
+const LazyGameLoader = lazy(() => import("./GameLoader"));
+const LazyHive = lazy(() => import("./Hive"));
 const LazyLanguageSelector = lazy(
-  () => import('./spa-components/LanguageSelector'),
+  () => import("./spa-components/LanguageSelector"),
 );
-const LazyPage = lazy(() => import('./Page'));
+const LazyPage = lazy(() => import("./Page"));
 
 const App = () => (
   <PwaContainer appId="stavehumle">
@@ -22,10 +22,10 @@ const App = () => (
               <Suspense fallback={<Loader />}>
                 <div
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexDirection: 'column',
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexDirection: "column",
                     flex: 1,
                   }}
                 >

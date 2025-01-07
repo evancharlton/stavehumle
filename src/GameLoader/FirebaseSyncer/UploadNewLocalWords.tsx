@@ -21,7 +21,7 @@ const UploadNewLocalWords = ({ children, node }: Props) => {
           [word]: when,
         });
     },
-    [node]
+    [node],
   );
 
   useNewWordFound(onWordFound);

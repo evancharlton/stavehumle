@@ -1,15 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-const FOUND_WORD = 'found-word';
+const FOUND_WORD = "found-word";
 
 export type NewWordInfo = {
   word: string;
   when: Date;
-  source: 'local' | 'remote';
+  source: "local" | "remote";
 };
 
 export class FoundWordEvent extends CustomEvent<NewWordInfo> {
-  constructor(word: string, when: Date, source: NewWordInfo['source']) {
+  constructor(word: string, when: Date, source: NewWordInfo["source"]) {
     super(FOUND_WORD, {
       detail: { word, when, source },
     });

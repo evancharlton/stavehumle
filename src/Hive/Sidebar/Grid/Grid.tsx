@@ -25,7 +25,7 @@ const Grid = () => {
 
     const foundLookup: Record<string, true> = foundWords.reduce(
       (acc, word) => ({ ...acc, [word]: true }),
-      {}
+      {},
     );
 
     return allWords.filter((word) => !foundLookup[word]);
@@ -35,7 +35,7 @@ const Grid = () => {
     ([min, max], word) => {
       return [Math.min(min, word.length), Math.max(max, word.length)];
     },
-    [1000, 3]
+    [1000, 3],
   );
 
   return (
@@ -46,7 +46,7 @@ const Grid = () => {
           className={cls(
             classes.mode,
             classes.found,
-            mode === "found" && classes.active
+            mode === "found" && classes.active,
           )}
         >
           Funnet
@@ -56,7 +56,7 @@ const Grid = () => {
           className={cls(
             classes.mode,
             classes.remaining,
-            mode === "remaining" && classes.active
+            mode === "remaining" && classes.active,
           )}
         >
           Gjenstår
@@ -66,7 +66,7 @@ const Grid = () => {
           className={cls(
             classes.mode,
             classes.all,
-            mode === "all" && classes.active
+            mode === "all" && classes.active,
           )}
         >
           Alt

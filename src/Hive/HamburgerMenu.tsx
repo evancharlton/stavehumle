@@ -3,28 +3,29 @@ import {
   MdLink,
   MdOutlineAccountCircle,
   MdToday,
-} from 'react-icons/md';
+} from "react-icons/md";
 import {
   Action,
   HamburgerMenu as SpaHamburgerMenu,
-} from '../spa-components/HamburgerMenu';
-import { useDialog, useShowDialog } from '../dialogs';
-import { ShareDialog } from '../spa-components/ShareDialog';
-import { useHref, useParams } from 'react-router';
-import { useGameId } from '../hooks';
-import { OtherApps } from '../spa-components/HamburgerMenu/OtherApps';
+} from "../spa-components/HamburgerMenu";
+import { useDialog, useShowDialog } from "../dialogs";
+import { ShareDialog } from "../spa-components/ShareDialog";
+import { useHref, useParams } from "react-router";
+import { useGameId } from "../hooks";
+import { OtherApps } from "../spa-components/HamburgerMenu/OtherApps";
+import { Content } from "../spa-components/HamburgerMenu/Content";
 
 const useCurrentUrl = () => {
   const { lang } = useParams();
   const { gameId } = useGameId();
   const href = useHref(`/${lang}/${gameId}`);
 
-  return [`${window.location.protocol}/`, window.location.host, href].join('/');
+  return [`${window.location.protocol}/`, window.location.host, href].join("/");
 };
 
 export const HamburgerMenu = () => {
-  const { open, hide, show } = useDialog('hamburger');
-  const share = useDialog('share');
+  const { open, hide, show } = useDialog("hamburger");
+  const share = useDialog("share");
 
   const showDialog = useShowDialog();
 
@@ -33,7 +34,7 @@ export const HamburgerMenu = () => {
       <Action
         icon={MdLink}
         text="Del puslespill"
-        onClick={() => showDialog('share')}
+        onClick={() => showDialog("share")}
       />
       <ShareDialog
         url={useCurrentUrl()}
@@ -41,21 +42,21 @@ export const HamburgerMenu = () => {
         open={share.open}
         onClose={() => share.hide()}
       />
-      <div style={{ flex: 1, borderTop: '1px solid #999a' }}></div>
+      <Content />
       <Action
         icon={MdToday}
         text="Velg dato"
-        onClick={() => showDialog('date')}
+        onClick={() => showDialog("date")}
       />
       <Action
         icon={MdOutlineAccountCircle}
         text="Brukerkonto"
-        onClick={() => showDialog('account')}
+        onClick={() => showDialog("account")}
       />
       <Action
         icon={MdInfoOutline}
         text="Om Stavehumle"
-        onClick={() => showDialog('about')}
+        onClick={() => showDialog("about")}
       />
       <OtherApps />
     </SpaHamburgerMenu>

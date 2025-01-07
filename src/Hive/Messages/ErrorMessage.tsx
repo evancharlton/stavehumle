@@ -1,28 +1,28 @@
-import { neverGuard } from '../../neverGuard';
-import { BadGuess } from '../Hive';
+import { neverGuard } from "../../neverGuard";
+import { BadGuess } from "../Hive";
 
 type Props = { reason: BadGuess };
 
 const ErrorMessage = ({ reason }: Props) => {
-  let msg = '';
+  let msg = "";
   switch (reason) {
-    case 'already-found':
-      msg = 'ordet er allerede funnet';
+    case "already-found":
+      msg = "ordet er allerede funnet";
       break;
-    case 'invalid-letters':
-      msg = 'bruker ugyldige bokstaver';
+    case "invalid-letters":
+      msg = "bruker ugyldige bokstaver";
       break;
-    case 'missing-center':
-      msg = 'mangler obligatorisk bokstaven';
+    case "missing-center":
+      msg = "mangler obligatorisk bokstaven";
       break;
-    case 'too-short':
-      msg = 'for kort';
+    case "too-short":
+      msg = "for kort";
       break;
-    case 'unknown-word':
-      msg = 'ukjent ord';
+    case "unknown-word":
+      msg = "ukjent ord";
       break;
-    case 'revealed':
-      msg = 'tidligere avslørt';
+    case "revealed":
+      msg = "tidligere avslørt";
       break;
     default:
       return neverGuard(reason, null);

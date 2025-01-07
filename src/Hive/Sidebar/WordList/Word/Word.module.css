@@ -14,7 +14,7 @@
 }
 
 .pangram::after {
-  content: ' ⭐️';
+  content: " ⭐️";
   text-shadow: 0px 0px 2px var(--pangram-color);
   font-size: 10pt;
 }

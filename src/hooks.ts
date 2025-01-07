@@ -1,6 +1,6 @@
-import { useParams } from 'react-router';
-import hashCode from './hashCode';
-import twoDigits from './twoDigits';
+import { useParams } from "react-router";
+import hashCode from "./hashCode";
+import twoDigits from "./twoDigits";
 
 export const isProbablyDate = (gameId: string) => {
   if (!gameId) {
@@ -34,7 +34,7 @@ export const useGameId = () => {
     const now = new Date();
     gameId = [now.getFullYear(), now.getMonth() + 1, now.getDate()]
       .map(twoDigits)
-      .join('-');
+      .join("-");
   }
 
   const gameHash = hashCode(
@@ -42,7 +42,7 @@ export const useGameId = () => {
     // will only have hashCodes that differ by one value. Instead, we want to
     // put the least-significant bit in the beginning to lead to more entropy.
     // Of course, it's not real entropy but that's not really what we want here.
-    gameId.split('').reverse().join(''),
+    gameId.split("").reverse().join(""),
   );
 
   return { gameId, gameHash };

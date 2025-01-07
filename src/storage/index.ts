@@ -1,1 +1,1 @@
-export * from './getSavedWords';
+export * from "./getSavedWords";

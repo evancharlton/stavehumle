@@ -1,8 +1,8 @@
-import { useRecoilValue } from 'recoil';
-import { gameFoundWords } from './recoil';
-import { useRevealWords } from '../Hive/useRevealed';
-import { useWords } from './useWords';
-import { neverGuard } from '../neverGuard';
+import { useRecoilValue } from "recoil";
+import { gameFoundWords } from "./recoil";
+import { useRevealWords } from "../Hive/useRevealed";
+import { useWords } from "./useWords";
+import { neverGuard } from "../neverGuard";
 
 export const useFoundWords = () => {
   const foundWords = useRecoilValue(gameFoundWords);
@@ -15,16 +15,16 @@ export const useFoundWords = () => {
       return reveals.some((hint) => {
         const which = hint.which;
         switch (which) {
-          case 'all': {
+          case "all": {
             return true;
           }
-          case 'letter': {
+          case "letter": {
             return word[0] === hint.letter;
           }
-          case 'length': {
+          case "length": {
             return word.length === hint.length;
           }
-          case 'letter-length': {
+          case "letter-length": {
             return word[0] === hint.letter && word.length === hint.length;
           }
           default: {

@@ -1,1 +1,1 @@
-export { default } from './GridInfo';
+export { default } from "./GridInfo";

@@ -1,20 +1,20 @@
-import { useMemo, useState } from 'react';
-import classes from './DeleteAccountButton.module.css';
+import { useMemo, useState } from "react";
+import classes from "./DeleteAccountButton.module.css";
 
 type Props = {
   onDelete: () => void;
 };
 
 const DeleteAccountButton = ({ onDelete }: Props) => {
-  const [state, setState] = useState<'initial' | 'confirming'>('initial');
+  const [state, setState] = useState<"initial" | "confirming">("initial");
 
   const contents = useMemo(() => {
-    if (state === 'initial') {
+    if (state === "initial") {
       return (
         <div className={classes.buttons}>
           <button
             className={classes.deleteAccount}
-            onClick={() => setState('confirming')}
+            onClick={() => setState("confirming")}
           >
             Slett kontoen min
           </button>
@@ -22,7 +22,7 @@ const DeleteAccountButton = ({ onDelete }: Props) => {
       );
     }
 
-    if (state === 'confirming') {
+    if (state === "confirming") {
       return (
         <>
           <p>
@@ -32,7 +32,7 @@ const DeleteAccountButton = ({ onDelete }: Props) => {
           <div className={classes.buttons}>
             <button
               className={classes.cancelButton}
-              onClick={() => setState('initial')}
+              onClick={() => setState("initial")}
             >
               Glem det!
             </button>

@@ -2,12 +2,12 @@ import {
   MdKeyboardBackspace as Backspace,
   MdRefresh as Shuffle,
   MdKeyboardReturn as Enter,
-} from 'react-icons/md';
-import classes from './Buttons.module.css';
-import { SVGProps, useCallback, useEffect, useRef, useState } from 'react';
-import { useLetters } from '../../GameLoader';
-import { useGame } from '../hooks';
-import useShuffledLetters from './useShuffledLetters';
+} from "react-icons/md";
+import classes from "./Buttons.module.css";
+import { SVGProps, useCallback, useEffect, useRef, useState } from "react";
+import { useLetters } from "../../GameLoader";
+import { useGame } from "../hooks";
+import useShuffledLetters from "./useShuffledLetters";
 
 const L = 15;
 const W = 100;
@@ -22,9 +22,9 @@ const Hexagon = ({
   letter,
   ...props
 }: { x: number; y: number; letter: string } & Required<
-  Pick<SVGProps<HTMLAnchorElement>, 'onClick'>
+  Pick<SVGProps<HTMLAnchorElement>, "onClick">
 > &
-  Omit<SVGProps<HTMLAnchorElement>, 'onClick'>) => {
+  Omit<SVGProps<HTMLAnchorElement>, "onClick">) => {
   const hexagon = useCallback((x: number, y: number) => {
     return [
       `M ${x},${y - (L / 2 + dy)}`,
@@ -34,7 +34,7 @@ const Hexagon = ({
       `l ${-dx},${-dy}`,
       `l ${0},${-L}`,
       `Z`,
-    ].join(' ');
+    ].join(" ");
   }, []);
   return (
     <a
@@ -58,26 +58,26 @@ const Buttons = () => {
   const { onGuess } = useGame();
 
   const { all, centerLetter, outerLetters } = useLetters();
-  const [guess, setGuess] = useState('');
+  const [guess, setGuess] = useState("");
   const { shuffled, reshuffle } = useShuffledLetters();
 
-  const guessRef = useRef('');
+  const guessRef = useRef("");
   guessRef.current = guess;
 
   useEffect(() => {
-    guessRef.current = '';
-    setGuess('');
+    guessRef.current = "";
+    setGuess("");
   }, [outerLetters, centerLetter]);
 
   const makeGuess = useCallback(() => {
     onGuess(guessRef.current);
-    setGuess('');
+    setGuess("");
   }, [onGuess, guessRef]);
 
   const onLetterClick = useCallback(
     (event: React.MouseEvent<HTMLElement>) => {
       const button = event.currentTarget;
-      const letter = button.getAttribute('data-letter');
+      const letter = button.getAttribute("data-letter");
       setGuess((g) => `${g}${letter}`);
     },
     [setGuess],
@@ -91,18 +91,18 @@ const Buttons = () => {
     (e: KeyboardEvent) => {
       const { key } = e;
 
-      if (key === 'Backspace') {
+      if (key === "Backspace") {
         setGuess((g) => g.substring(0, g.length - 1));
         return;
       }
 
-      if (key === ' ') {
+      if (key === " ") {
         reshuffle();
         e.preventDefault();
         return;
       }
 
-      if (key === 'Enter') {
+      if (key === "Enter") {
         makeGuess();
       }
 
@@ -116,9 +116,9 @@ const Buttons = () => {
   );
 
   useEffect(() => {
-    document.addEventListener('keydown', onKeyPress);
+    document.addEventListener("keydown", onKeyPress);
     return () => {
-      document.removeEventListener('keydown', onKeyPress);
+      document.removeEventListener("keydown", onKeyPress);
     };
   }, [onKeyPress]);
 
@@ -128,7 +128,7 @@ const Buttons = () => {
       <div className={classes.stack}>
         <svg
           className={classes.honeycomb}
-          style={{ gridArea: 'cell', minWidth: 400 }}
+          style={{ gridArea: "cell", minWidth: 400 }}
           viewBox={`0 0 ${W} ${W}`}
         >
           <Hexagon

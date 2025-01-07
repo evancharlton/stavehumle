@@ -1,18 +1,18 @@
-import Buttons from './Buttons';
-import Messages from './Messages';
-import classes from './Hive.module.css';
-import Sidebar from './Sidebar';
-import { HamburgerMenu } from './HamburgerMenu';
-import CalendarDialog from '../Header/CalendarDialog';
-import UserDialog from '../Header/UserDialog';
+import Buttons from "./Buttons";
+import Messages from "./Messages";
+import classes from "./Hive.module.css";
+import Sidebar from "./Sidebar";
+import { HamburgerMenu } from "./HamburgerMenu";
+import CalendarDialog from "../Header/CalendarDialog";
+import UserDialog from "../Header/UserDialog";
 
 export type BadGuess =
-  | 'too-short'
-  | 'missing-center'
-  | 'already-found'
-  | 'unknown-word'
-  | 'revealed'
-  | 'invalid-letters';
+  | "too-short"
+  | "missing-center"
+  | "already-found"
+  | "unknown-word"
+  | "revealed"
+  | "invalid-letters";
 
 const Hive = () => {
   return (

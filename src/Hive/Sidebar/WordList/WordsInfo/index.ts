@@ -1,1 +1,1 @@
-export { default } from './WordsInfo';
+export { default } from "./WordsInfo";

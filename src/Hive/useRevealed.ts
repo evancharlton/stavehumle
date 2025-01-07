@@ -1,20 +1,20 @@
-import { useLetters } from '../GameLoader';
-import { useCallback, useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { wordReveals } from '../GameLoader/recoil';
-import { RevealOption, StoredRevealOptions } from '../GameLoader/types';
-import { usePuzzlePath } from '../GameLoader/usePuzzlePath';
-import { useParams } from 'react-router';
+import { useLetters } from "../GameLoader";
+import { useCallback, useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { wordReveals } from "../GameLoader/recoil";
+import { RevealOption, StoredRevealOptions } from "../GameLoader/types";
+import { usePuzzlePath } from "../GameLoader/usePuzzlePath";
+import { useParams } from "react-router";
 
 export const useRevealed = () => {
   const { lang } = useParams();
   const { centerLetter, outerLetters } = useLetters();
   const key = [
-    'stavehumle',
+    "stavehumle",
     lang,
-    'revealed',
-    [centerLetter, ...outerLetters].join(''),
-  ].join('/');
+    "revealed",
+    [centerLetter, ...outerLetters].join(""),
+  ].join("/");
 
   const [reveals, setReveals] = useState<StoredRevealOptions>([]);
 
@@ -38,7 +38,7 @@ export const useRevealed = () => {
 };
 
 export const useRevealWords = () => {
-  const key = usePuzzlePath('revealed');
+  const key = usePuzzlePath("revealed");
   const [reveals, setReveals] = useRecoilState(wordReveals);
 
   useEffect(() => {

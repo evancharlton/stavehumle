@@ -1,1 +1,1 @@
-export { default } from './LocalStorageSyncer';
+export { default } from "./LocalStorageSyncer";

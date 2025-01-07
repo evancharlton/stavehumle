@@ -1,7 +1,7 @@
-import { FoundWordEvent } from '../custom-events';
-import { useFoundWords, useLetters, useWords } from '../GameLoader';
-import { useCallback, useMemo } from 'react';
-import scoreWord from '../score';
+import { FoundWordEvent } from "../custom-events";
+import { useFoundWords, useLetters, useWords } from "../GameLoader";
+import { useCallback, useMemo } from "react";
+import scoreWord from "../score";
 
 export const useScore = (words: string[]) => {
   const score = useMemo(() => {
@@ -27,47 +27,47 @@ export const useGame = () => {
 
       const word = input
         .toLocaleLowerCase()
-        .split('')
+        .split("")
         .filter((letter) => all.includes(letter))
-        .join('');
+        .join("");
 
       if (word.length !== input.length) {
         dispatchEvent(
-          new CustomEvent('bad-guess', { detail: 'invalid-letters' }),
+          new CustomEvent("bad-guess", { detail: "invalid-letters" }),
         );
         return;
       }
 
       if (word.length < 4) {
-        dispatchEvent(new CustomEvent('bad-guess', { detail: 'too-short' }));
+        dispatchEvent(new CustomEvent("bad-guess", { detail: "too-short" }));
         return;
       }
 
       if (!word.includes(centerLetter)) {
         dispatchEvent(
-          new CustomEvent('bad-guess', { detail: 'missing-center' }),
+          new CustomEvent("bad-guess", { detail: "missing-center" }),
         );
         return;
       }
 
       if (foundWordsMap[word]) {
         dispatchEvent(
-          new CustomEvent('bad-guess', { detail: 'already-found' }),
+          new CustomEvent("bad-guess", { detail: "already-found" }),
         );
         return;
       }
 
       if (revealedWords.includes(word)) {
-        dispatchEvent(new CustomEvent('bad-guess', { detail: 'revealed' }));
+        dispatchEvent(new CustomEvent("bad-guess", { detail: "revealed" }));
         return;
       }
 
       if (!words.includes(word)) {
-        dispatchEvent(new CustomEvent('bad-guess', { detail: 'unknown-word' }));
+        dispatchEvent(new CustomEvent("bad-guess", { detail: "unknown-word" }));
         return;
       }
 
-      dispatchEvent(new FoundWordEvent(word, new Date(), 'local'));
+      dispatchEvent(new FoundWordEvent(word, new Date(), "local"));
     },
     [all, centerLetter, foundWordsMap, revealedWords, words],
   );

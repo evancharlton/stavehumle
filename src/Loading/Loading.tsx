@@ -1,5 +1,5 @@
-import { useNoBodyScroll } from '../useNoBodyScroll';
-import classes from './Loading.module.css';
+import { useNoBodyScroll } from "../useNoBodyScroll";
+import classes from "./Loading.module.css";
 
 const Loading = () => {
   useNoBodyScroll();

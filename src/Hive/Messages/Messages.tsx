@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import ErrorMessage from './ErrorMessage';
-import { BadGuess } from '../Hive';
-import classes from './Messages.module.css';
-import isPangram from '../../isPangram';
-import scoreWord from '../../score';
-import { NewWordInfo, useNewWordFound } from '../../custom-events';
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import ErrorMessage from "./ErrorMessage";
+import { BadGuess } from "../Hive";
+import classes from "./Messages.module.css";
+import isPangram from "../../isPangram";
+import scoreWord from "../../score";
+import { NewWordInfo, useNewWordFound } from "../../custom-events";
 
 type FoundWord = {
   points: number;
@@ -59,7 +59,7 @@ const Messages = () => {
 
   const onWordFound = useCallback(
     ({ word, source }: NewWordInfo) => {
-      if (source !== 'local') {
+      if (source !== "local") {
         return;
       }
 
@@ -73,9 +73,9 @@ const Messages = () => {
   );
 
   useEffect(() => {
-    window.addEventListener('bad-guess', onBadGuess);
+    window.addEventListener("bad-guess", onBadGuess);
     return () => {
-      window.removeEventListener('bad-guess', onBadGuess);
+      window.removeEventListener("bad-guess", onBadGuess);
     };
   }, [onBadGuess]);
 

@@ -25,7 +25,7 @@ const LocalStorageSyncer = ({ children }: Props) => {
         return next;
       });
     },
-    [key, setFoundWords]
+    [key, setFoundWords],
   );
 
   useNewWordFound(onWordFound);

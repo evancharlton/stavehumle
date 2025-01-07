@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
-import { FaGoogle as GoogleIcon, FaGithub as GithubIcon } from 'react-icons/fa';
-import firebase, { useLogin } from '../../sync';
-import classes from './UserDialog.module.css';
-import DeleteAccountButton from './DeleteAccountButton';
-import { Modal } from '../../spa-components/Modal';
-import { useDialog } from '../../dialogs';
+import { useCallback, useEffect, useState } from "react";
+import { FaGoogle as GoogleIcon, FaGithub as GithubIcon } from "react-icons/fa";
+import firebase, { useLogin } from "../../sync";
+import classes from "./UserDialog.module.css";
+import DeleteAccountButton from "./DeleteAccountButton";
+import { Modal } from "../../spa-components/Modal";
+import { useDialog } from "../../dialogs";
 
 // This takes some more work; flag it out for now
 const ENABLE_DELETE_ACCOUNT = false;
@@ -12,7 +12,7 @@ const ENABLE_DELETE_ACCOUNT = false;
 const UserDialog = () => {
   const { userId } = useLogin();
   const [signingIn, setSigningIn] = useState(false);
-  const { open, hide } = useDialog('account');
+  const { open, hide } = useDialog("account");
 
   useEffect(() => {
     if (!open) {
@@ -45,10 +45,10 @@ const UserDialog = () => {
       .then(() => setSigningIn(false));
   }, []);
 
-  let title = '';
+  let title = "";
   let content = null;
   if (!userId) {
-    title = 'Lagre fremgangen';
+    title = "Lagre fremgangen";
     content = (
       <>
         <p>
@@ -85,7 +85,7 @@ const UserDialog = () => {
       </>
     );
 
-    title = 'Din konto';
+    title = "Din konto";
     content = (
       <>
         <p>

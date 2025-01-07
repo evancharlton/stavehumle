@@ -1,1 +1,1 @@
-export { default } from './RevealButton';
+export { default } from "./RevealButton";

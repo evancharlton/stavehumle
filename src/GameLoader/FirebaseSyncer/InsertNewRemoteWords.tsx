@@ -40,10 +40,10 @@ const InsertNewRemoteWords = ({ children, node }: Props) => {
       }
 
       window.dispatchEvent(
-        new FoundWordEvent(newWord, new Date(timestamp), "remote")
+        new FoundWordEvent(newWord, new Date(timestamp), "remote"),
       );
     },
-    [validWords, foundWords]
+    [validWords, foundWords],
   );
 
   useEffect(() => {

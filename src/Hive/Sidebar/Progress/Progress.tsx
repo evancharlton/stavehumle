@@ -1,9 +1,9 @@
-import { useWords } from '../../../GameLoader';
-import { useGame, useScore } from '../../hooks';
-import classes from './Progress.module.css';
-import { MdHelpOutline as Help } from 'react-icons/md';
-import { useState } from 'react';
-import { Modal } from '../../../spa-components/Modal';
+import { useWords } from "../../../GameLoader";
+import { useGame, useScore } from "../../hooks";
+import classes from "./Progress.module.css";
+import { MdHelpOutline as Help } from "react-icons/md";
+import { useState } from "react";
+import { Modal } from "../../../spa-components/Modal";
 
 const Progress = () => {
   const { found } = useGame();
@@ -24,7 +24,7 @@ const Progress = () => {
         <div
           className={[classes.progressBarContainer, genius && classes.genius]
             .filter(Boolean)
-            .join(' ')}
+            .join(" ")}
           title={`${currentPoints} av ${totalPoints} poeng`}
           id="points-progress"
         >
@@ -57,7 +57,7 @@ const Progress = () => {
             hver bokstave etter fire er verdt <strong>ett ekstra poeng</strong>
           </li>
           <li>
-            ord som bruker alle bokstavene minst en gang (et pangram) gir{' '}
+            ord som bruker alle bokstavene minst en gang (et pangram) gir{" "}
             <strong>syv ekstra poeng</strong>
           </li>
         </ul>

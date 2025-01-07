@@ -3,7 +3,7 @@ export type StoryFn = () => React.ReactNode;
 export type AugmentedStory = StoryFn;
 
 export const createStory = (
-  fn: StoryFn
+  fn: StoryFn,
   // options: StoryOptions = {}
 ): AugmentedStory => {
   const augmented = fn as AugmentedStory;

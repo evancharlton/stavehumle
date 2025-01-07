@@ -1,1 +1,1 @@
-export { default } from './DeleteAccountButton';
+export { default } from "./DeleteAccountButton";

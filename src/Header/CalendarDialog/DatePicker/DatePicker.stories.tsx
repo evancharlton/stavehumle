@@ -1,9 +1,9 @@
-import DatePicker, { Props } from './DatePicker';
-import { action } from '@storybook/addon-actions';
-import { HashRouter } from 'react-router';
+import DatePicker, { Props } from "./DatePicker";
+import { action } from "@storybook/addon-actions";
+import { HashRouter } from "react-router";
 
 const info = {
-  title: 'Hive / Header / CalendarButton / DatePicker',
+  title: "Hive / Header / CalendarButton / DatePicker",
   decorators: [
     (story: () => React.ReactNode) => <HashRouter>{story()}</HashRouter>,
   ],
@@ -12,7 +12,7 @@ const info = {
 export default info;
 
 export const Today = (props: Partial<Props>) => {
-  return <DatePicker onChange={action('onChange')} {...props} />;
+  return <DatePicker onChange={action("onChange")} {...props} />;
 };
 
 export const SpecificDay = (props: Partial<Props>) => {
@@ -21,8 +21,8 @@ export const SpecificDay = (props: Partial<Props>) => {
     now.getFullYear(),
     `0${now.getMonth() + 1}`.substr(-2),
     `0${now.getDate() - 1}`.substr(-2),
-  ].join('-');
+  ].join("-");
   return (
-    <DatePicker onChange={action('onChange')} gameId={gameId} {...props} />
+    <DatePicker onChange={action("onChange")} gameId={gameId} {...props} />
   );
 };

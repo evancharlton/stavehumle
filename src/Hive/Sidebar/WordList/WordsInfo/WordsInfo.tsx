@@ -1,7 +1,7 @@
-import classes from './WordsInfo.module.css';
-import { useState } from 'react';
-import { MdHelpOutline as HelpIcon } from 'react-icons/md';
-import { Modal } from '../../../../spa-components/Modal';
+import classes from "./WordsInfo.module.css";
+import { useState } from "react";
+import { MdHelpOutline as HelpIcon } from "react-icons/md";
+import { Modal } from "../../../../spa-components/Modal";
 
 const WordsInfo = () => {
   const [showing, setShowing] = useState(false);
@@ -21,7 +21,7 @@ const WordsInfo = () => {
         onClose={() => setShowing(false)}
       >
         <p>
-          Ordene som brukes her kommer fra den{' '}
+          Ordene som brukes her kommer fra den{" "}
           <a
             href="https://www.nb.no/sprakbanken/ressurskatalog/oai-nb-no-sbr-5/"
             target="_blank"
@@ -39,7 +39,7 @@ const WordsInfo = () => {
             rel="noopener noreferrer"
           >
             Skriv en e-post
-          </a>{' '}
+          </a>{" "}
           hvis du finner et galt ord 😀
         </p>
       </Modal>

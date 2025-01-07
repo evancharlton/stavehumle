@@ -1,7 +1,7 @@
-import classes from './GridInfo.module.css';
-import { MdHelpOutline as HelpIcon } from 'react-icons/md';
-import { useState } from 'react';
-import { Modal } from '../../../../spa-components/Modal';
+import classes from "./GridInfo.module.css";
+import { MdHelpOutline as HelpIcon } from "react-icons/md";
+import { useState } from "react";
+import { Modal } from "../../../../spa-components/Modal";
 
 const Info = () => {
   const [showing, setShowing] = useState(false);

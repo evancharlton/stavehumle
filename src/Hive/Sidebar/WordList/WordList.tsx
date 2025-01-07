@@ -1,9 +1,9 @@
-import { useMemo } from 'react';
-import { useGame } from '../../hooks';
-import classes from './WordList.module.css';
-import WordsInfo from './WordsInfo';
-import RevealButton from './RevealButton';
-import Word from './Word';
+import { useMemo } from "react";
+import { useGame } from "../../hooks";
+import classes from "./WordList.module.css";
+import WordsInfo from "./WordsInfo";
+import RevealButton from "./RevealButton";
+import Word from "./Word";
 
 const WordList = () => {
   const { found: foundWords, revealedWords } = useGame();

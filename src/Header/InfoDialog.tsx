@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import { Modal } from '../spa-components/Modal';
-import classes from './InfoButton/InfoButton.module.css';
-import { useDialog } from '../dialogs';
+import { useEffect } from "react";
+import { Modal } from "../spa-components/Modal";
+import classes from "./InfoButton/InfoButton.module.css";
+import { useDialog } from "../dialogs";
 
-const LAST_CLOSED_DATE = 'info-dialog/has-closed';
+const LAST_CLOSED_DATE = "info-dialog/has-closed";
 
 export const InfoDialog = () => {
-  const { open, show, hide } = useDialog('about');
+  const { open, show, hide } = useDialog("about");
 
   useEffect(() => {
     if (!localStorage.getItem(LAST_CLOSED_DATE)) {
@@ -47,7 +47,7 @@ export const InfoDialog = () => {
             </li>
           </ul>
           <p>
-            Hver puslespill har <strong>minst ett</strong> ord som bruker{' '}
+            Hver puslespill har <strong>minst ett</strong> ord som bruker{" "}
             <strong>alle bokstavene</strong>.
           </p>
           <p>
@@ -57,14 +57,14 @@ export const InfoDialog = () => {
           <hr />
           <p
             style={{
-              display: 'flex',
-              flexDirection: 'row',
+              display: "flex",
+              flexDirection: "row",
               gap: 4,
-              alignItems: 'center',
+              alignItems: "center",
             }}
           >
-            <img src="/logo.svg" alt="Stavehumle ikon (en bie)" height="20" />{' '}
-            fra{' '}
+            <img src="/logo.svg" alt="Stavehumle ikon (en bie)" height="20" />{" "}
+            fra{" "}
             <a
               href="https://www.linkedin.com/in/baharanvari/"
               target="_blank"
@@ -74,7 +74,7 @@ export const InfoDialog = () => {
             </a>
           </p>
           <p>
-            (Want to play in English? Try the{' '}
+            (Want to play in English? Try the{" "}
             <a
               href="https://www.nytimes.com/puzzles/spelling-bee"
               target="_blank"

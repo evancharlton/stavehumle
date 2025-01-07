@@ -35,14 +35,14 @@ const WordGrid = ({ words, range: [shortest, longest] }: Props) => {
     ];
     for (let i = shortest; i <= longest; i += 1) {
       const matchingLength = matchingWords.filter(
-        (word) => word.length === i
+        (word) => word.length === i,
       ).length;
       cells.push(<td key={`${letter} @ ${i}`}>{matchingLength || EMPTY}</td>);
     }
     cells.push(
       <td key={`${letter} @ total`} className={classes.border}>
         {matchingWords.length || EMPTY}
-      </td>
+      </td>,
     );
 
     body.push(<tr key={`row-${letter}`}>{cells}</tr>);
@@ -53,7 +53,7 @@ const WordGrid = ({ words, range: [shortest, longest] }: Props) => {
       <td>Σ</td>
       {totals}
       <td>{words.length}</td>
-    </tr>
+    </tr>,
   );
 
   return (

@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useSetRecoilState } from 'recoil';
-import { jsonFetch } from '../api';
-import { gameWords } from './recoil';
-import { useLetters } from './useLetters';
-import { useParams } from 'react-router';
+import { useEffect, useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { jsonFetch } from "../api";
+import { gameWords } from "./recoil";
+import { useLetters } from "./useLetters";
+import { useParams } from "react-router";
 
 export const useLoadWords = () => {
   const { lang } = useParams();
@@ -17,7 +17,7 @@ export const useLoadWords = () => {
       return;
     }
 
-    const letters = new Set(all.split(''));
+    const letters = new Set(all.split(""));
 
     jsonFetch(`${import.meta.env.BASE_URL}/words/${lang}/words.json`)
       .then((loadedWords) => {

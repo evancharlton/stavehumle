@@ -24,7 +24,7 @@ const DownloadInitialRemoteWords = ({ children, node }: Props2) => {
 
         const wordMap = validWords.reduce<Record<string, true>>(
           (acc, word) => ({ ...acc, [word]: true }),
-          {}
+          {},
         );
         const newWords = {} as WordMap;
         const remoteWords = snap.val() as Record<string, string>;
