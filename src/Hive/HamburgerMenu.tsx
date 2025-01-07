@@ -12,6 +12,7 @@ import { useDialog, useShowDialog } from '../dialogs';
 import { ShareDialog } from '../spa-components/ShareDialog';
 import { useHref, useParams } from 'react-router';
 import { useGameId } from '../hooks';
+import { OtherApps } from '../spa-components/HamburgerMenu/OtherApps';
 
 const useCurrentUrl = () => {
   const { lang } = useParams();
@@ -56,6 +57,7 @@ export const HamburgerMenu = () => {
         text="Om Stavehumle"
         onClick={() => showDialog('about')}
       />
+      <OtherApps />
     </SpaHamburgerMenu>
   );
 };

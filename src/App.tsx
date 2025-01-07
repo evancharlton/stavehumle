@@ -12,7 +12,7 @@ const LazyLanguageSelector = lazy(
 const LazyPage = lazy(() => import('./Page'));
 
 const App = () => (
-  <PwaContainer>
+  <PwaContainer appId="stavehumle">
     <Router>
       <Routes>
         <Route path="/" element={<LazyPage />}>
