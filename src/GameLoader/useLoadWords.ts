@@ -19,7 +19,7 @@ export const useLoadWords = () => {
 
     const letters = new Set(all.split(""));
 
-    jsonFetch(`${import.meta.env.BASE_URL}/words/${lang}/words.json`)
+    jsonFetch(`https://lister.evanc.no/stavehumle/words/${lang}/words.json`)
       .then((loadedWords) => {
         return loadedWords.filter((word: string) => {
           let hasCenter = false;

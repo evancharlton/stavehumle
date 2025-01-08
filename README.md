@@ -17,8 +17,7 @@ You should now have a server running and you should be able to navigate to <http
 
 ## Wordlist
 
-The wordlist is sourced from a repo which is currently private. However it is
-based on the ordbanks published by [Nasjonalbiblioteket].
+The wordlist is based on the ordbanks published by [Nasjonalbiblioteket].
 
 [spelling bee]: https://www.nytimes.com/puzzles/spelling-bee
 [new york times]: https://nytimes.com

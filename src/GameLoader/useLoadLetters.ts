@@ -14,7 +14,7 @@ export const useLoadLetters = () => {
   const setPuzzleId = useSetRecoilState(gamePuzzleId);
 
   useEffect(() => {
-    jsonFetch(`${import.meta.env.BASE_URL}/words/${lang}/options.json`)
+    jsonFetch(`https://lister.evanc.no/stavehumle/words/${lang}/options.json`)
       .then((options) => options[gameHash % options.length])
       .then((option: string) => {
         const letters = option.split("");
