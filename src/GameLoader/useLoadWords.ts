@@ -1,47 +1,41 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
-import { jsonFetch } from "../api";
 import { gameWords } from "./recoil";
 import { useLetters } from "./useLetters";
-import { useParams } from "react-router";
+import { useLanguageData } from "../spa-components/DataProvider";
 
 export const useLoadWords = () => {
-  const { lang } = useParams();
   const { all, centerLetter } = useLetters();
+  const { data: loadedWords, error } =
+    useLanguageData<string[]>("words/words.json");
 
   const setWords = useSetRecoilState(gameWords);
-  const [error, setError] = useState<Error | undefined>();
 
   useEffect(() => {
-    if (!all) {
+    if (!all || !loadedWords) {
       return;
     }
 
     const letters = new Set(all.split(""));
 
-    jsonFetch(`https://lister.evanc.no/stavehumle/words/${lang}/words.json`)
-      .then((loadedWords) => {
-        return loadedWords.filter((word: string) => {
-          let hasCenter = false;
-          for (let i = 0; i < word.length; i += 1) {
-            if (!letters.has(word[i])) {
-              return false;
-            }
-
-            hasCenter = hasCenter || word[i] === centerLetter;
+    setWords(
+      loadedWords.filter((word: string) => {
+        let hasCenter = false;
+        for (let i = 0; i < word.length; i += 1) {
+          if (!letters.has(word[i])) {
+            return false;
           }
-          return hasCenter;
-        });
-      })
-      .then((words) => {
-        setWords(words);
-      })
-      .catch(setError);
+
+          hasCenter = hasCenter || word[i] === centerLetter;
+        }
+        return hasCenter;
+      }),
+    );
 
     return () => {
       setWords([]);
     };
-  }, [all, centerLetter, lang, setWords]);
+  }, [all, centerLetter, loadedWords, setWords]);
 
   return { error };
 };
