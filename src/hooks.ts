@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
-import hashCode from "./hashCode";
 import twoDigits from "./twoDigits";
+import { hash } from "./spa-components/RandomProvider";
 
 export const isProbablyDate = (gameId: string) => {
   if (!gameId) {
@@ -37,7 +37,7 @@ export const useGameId = () => {
       .join("-");
   }
 
-  const gameHash = hashCode(
+  const gameHash = hash(
     // Note: we reverse the game ID here because otherwise, sequential dates
     // will only have hashCodes that differ by one value. Instead, we want to
     // put the least-significant bit in the beginning to lead to more entropy.

@@ -3,6 +3,7 @@ import { useSetRecoilState } from "recoil";
 import { useGameId } from "../hooks";
 import { gamePuzzleId } from "./recoil";
 import { useLanguageData } from "../spa-components/DataProvider";
+import { hashItem } from "../spa-components/RandomProvider";
 
 type OuterLetters = [string, string, string, string, string, string];
 
@@ -18,10 +19,10 @@ export const useLoadLetters = () => {
       return;
     }
 
-    const option = options[gameHash % options.length];
+    const option = hashItem(options, gameHash);
 
     const letters = option.split("");
-    const centerLetter = letters[gameHash % letters.length];
+    const centerLetter = hashItem(letters, gameHash);
     const outerLetters = letters.filter(
       (letter) => letter !== centerLetter,
     ) as OuterLetters;
