@@ -128,7 +128,7 @@ const Buttons = () => {
       <div className={classes.stack}>
         <svg
           className={classes.honeycomb}
-          style={{ gridArea: "cell", minWidth: 400 }}
+          style={{ gridArea: "cell", minWidth: 300 }}
           viewBox={`0 0 ${W} ${W}`}
         >
           <Hexagon
