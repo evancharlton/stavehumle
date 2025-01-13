@@ -23,10 +23,10 @@
 
 .container span.pangram {
   background-color: var(--center-letter-color);
-  color: #000;
+  color: currentColor;
 }
 
 .container span.points {
   background-color: transparent;
-  color: #000;
+  color: currentColor;
 }
