@@ -3,12 +3,10 @@ import { HashRouter as Router, Route, Routes, Outlet } from "react-router";
 import { lazy, Suspense } from "react";
 import PwaContainer from "./spa-components/PwaContainer";
 import { Loader } from "./spa-components/Loader";
+import { LanguageProvider } from "./spa-components/LanguageSelector";
 
 const LazyGameLoader = lazy(() => import("./GameLoader"));
 const LazyHive = lazy(() => import("./Hive"));
-const LazyLanguageSelector = lazy(
-  () => import("./spa-components/LanguageSelector"),
-);
 const LazyPage = lazy(() => import("./Page"));
 
 const App = () => (
@@ -29,7 +27,7 @@ const App = () => (
                     flex: 1,
                   }}
                 >
-                  <LazyLanguageSelector />
+                  <LanguageProvider />
                 </div>
               </Suspense>
             }
@@ -37,11 +35,13 @@ const App = () => (
           <Route
             path=":lang"
             element={
-              <Suspense fallback={<Loader />}>
-                <LazyGameLoader>
-                  <Outlet />
-                </LazyGameLoader>
-              </Suspense>
+              <LanguageProvider>
+                <Suspense fallback={<Loader />}>
+                  <LazyGameLoader>
+                    <Outlet />
+                  </LazyGameLoader>
+                </Suspense>
+              </LanguageProvider>
             }
           >
             <Route
